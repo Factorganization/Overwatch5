@@ -1,0 +1,11 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/Systems/MainMenu/MainMenu.uss?fileID=7433441132597879392&amp;guid=c019a3f9d9d8140468ce88ba95cbcc1a&amp;type=3#MainMenu" />
+    <engine:VisualElement name="Container" style="flex-grow: 1; width: 100%; height: 100%;">
+        <engine:VisualElement name="MainMenuContainer" style="flex-grow: 1; width: 35%; justify-content: center; align-items: center; align-self: flex-start; background-color: rgba(0, 0, 0, 0.38); display: flex;">
+            <engine:Label text="Game Title" style="font-size: 90px; -unity-font-style: bold; align-items: center; margin-bottom: 60px;" />
+            <engine:Button text="New Game" name="NewGameButton" style="flex-direction: column; width: 50%; height: 10%; align-items: center; justify-content: flex-end; align-self: center; opacity: 1; background-color: rgb(188, 188, 188);" />
+            <engine:Button text="Quit" name="QuitButton" style="flex-direction: column; width: 50%; height: 10%; align-items: center; justify-content: flex-end; align-self: center;" />
+        </engine:VisualElement>
+        <engine:VisualElement name="SaveList" style="flex-grow: 1; overflow: visible; visibility: visible; display: none; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);" />
+    </engine:VisualElement>
+</engine:UXML>

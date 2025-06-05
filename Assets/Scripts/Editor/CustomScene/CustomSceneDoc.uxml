@@ -1,0 +1,12 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement name="A" data-source="project://database/Assets/StaticSceneList.asset?fileID=11400000&amp;guid=fcdd6bf06c602f34588f05e27694a137&amp;type=2#StaticSceneList" style="flex-grow: 1;">
+        <ui:VisualElement name="C" style="flex-grow: 1;">
+            <ui:Label text="Scene Groups" enable-rich-text="true" data-source="project://database/Assets/StaticSceneList.asset?fileID=11400000&amp;guid=fcdd6bf06c602f34588f05e27694a137&amp;type=2#StaticSceneList" style="-unity-text-align: upper-center; text-overflow: clip; font-size: 25px; -unity-font-style: bold; color: rgb(255, 0, 0);" />
+            <uie:PropertyField data-source="project://database/Assets/StaticSceneList.asset?fileID=11400000&amp;guid=fcdd6bf06c602f34588f05e27694a137&amp;type=2#StaticSceneList" data-source-path="sceneGroups" binding-path="sceneGroups" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="B" style="flex-grow: 1; margin-top: 25px;">
+        <ui:TextField label="Group Name" placeholder-text="filler text" select-all-on-mouse-up="true" data-source="project://database/Assets/StaticSceneList.asset?fileID=11400000&amp;guid=fcdd6bf06c602f34588f05e27694a137&amp;type=2#StaticSceneList" data-source-path="currentSceneGroupName" binding-path="currentSceneGroupName" style="margin-top: 17px;" />
+        <ui:Button text="Load Group" binding-path="LoadSceneGroup" data-source="project://database/Assets/StaticSceneList.asset?fileID=11400000&amp;guid=fcdd6bf06c602f34588f05e27694a137&amp;type=2#StaticSceneList" name="LoadGroupButton" style="font-size: 20px; width: 319px; white-space: nowrap; -unity-text-align: middle-center; align-self: center; margin-top: 15px;" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,3 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Gizmos/NavSpaceBounds%20Icon.png?fileID=21300000&amp;guid=59fc8204af61d4c4e82c988d724b424c&amp;type=3#NavSpaceBounds Icon&quot;); margin-bottom: 18px; width: 100%; height: 126px; background-size: 114px 126px; border-bottom-width: -25px; bottom: auto; padding-bottom: 15px; margin-top: 18px; margin-right: 0; margin-left: 0;" />
+</ui:UXML>

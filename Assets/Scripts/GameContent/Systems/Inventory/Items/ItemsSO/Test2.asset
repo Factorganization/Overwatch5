@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a91c44bb4f6bd4aaecd578301e2882, type: 3}
+  m_Name: Test2
+  m_EditorClassIdentifier: 
+  Name: Processor
+  type: 1
+  action: 0
+  maxStack: 2
+  id:
+    Part1: 3957181386
+    Part2: 1320900991
+    Part3: 3622363010
+    Part4: 1093656894
+  icon: {fileID: 0}
+  description: 

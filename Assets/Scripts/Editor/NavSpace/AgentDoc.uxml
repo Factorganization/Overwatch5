@@ -1,0 +1,3 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Gizmos/Agent%20Icon.png?fileID=2800000&amp;guid=1a9e8368de3ba63478ff1ea6f03151ad&amp;type=3#Agent Icon&quot;); background-size: 114px 126px; height: 140px;" />
+</ui:UXML>

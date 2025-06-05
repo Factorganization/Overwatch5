@@ -1,0 +1,29 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/Scripts/Editor/NavSpace/NavSpaceStyle.uss?fileID=7433441132597879392&amp;guid=afaae21f8bcb59042a99b785d9b34e56&amp;type=3#NavSpaceStyle" />
+    <ui:VisualElement style="flex-grow: 1; align-items: center; background-size: 100% 100%;">
+        <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Gizmos/NavSpaceGenerator%20Icon.png?fileID=21300000&amp;guid=b7c8157ca35b22747995c4a3138ca298&amp;type=3#NavSpaceGenerator Icon&quot;); -unity-slice-type: sliced; background-color: rgba(255, 255, 255, 0); -unity-background-scale-mode: stretch-to-fill; align-items: flex-end; flex-direction: column; width: 114px; height: 114px; background-size: 100px 100px;" />
+    </ui:VisualElement>
+    <ui:VisualElement class="section" style="flex-grow: 1;">
+        <uie:PropertyField data-source-type="GameContent.Actors.EnemySystems.EnemyNavigation.NavSpaceGenerator, Assembly-CSharp" binding-path="navSpaceData" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 1; flex-direction: row; -unity-slice-type: tiled;">
+        <ui:VisualElement class="section" style="flex-grow: 1; align-items: stretch; flex-direction: column;">
+            <uie:PropertyField data-source-type="GameContent.Actors.EnemySystems.EnemyNavigation.NavSpaceGenerator, Assembly-CSharp" binding-path="worldObjs" style="margin-left: 15px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="VisualElement" class="section" style="flex-grow: 1;">
+            <uie:PropertyField data-source-type="GameContent.Actors.EnemySystems.EnemyNavigation.NavSpaceGenerator, Assembly-CSharp" binding-path="minNodeSize" style="rotate: 0;" />
+            <uie:PropertyField data-source-type="GameContent.Actors.EnemySystems.EnemyNavigation.NavSpaceGenerator, Assembly-CSharp" binding-path="bakeBlockingLayer" name="PropertyField" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 1; align-items: center;">
+        <ui:VisualElement class="section" style="flex-grow: 1;">
+            <ui:Button text="Add Boundary" data-source-type="GameContent.Actors.EnemySystems.EnemyNavigation.NavSpaceGenerator, Assembly-CSharp" name="AddBoundary" style="width: 115px; height: 35px; -unity-text-align: middle-center;" />
+            <uie:PropertyField binding-path="bounds" enabled="false" data-source-type="GameContent.Actors.EnemySystems.EnemyNavigation.NavSpaceGenerator, Assembly-CSharp" style="margin-right: 5px; margin-left: 15px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="VisualElement" style="flex-grow: 1; align-items: center;">
+        <ui:VisualElement class="section" style="flex-grow: 1;">
+            <ui:Button text="Bake" data-source-type="GameContent.Actors.EnemySystems.EnemyNavigation.NavSpaceGenerator, Assembly-CSharp" name="Bake" style="width: 115px; height: 35px; -unity-text-align: middle-center; -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgb(198, 245, 191); color: rgb(31, 31, 31);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

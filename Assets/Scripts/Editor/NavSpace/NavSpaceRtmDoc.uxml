@@ -1,0 +1,14 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/Scripts/Editor/NavSpace/NavSpaceStyle.uss?fileID=7433441132597879392&amp;guid=afaae21f8bcb59042a99b785d9b34e56&amp;type=3#NavSpaceStyle" />
+    <ui:VisualElement name="VisualElement" data-source-type="GameContent.Actors.EnemySystems.EnemyNavigation.NavSpaceRunTimeManager, Assembly-CSharp" style="flex-grow: 1; background-size: 100% 100%; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;">
+        <ui:VisualElement data-source-type="GameContent.Actors.EnemySystems.EnemyNavigation.NavSpaceRunTimeManager, Assembly-CSharp" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Gizmos/NavSpaceRuntimeManager%20Icon.png?fileID=21300000&amp;guid=6d2007ff49ea0014bacfd3d44f035aea&amp;type=3#NavSpaceRuntimeManager Icon&quot;); background-size: 114px 114px; background-color: rgba(0, 0, 0, 0); -unity-slice-type: sliced; border-top-width: 66px; border-right-width: 66px; border-bottom-width: 66px; border-left-width: 66px; transform-origin: center;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:VisualElement class="section" style="flex-grow: 1;">
+            <uie:PropertyField data-source-type="GameContent.Actors.EnemySystems.EnemyNavigation.NavSpaceRunTimeManager, Assembly-CSharp" binding-path="navSpaceData" />
+        </ui:VisualElement>
+        <ui:VisualElement class="section" style="flex-grow: 1; padding-left: 25px;">
+            <uie:PropertyField data-source-type="GameContent.Actors.EnemySystems.EnemyNavigation.NavSpaceRunTimeManager, Assembly-CSharp" binding-path="viewOptions" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
