@@ -1,9 +1,16 @@
 {
   "dependencies": {
-    "com.unity.collab-proxy": "2.8.2",
+    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+    "com.eflatun.scenereference": "git+https://github.com/starikcetin/Eflatun.SceneReference.git#4.1.1",
+    "com.unity.2d.sprite": "1.0.0",
+    "com.unity.ai.navigation": "2.0.7",
+    "com.unity.collab-proxy": "2.7.1",
     "com.unity.feature.development": "1.0.2",
-    "com.unity.multiplayer.center": "1.0.0",
+    "com.unity.inputsystem": "1.14.0",
+    "com.unity.nuget.newtonsoft-json": "3.2.1",
+    "com.unity.probuilder": "6.0.5",
     "com.unity.render-pipelines.high-definition": "17.0.4",
+    "com.unity.rendering.denoising": "1.0.5",
     "com.unity.timeline": "1.8.7",
     "com.unity.ugui": "2.0.0",
     "com.unity.visualscripting": "1.9.6",
