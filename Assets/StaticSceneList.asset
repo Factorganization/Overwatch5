@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9683d629d2f04edebc8dabe90f15ff6f, type: 3}
+  m_Name: StaticSceneList
+  m_EditorClassIdentifier: 
+  sceneGroups:
+  - sceneGroupName: TestGroup
+    scenePaths:
+    - scene: {fileID: 102900000, guid: 8124e5870f4fd4c779e7a5f994e84ad1, type: 3}
+      additionalScenePath: 
+    - scene: {fileID: 102900000, guid: 36c15505ef087224898c60b9d51bba30, type: 3}
+      additionalScenePath: 
+    - scene: {fileID: 102900000, guid: 1f76dfe8cd3456546b055e0e15ed7eab, type: 3}
+      additionalScenePath: SC_GA/
+  - sceneGroupName: OtherTest
+    scenePaths: []
+  - sceneGroupName: SecondPlayable
+    scenePaths:
+    - scene: {fileID: 102900000, guid: 66efb0240c117004183b458f91c6bc42, type: 3}
+      additionalScenePath: 
+    - scene: {fileID: 102900000, guid: b095ea755260d7243908e487f3ee517b, type: 3}
+      additionalScenePath: GD_Scenes/
+    - scene: {fileID: 102900000, guid: 03e8e642c94d2bd468b8ae912c95e6ee, type: 3}
+      additionalScenePath: 
+    - scene: {fileID: 102900000, guid: 35e78de33b9f8e04a9bc019fa84b6932, type: 3}
+      additionalScenePath: 
+  currentSceneGroupName: SecondPlayable
