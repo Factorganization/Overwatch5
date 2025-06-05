@@ -158,13 +158,13 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 0.859, y: 0.82, z: 1, w: 0}
+    m_Value: {x: 1, y: 0.8986667, z: 0.84000003, w: 0}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 0.81, y: 1, z: 0.8448334, w: 0}
+    m_Value: {x: 0.82, y: 0.988, z: 1, w: 0}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.877, z: 0.59000003, w: 0.1632653}
+    m_Value: {x: 0.82, y: 0.865, z: 1, w: 0.1632653}
   shadowsStart:
     m_OverrideState: 0
     m_Value: 0
@@ -655,7 +655,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: SkyandFogSettingsProfile
+  m_Name: SkyandFogSettingsProfile 2
   m_EditorClassIdentifier: 
   components:
   - {fileID: 1142777632297148762}
@@ -1123,7 +1123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8bcdf71d7fafa419fca1ed162f5fc9, type: 3}
   m_Name: ColorAdjustments
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   postExposure:
     m_OverrideState: 1
     m_Value: 0
@@ -1132,10 +1132,10 @@ MonoBehaviour:
     m_Value: 0
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 0.7783019, g: 1, b: 0.98290503, a: 1}
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
     m_OverrideState: 1
     m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: -70.5

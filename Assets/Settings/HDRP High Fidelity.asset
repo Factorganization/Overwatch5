@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RenderPipelineSettings:
     supportShadowMask: 0
-    supportSSR: 0
+    supportSSR: 1
     supportSSRTransparent: 0
     supportSSAO: 1
     supportSSGI: 1
@@ -75,15 +75,15 @@ MonoBehaviour:
     supportTerrainHole: 0
     lightProbeSystem: 1
     oldLightProbeSystem: 1
-    probeVolumeMemoryBudget: 1024
-    supportProbeVolumeGPUStreaming: 0
+    probeVolumeMemoryBudget: 2048
+    supportProbeVolumeGPUStreaming: 1
     supportProbeVolumeDiskStreaming: 0
     probeVolumeSHBands: 1
     supportProbeVolumeScenarios: 0
     supportProbeVolumeScenarioBlending: 1
     probeVolumeBlendingMemoryBudget: 128
-    supportRayTracing: 0
-    supportVFXRayTracing: 0
+    supportRayTracing: 1
+    supportVFXRayTracing: 1
     supportedRayTracingMode: 3
     lightLoopSettings:
       cookieAtlasSize: 512
