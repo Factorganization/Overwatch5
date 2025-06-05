@@ -70,3 +70,10 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Scenes to ignore
+/[Aa]ssets/[Ss]cenes/SC_GA_01/*
+/[Aa]ssets/[Ss]cenes/GD_ProtoScene/*
+/[Aa]ssets/[Ss]cenes/SC_Matthieu Light Non Bake/*
+/[Aa]ssets/[Ss]cenes/SCENE GA MULTIP/*
+/[Aa]ssets/[Ss]cenes/SC_GA/*
