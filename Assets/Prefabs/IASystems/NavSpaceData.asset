@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 945fe664e51b4740bf7c4a687cc8b4ee, type: 3}
+  m_Name: NavSpaceData
+  m_EditorClassIdentifier: 
+  subData:
+  - {fileID: 11400000, guid: ef2e30c140a2dfe40b6ede9f302bde2e, type: 2}
+  - {fileID: 11400000, guid: cb4cf1fdaec5fae49baffac30b84557b, type: 2}
+  - {fileID: 11400000, guid: e7b0291350c8bab499e4d931aa84c1e1, type: 2}
+  - {fileID: 11400000, guid: ba53516eaaf71034b87ec43378cfb04d, type: 2}
+  - {fileID: 11400000, guid: 5f39003e2e2b14d46ae36639551699a6, type: 2}
+  - {fileID: 11400000, guid: 8e950b02bc26dac45822b6f194bd6ae8, type: 2}
+  - {fileID: 11400000, guid: d41b3345df906184fba02dfedfb6d474, type: 2}
+  - {fileID: 11400000, guid: 4cfd1baa1dc81844ebae3aa1d35ca790, type: 2}
+  - {fileID: 11400000, guid: d919483dad615184bbd258c63da771b2, type: 2}
+  - {fileID: 11400000, guid: da20d0985b9bdef44bd88b2485f7920f, type: 2}
+  - {fileID: 11400000, guid: 5d8c31a2c366ee0478d2f39d958244be, type: 2}
+  - {fileID: 11400000, guid: 36945080b5d3988459469e77cb6c64b9, type: 2}
+  - {fileID: 11400000, guid: 833ea75b0735718419b2b5e585c9423e, type: 2}
+  - {fileID: 11400000, guid: 4099f4b2d3b8605489444cc951dce791, type: 2}
+  - {fileID: 11400000, guid: 426a065c660e02c4581768d52236eead, type: 2}
+  - {fileID: 11400000, guid: 34d61b36718d28e43aa18b309fe44976, type: 2}
+  - {fileID: 11400000, guid: 9c61f521711f2e64b9fccfed129f37d6, type: 2}
+  - {fileID: 11400000, guid: 8bfc46de9c01f27458a8b851e87fc6b7, type: 2}
+  - {fileID: 11400000, guid: 0c672f66b07e8244db1fdd7ddcd1eefc, type: 2}
+  - {fileID: 11400000, guid: 7a3512f4f4788da48bd81e0822434275, type: 2}
+  - {fileID: 11400000, guid: 2fde0d582b801ee45a534d3ec157df38, type: 2}
+  - {fileID: 11400000, guid: 5de2aa5106df7bd4fb91832125cbec4d, type: 2}
+  - {fileID: 11400000, guid: e12da21e6c3b0a041bd2382b627b632c, type: 2}
+  - {fileID: 11400000, guid: 08ad52f7eba0f4b4292aa466f240f0ba, type: 2}
+  - {fileID: 11400000, guid: c29b1c4b388a9f34f973de0f34d044f3, type: 2}
+  - {fileID: 11400000, guid: f78424db9771e0c40af43d888b1663fa, type: 2}
+  - {fileID: 11400000, guid: f91a9ff4f23581f45a9b355d255514d8, type: 2}
+  - {fileID: 11400000, guid: abd94b1fa40394b4f9f119b151a8011b, type: 2}
+  - {fileID: 11400000, guid: 19fba0a40db01e74cbe880d10e854ecc, type: 2}
+  - {fileID: 11400000, guid: cf6421ff7bf4f3643a51f83b78625274, type: 2}
+  - {fileID: 11400000, guid: bea891efe4219e74a9045c660b755267, type: 2}
+  minBoundSize: 2
+  subDataPath: Assets\Prefabs\IASystems\NavSpaceDataSubs

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 945fe664e51b4740bf7c4a687cc8b4ee, type: 3}
+  m_Name: R1NavSpace
+  m_EditorClassIdentifier: 
+  subData:
+  - {fileID: 11400000, guid: 31ce0ca79436dc24c89ac06938f49301, type: 2}
+  - {fileID: 11400000, guid: 6eb5d4f204e58e04697de1badf2bd99a, type: 2}
+  minBoundSize: 3
+  subDataPath: Assets\Prefabs\IASystems\R1NavSpaceSubs
