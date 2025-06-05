@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce23c7defa814c2989ed5068bad2b2c8, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: 
+  inputData:
+    moveInput: {fileID: -1680190386980627800, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
+    lookInput: {fileID: -5630151704836100654, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
+    jumpInput: {fileID: -2099379676528639254, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
+    sprintInput: {fileID: -5405772900591877546, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
+    crouchInput: {fileID: 7040659881675835329, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
+    actionInput: {fileID: -6549209242970463939, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
+  moveData:
+    playerHeight: 2
+    playerSpeed: 250
+    sprintMultiplier: 2
+    crouchMultiplier: 0.75
+    crouchHeight: 1.5
+    accelDecelMultiplier: 25
+  cameraData:
+    camSensitivity: 0.301
+    maxPitchAngle: 90
+  groundCheckData:
+    groundLayer:
+      serializedVersion: 2
+      m_Bits: 8
+    sphereCastRadius: 0.5
+    castBaseLength: 1
+    additionalCastLength: 0.65
+  gravityData:
+    slopeClosingSpeedMultiplier: 20
+    fallAccelerationMultiplier: 60
+    maxFallSpeed: 30
+  jumpData:
+    jumpStrength: 8
+    jumpCoyoteTime: 0.15
+    jumpBufferTime: 0.2
