@@ -1,0 +1,562 @@
+{
+    "items": [
+        {
+            "Name": "Cache",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "Slopes",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "RbTest",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "spikes025NoSpace",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "spikes025Space",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "spikes05NoSpace",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "spikes05Space",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "spikes075NoSpace",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "spikes075Space",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "ConvexCollision",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "ConcaveCollision",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "Doors",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "VarStairs",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "VarStairs20Steps",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "Boundaries",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "CacheOld",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "ArtParPitiéRangez",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "PlayerCache",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "Logic",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "SalleDeStockage",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "SalleElectrique",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "MidBureau_01",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "PetitBureau_01",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "PetitBureau_02",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "PetitBureau_03",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "PetitBureau_04",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "SalleDeTransitionCatwalk",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "GrandBureau_OpenNavigation",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "SalleStart",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "Lighting",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        },
+        {
+            "Name": "VFX_Etincelles",
+            "TextColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "FontSize": 12,
+            "FontStyle": 0,
+            "ImageColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "ImageType": 0
+        }
+    ]
+}
