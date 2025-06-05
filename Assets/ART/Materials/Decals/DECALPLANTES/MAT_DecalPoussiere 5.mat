@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MAT_DecalPoussiere
+  m_Name: MAT_DecalPoussiere 5
   m_Shader: {fileID: 4800000, guid: 1d64af84bdc970c4fae0c1e06dd95b73, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColorMap:
-        m_Texture: {fileID: 2800000, guid: f5feacd1e6884094f915d7839b20591e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2f3835c38eb481c4db7da3e9c121d0b5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BentNormalMap:
@@ -96,11 +96,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
-        m_Texture: {fileID: 2800000, guid: 1669a7655f0388f4f9438bce147c51b4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5463dcb4a85d7c3499f02be723fa6736, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: 6f7577ac67a39cb4395aba3f923e18a5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 16ab26160bfe9b24bafece6c2d73e8df, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMapOS:
