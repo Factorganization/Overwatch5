@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Around_Emissive:
-        m_Texture: {fileID: 2800000, guid: 005b11844a059b0478341c6a704c1e55, type: 3}
+        m_Texture: {fileID: 2800000, guid: e6ee74927e0b569468e5179c1238db8e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColorMap:
@@ -116,7 +116,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TEX_FloorTouch:
-        m_Texture: {fileID: 2800000, guid: 7d6117805e159b94ab781fd5105bcb9e, type: 3}
+        m_Texture: {fileID: 2800000, guid: e6ee74927e0b569468e5179c1238db8e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TangentMap:
@@ -177,7 +177,7 @@ Material:
     - _Anisotropy: 0
     - _BlendMode: 0
     - _BlendOp: 0
-    - _Bloom: 1.67
+    - _Bloom: 0.73
     - _BumpScale: 1
     - _CameraFadingEnabled: 0
     - _CameraFarFadeDistance: 2
@@ -314,7 +314,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 0, b: 0, a: 1}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 28064.668, g: 28064.668, b: 28064.668, a: 1}
+    - _Color: {r: 1.0592735, g: 0, b: 0, a: 0.44705883}
     - _ColorAddSubDiff: {r: 1, g: 0, b: 0, a: 0}
     - _Color_1: {r: 24543.875, g: 0, b: 2313.0354, a: 0}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
