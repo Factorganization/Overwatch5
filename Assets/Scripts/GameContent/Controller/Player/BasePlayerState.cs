@@ -64,7 +64,23 @@ namespace GameContent.Controller.Player
             {
                 Hero.Instance.UseEquippedItem();
             }
-
+            
+            // Scanning Action
+            if (dataSo.inputData.actionInput.action.WasReleasedThisFrame() && Hero.Instance.MultiToolObject.isScanning)
+            {
+                Hero.Instance.MultiToolObject.ScanDevice();
+            }
+            
+            if (dataSo.inputData.actionInput.action.IsPressed() && Hero.Instance.MultiToolObject.isScanning)
+            {
+                Hero.Instance.MultiToolObject.Scanning();
+            }
+            else
+            {
+                Hero.Instance.MultiToolObject.CancelScan();
+            }
+            
+            // Hacking Action
             if (dataSo.inputData.actionInput.action.IsPressed() && Hero.Instance.IsHacking)
             {
                 Hero.Instance.ContinueHack();

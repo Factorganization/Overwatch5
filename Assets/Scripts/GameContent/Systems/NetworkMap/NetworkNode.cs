@@ -11,13 +11,21 @@ public class NetworkNode : MonoBehaviour
     public NodeType type;
     public GameObject nodeVisual;
     public Actor actor;
-    public TextMeshProUGUI _name;
+    public TextMeshProUGUI name;
     public List<NetworkNode> _originalConnectedNodes = new List<NetworkNode>();
     public List<NetworkNode> _connectedNodes = new List<NetworkNode>();
+    public bool hidden;
 
     private void Start()
     {
-        _name.text = nodeId;
-        _originalConnectedNodes = new List<NetworkNode>(_connectedNodes);
+        if (hidden)
+        {
+            name.text = "???";
+        }
+        else
+        {
+            name.text = nodeId;
+            _originalConnectedNodes = new List<NetworkNode>(_connectedNodes);
+        }
     }
 }
