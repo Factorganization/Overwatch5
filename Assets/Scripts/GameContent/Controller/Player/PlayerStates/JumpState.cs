@@ -28,9 +28,10 @@ namespace GameContent.Controller.Player.PlayerStates
         public override sbyte OnUpdate()
         {
             _jumpCounter += Time.deltaTime;
-
+            
             HandleInputGather();
             HandleRotateInputGather();
+            HandleSwayInputGather();
             
             OnFall();
             return 0;
@@ -40,6 +41,7 @@ namespace GameContent.Controller.Player.PlayerStates
         {
             Move(playerMachine.PlayerModel.currentMoveMultiplier);
             Look();
+            UpdateSway();
             
             if (_jumpCounter < GameConstants.AntiGroundGrabJumpTimer)
                 return 0;

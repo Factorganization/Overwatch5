@@ -226,7 +226,7 @@ namespace GameContent.Actors.EnemySystems.Seekers
         
         [SerializeField] private Material flashCamDecal;
         
-        [SerializeField] private CableLink cableLinkRef;
+        [SerializeField] private NetworkNode networkNode;
 
         [SerializeField] private float range;
 
@@ -236,6 +236,8 @@ namespace GameContent.Actors.EnemySystems.Seekers
         [SerializeField] private LayerMask collisionLayer;
 
         [SerializeField] private CameraRotation[] cameraRotations;
+
+        [SerializeField] private float scanningTime;
         
         private PlayerView _playerView;
         
@@ -246,6 +248,18 @@ namespace GameContent.Actors.EnemySystems.Seekers
         private bool _inSight;
         
         private static readonly int SpeedFlash = Shader.PropertyToID("_Speed_Flash");
+        
+        public NetworkNode NetworkNode
+        {
+            get => networkNode;
+            set => networkNode = value;
+        }
+        
+        public float ScanningTime
+        {
+            get => scanningTime;
+            set => scanningTime = value;
+        }
 
         #endregion
     }
