@@ -157,7 +157,7 @@ Material:
     - _AffectAO: 1
     - _AffectAlbedo: 1
     - _AffectEmission: 0
-    - _AffectMetal: 1
+    - _AffectMetal: 0
     - _AffectNormal: 1
     - _AffectSmoothness: 0
     - _AlbedoAffectEmissive: 0
@@ -183,11 +183,11 @@ Material:
     - _CullMode: 2
     - _CullModeForward: 2
     - _Cutoff: 0.5
-    - _DecalBlend: 1
+    - _DecalBlend: 0.544
     - _DecalColorMask0: 15
     - _DecalColorMask1: 15
-    - _DecalColorMask2: 12
-    - _DecalColorMask3: 12
+    - _DecalColorMask2: 4
+    - _DecalColorMask3: 4
     - _DecalMaskMapBlueScale: 1
     - _DecalMeshBiasType: 0
     - _DecalMeshDepthBias: 0
@@ -238,13 +238,13 @@ Material:
     - _IridescenceThickness: 1
     - _LightingEnabled: 0
     - _LinkDetailsWithBase: 1
-    - _MaskBlendSrc: 1
+    - _MaskBlendSrc: 0
     - _MaterialID: 1
     - _Metallic: 0
-    - _MetallicRemapMax: 1
+    - _MetallicRemapMax: 0
     - _MetallicRemapMin: 0
     - _Mode: 3
-    - _NormalBlendSrc: 1
+    - _NormalBlendSrc: 0
     - _NormalMapSpace: 0
     - _NormalScale: 1
     - _ObjectSpaceUVMapping: 0
