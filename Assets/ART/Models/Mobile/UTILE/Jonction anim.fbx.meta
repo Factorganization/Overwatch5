@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0ec0a8c703c586341bf6fd20964c41c3
+guid: 6a8f8305b28932a4e8ca0d7c2b8ea6f9
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,18 +31,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: SCAN
+      name: JONCTION
       takeName: Take 001
       internalID: 1827226128182048838
       firstFrame: 0
-      lastFrame: 100
+      lastFrame: 200
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
