@@ -2,6 +2,7 @@ using Systems;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameUIManager : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _batteryText;
     [SerializeField] private TextMeshProUGUI _interactibleText;
     [SerializeField] private TextMeshProUGUI _notificationText;
+    
+    public Image hackProgressImage;
 
     public GameObject PauseUI => _pauseMenu;
     public HealthVisual HealthVisual { get; set; }
