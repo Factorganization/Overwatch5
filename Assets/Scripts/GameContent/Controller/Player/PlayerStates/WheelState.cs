@@ -32,6 +32,7 @@ namespace GameContent.Controller.Player.PlayerStates
             _jumpCounter += Time.deltaTime;
             
             HandleInputGather();
+            HandleSwayInputGather();
             OnRelease();
             
             if (dataSo.inputData.jumpInput.action.WasPressedThisFrame() && CheckGround())
@@ -44,6 +45,7 @@ namespace GameContent.Controller.Player.PlayerStates
         public override sbyte OnFixedUpdate()
         {
             Move(playerMachine.PlayerModel.currentMoveMultiplier);
+            UpdateSway();
             
             if (_jumpCounter < GameConstants.AntiGroundGrabJumpTimer)
                 return 0;

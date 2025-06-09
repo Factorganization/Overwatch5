@@ -17,6 +17,8 @@ namespace GameContent.Controller.Player
         public GravityData gravityData;
         
         public JumpData jumpData;
+        
+        public SwayData swayData;
     }
 
     [System.Serializable]
@@ -102,5 +104,40 @@ namespace GameContent.Controller.Player
         public float jumpCoyoteTime;
         
         public float jumpBufferTime;
+    }
+
+    [System.Serializable]
+    public class SwayData
+    {
+        #region fields
+        
+        [Header("Sway")]
+        public float step = 0.01f;
+        
+        public float maxStepDistance = 0.06f;
+        
+        [Header("Sway Rotation")]
+        public float rotationStep = 4f;
+        
+        public float maxRotationStep = 5f;
+        
+        [Header("Bobbing")]
+        
+        public float bobExaggeration;
+        
+        public float moveAccel;
+        
+        [Header("Bob Rotation")]
+        public Vector3 multiplier;
+        
+        public static Vector3 travelLimit = Vector3.one * 0.025f;
+        
+        public static Vector3 bobLimit = Vector3.one * 0.01f;
+        
+        public const float smooth = 10f;
+
+        public const float smoothRot = 12f;
+        
+        #endregion
     }
 }

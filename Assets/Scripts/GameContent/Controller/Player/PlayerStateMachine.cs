@@ -15,6 +15,8 @@ namespace GameContent.Controller.Player
 
         public Transform CamRef => camRef;
         
+        public Transform HandRef => handRef;
+        
         public Animator Animator => animator;
 
         public PlayerModel PlayerModel => _playerModel;
@@ -88,6 +90,8 @@ namespace GameContent.Controller.Player
         [SerializeField] private PlayerDataSo dataSo;
         
         [SerializeField] private Transform camRef;
+
+        [SerializeField] private Transform handRef;
         
         [SerializeField] private Animator animator;
         
