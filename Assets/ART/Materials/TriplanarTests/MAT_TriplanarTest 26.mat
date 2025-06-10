@@ -104,7 +104,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Metalic:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 77a1f26a40b3b6e46b78d6039f1bb803, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
@@ -112,7 +112,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 912e478eaf2f80f418eecfb2dbe8ab11, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMapOS:
@@ -132,7 +132,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Smoothness:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: d8c1b524ad3d72448a73038fce6153b2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularColorMap:
@@ -152,7 +152,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 6f655317f3e76094587fa9940ea2f9ff, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2D:
@@ -250,13 +250,13 @@ Material:
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
     - _LinkDetailsWithBase: 1
-    - _MainSmooth: 1.24
+    - _MainSmooth: 0.52
     - _MaterialID: 1
     - _MaterialTypeMask: 2
     - _Metallic: 0
     - _MetallicRemapMax: 1
     - _MetallicRemapMin: 0
-    - _Nomral_boost: -14.7
+    - _Nomral_boost: 0
     - _NormalMapSpace: 0
     - _NormalScale: 1
     - _NormalStrenght: 0
@@ -276,8 +276,8 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _SecondSmoothness: 7.92
-    - _SecondTextureHeight: 507.38
+    - _SecondSmoothness: 0
+    - _SecondTextureHeight: 536.91
     - _SecondTextureThreshold: 0
     - _Smoothness: 0.5
     - _SmoothnessRemapMax: 1
@@ -302,7 +302,7 @@ Material:
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
     - _Thickness: 1
-    - _Tiling: 0.95
+    - _Tiling: 0.13
     - _Tilling: 0.1
     - _TransmissionEnable: 1
     - _TransmissionMask: 1

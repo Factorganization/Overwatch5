@@ -108,6 +108,12 @@ namespace GameContent.Controller.Player
         {
             lookDir = dataSo.inputData.lookInput.action.ReadValue<Vector2>() / Time.deltaTime; //Deja corrigé sur correction de frame jump
         }
+
+        protected void HandleSwayInputGather()
+        {
+            playerMachine.PlayerModel.walkInput = dataSo.inputData.moveInput.action.ReadValue<Vector2>().normalized;
+            playerMachine.PlayerModel.lookInput = dataSo.inputData.lookInput.action.ReadValue<Vector2>() / Time.deltaTime;
+        }
         
         protected void Move(float moveMultiplier)
         {
@@ -133,7 +139,6 @@ namespace GameContent.Controller.Player
             //rb.angularVelocity = new Vector3(0, lookDir.x * dataSo.cameraData.camSensitivity, 0);
         }
         
-        //TODO refactor en separation ground Check et gravité
         protected void HandleGravity()
         {
             var sphereGroundCheck = Physics.SphereCast(goRef.transform.position,
@@ -185,6 +190,56 @@ namespace GameContent.Controller.Player
                 dataSo.groundCheckData.groundLayer);
 
             return sphereGroundCheck;
+        }
+
+        protected void UpdateSway()
+        {
+            Sway();
+            SwayRotation();
+            BobOffset();
+            BobRotation();
+            
+            CompositePositionRotation();
+        }
+
+        private void Sway()
+        {
+            var invertLook = playerMachine.PlayerModel.lookInput * -dataSo.swayData.step;
+            invertLook.x = Mathf.Clamp(invertLook.x, -dataSo.swayData.maxStepDistance, dataSo.swayData.maxStepDistance);
+            invertLook.y = Mathf.Clamp(invertLook.y, -dataSo.swayData.maxStepDistance, dataSo.swayData.maxStepDistance);
+            
+            playerMachine.PlayerModel.swayPos = invertLook;
+        }
+
+        private void SwayRotation()
+        {
+            var invertLook = playerMachine.PlayerModel.lookInput * -dataSo.swayData.rotationStep;
+            invertLook.x = Mathf.Clamp(invertLook.x, -dataSo.swayData.maxRotationStep, dataSo.swayData.maxRotationStep);
+            invertLook.y = Mathf.Clamp(invertLook.y, -dataSo.swayData.maxRotationStep, dataSo.swayData.maxRotationStep);
+            playerMachine.PlayerModel.swayEulerRot = new Vector3(invertLook.y, invertLook.x, invertLook.x);
+        }
+
+        private void CompositePositionRotation()
+        {
+            playerMachine.HandRef.localPosition = Vector3.Lerp(playerMachine.HandRef.localPosition, playerMachine.PlayerModel.swayPos + playerMachine.PlayerModel.bobPosition, Time.deltaTime * SwayData.smooth);
+            playerMachine.HandRef.localRotation = Quaternion.Slerp(playerMachine.HandRef.localRotation, Quaternion.Euler(playerMachine.PlayerModel.swayEulerRot) * Quaternion.Euler(playerMachine.PlayerModel.bobEulerRotation), Time.deltaTime * SwayData.smoothRot);
+        }
+
+        private void BobOffset()
+        {
+            playerMachine.PlayerModel.speedCurve += playerMachine.PlayerModel.walkInput.magnitude > 0.1f ? Time.deltaTime * ((playerMachine.PlayerModel.walkInput.x + playerMachine.PlayerModel.walkInput.y) * dataSo.swayData.bobExaggeration) + 0.01f * dataSo.swayData.moveAccel 
+                : Time.deltaTime * ((playerMachine.PlayerModel.walkInput.x + playerMachine.PlayerModel.walkInput.y) * dataSo.swayData.bobExaggeration) + 0.01f;
+                
+            playerMachine.PlayerModel.bobPosition.x = playerMachine.PlayerModel.CurveCos * SwayData.bobLimit.x - playerMachine.PlayerModel.walkInput.x * SwayData.travelLimit.x;
+            playerMachine.PlayerModel.bobPosition.y = playerMachine.PlayerModel.CurveSin * SwayData.bobLimit.y - playerMachine.PlayerModel.walkInput.y * SwayData.travelLimit.y;
+            playerMachine.PlayerModel.bobPosition.z = -(playerMachine.PlayerModel.walkInput.y * SwayData.travelLimit.z);
+        }
+
+        private void BobRotation()
+        {
+            playerMachine.PlayerModel.bobEulerRotation.x = playerMachine.PlayerModel.walkInput.magnitude < 0.1f ? dataSo.swayData.multiplier.x * Mathf.Sin(2 * playerMachine.PlayerModel.speedCurve) : dataSo.swayData.multiplier.x * (Mathf.Sin(2 * playerMachine.PlayerModel.speedCurve) / 2);
+            playerMachine.PlayerModel.bobEulerRotation.y = playerMachine.PlayerModel.walkInput.magnitude < 0.1f ? dataSo.swayData.multiplier.y * playerMachine.PlayerModel.CurveCos : 0;
+            playerMachine.PlayerModel.bobEulerRotation.z = playerMachine.PlayerModel.walkInput.magnitude < 0.1f ? dataSo.swayData.multiplier.z * playerMachine.PlayerModel.CurveCos * playerMachine.PlayerModel.walkInput.x : 0;
         }
         
         #region to herit

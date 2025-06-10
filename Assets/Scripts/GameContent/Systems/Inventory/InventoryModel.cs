@@ -22,7 +22,7 @@ namespace Systems.Inventory
             Items = new ObservableArray<Item>(capacity);
             foreach (var itemDetail in itemDetails)
             {
-                Items.TryAdd(itemDetail.CreateItem(1));
+                //Items.TryAdd(itemDetail.CreateItem(1));
             }
         }
 

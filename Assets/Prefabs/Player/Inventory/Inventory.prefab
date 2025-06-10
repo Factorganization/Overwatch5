@@ -44,12 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf3a60389f336cb448711703c12ae765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  capacity: 4
+  capacity: 3
   startingItems:
   - {fileID: 11400000, guid: f46767b420e78ae489498522f263e53c, type: 2}
   - {fileID: 11400000, guid: cf3be81f46cb78e4baf9dce9e5d30b82, type: 2}
   - {fileID: 11400000, guid: a46deea73af43d14794bbd9effb22f35, type: 2}
-  - {fileID: 11400000, guid: 7c9e012513176da43a6157960df33390, type: 2}
   radialMenu: {fileID: 0}
   <Id>k__BackingField:
     Part1: 2360422133
