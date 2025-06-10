@@ -107,10 +107,8 @@ public class MultiTool : MonoBehaviour
             if (_currentDevice != null && 
                 _currentDevice is EnemyCamera enemyCamera)
             {
-                if (enemyCamera != null && enemyCamera.IsActive)
+                if (_currentDevice != null && _currentDevice.IsActive)
                 {
-                    Debug.Log("Scanning device: " + enemyCamera.NetworkNode.nodeId);
-                    
                     _currentScanTimer = 0f;
                     isScanning = true;
                         
@@ -127,8 +125,11 @@ public class MultiTool : MonoBehaviour
         
         _currentScanTimer += Time.deltaTime;
 
+        Debug.Log(_currentDevice);
+        
         if (_currentDevice is EnemyCamera enemyCamera)
         {
+            if (enemyCamera == null) return;
             if (enemyCamera.NetworkNode.hidden == false) return;
             
             float progress = _currentScanTimer / enemyCamera.ScanningTime;
