@@ -370,6 +370,10 @@ MonoBehaviour:
         asset: {fileID: 102900000, guid: b095ea755260d7243908e487f3ee517b, type: 3}
         guid: b095ea755260d7243908e487f3ee517b
       sceneType: 0
+    - reference:
+        asset: {fileID: 102900000, guid: b095ea755260d7243908e487f3ee517b, type: 3}
+        guid: b095ea755260d7243908e487f3ee517b
+      sceneType: 0
   - groupName: ST1
     scenes:
     - reference:
