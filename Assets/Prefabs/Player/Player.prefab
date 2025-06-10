@@ -244,6 +244,7 @@ MonoBehaviour:
   _multiToolObject: {fileID: 3094980726424225852}
   _currentEquippedItem: {fileID: 0}
   _interactDistance: 1
+  _currentJunction: {fileID: 0}
 --- !u!114 &1397243804142235646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,7 +333,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1744830591
+    m_Bits: 3825205375
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
