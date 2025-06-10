@@ -36,7 +36,7 @@ MonoBehaviour:
   groundCheckData:
     groundLayer:
       serializedVersion: 2
-      m_Bits: 134217737
+      m_Bits: 1342177281
     sphereCastRadius: 0.5
     castBaseLength: 1
     additionalCastLength: 0.65
