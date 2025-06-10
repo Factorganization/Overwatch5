@@ -48,3 +48,11 @@ MonoBehaviour:
     jumpStrength: 8
     jumpCoyoteTime: 0.15
     jumpBufferTime: 0.2
+  swayData:
+    step: 0.01
+    maxStepDistance: 0.06
+    rotationStep: 0.5
+    maxRotationStep: 0.75
+    bobExaggeration: 1
+    moveAccel: 10
+    multiplier: {x: 1, y: 1, z: 1}

@@ -23,6 +23,7 @@ namespace GameContent.Controller.Player.PlayerStates
         {
             HandleInputGather();
             HandleRotateInputGather();
+            HandleSwayInputGather();
             
             playerMachine.PlayerModel.coyoteTime -= Time.deltaTime;
             OnJump();
@@ -37,6 +38,7 @@ namespace GameContent.Controller.Player.PlayerStates
             HandleGravity();
             Move(playerMachine.PlayerModel.currentMoveMultiplier);
             Look();
+            UpdateSway();
             return 0;
         }
 
