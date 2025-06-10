@@ -83,7 +83,7 @@ PrefabInstance:
     - target: {fileID: -4519620648689758818, guid: 97765ce55c0775547a0a1d85eddf69f1, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 64859cf955a5fb047880af754183e463, type: 2}
+      objectReference: {fileID: 2100000, guid: c059e9064ecacf04a81694f7f3e874ee, type: 2}
     - target: {fileID: 919132149155446097, guid: 97765ce55c0775547a0a1d85eddf69f1, type: 3}
       propertyPath: m_Name
       value: SM_Sci_Chaise (11)
@@ -91,11 +91,11 @@ PrefabInstance:
     - target: {fileID: 3599888468071615769, guid: 97765ce55c0775547a0a1d85eddf69f1, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 64859cf955a5fb047880af754183e463, type: 2}
+      objectReference: {fileID: 2100000, guid: c059e9064ecacf04a81694f7f3e874ee, type: 2}
     - target: {fileID: 5904186535541933957, guid: 97765ce55c0775547a0a1d85eddf69f1, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 64859cf955a5fb047880af754183e463, type: 2}
+      objectReference: {fileID: 2100000, guid: c059e9064ecacf04a81694f7f3e874ee, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -55,18 +55,14 @@ namespace GameContent.Controller.Player
             }*/
             
             //TODO passer en interactState, no cam rota et move ralentit
-            if (dataSo.inputData.actionInput.action.WasPressedThisFrame())
-            {
-                Hero.Instance.TryInteract();
-            }
-
+            
             if (dataSo.inputData.useInput.action.WasPressedThisFrame() && !Inventory.Instance.RadialMenu.isOpen)
             {
                 Hero.Instance.UseEquippedItem();
             }
             
             // Scanning Action
-            if (dataSo.inputData.actionInput.action.WasReleasedThisFrame() && Hero.Instance.MultiToolObject.isScanning)
+            if (dataSo.inputData.actionInput.action.WasPressedThisFrame())
             {
                 Hero.Instance.MultiToolObject.ScanDevice();
             }
@@ -75,12 +71,17 @@ namespace GameContent.Controller.Player
             {
                 Hero.Instance.MultiToolObject.Scanning();
             }
-            else
+            else if (dataSo.inputData.actionInput.action.WasReleasedThisFrame() && Hero.Instance.MultiToolObject.isScanning)
             {
                 Hero.Instance.MultiToolObject.CancelScan();
             }
             
             // Hacking Action
+            if (dataSo.inputData.actionInput.action.WasPressedThisFrame())
+            {
+                Hero.Instance.TryInteract();
+            }
+            
             if (dataSo.inputData.actionInput.action.IsPressed() && Hero.Instance.IsHacking)
             {
                 Hero.Instance.ContinueHack();
@@ -137,6 +138,9 @@ namespace GameContent.Controller.Player
             camRef.localRotation = Quaternion.Euler(playerMachine.PlayerModel.camPitch, 0, 0);
             rb.rotation = Quaternion.Euler(0, playerMachine.PlayerModel.camYaw, 0);
             //rb.angularVelocity = new Vector3(0, lookDir.x * dataSo.cameraData.camSensitivity, 0);
+            
+            Hero.Instance.CheckInteractible();
+            Hero.Instance.MultiToolObject.CheckDevice();
         }
         
         protected void HandleGravity()
