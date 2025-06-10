@@ -55,18 +55,14 @@ namespace GameContent.Controller.Player
             }*/
             
             //TODO passer en interactState, no cam rota et move ralentit
-            if (dataSo.inputData.actionInput.action.WasPressedThisFrame())
-            {
-                Hero.Instance.TryInteract();
-            }
-
+            
             if (dataSo.inputData.useInput.action.WasPressedThisFrame() && !Inventory.Instance.RadialMenu.isOpen)
             {
                 Hero.Instance.UseEquippedItem();
             }
             
             // Scanning Action
-            if (dataSo.inputData.actionInput.action.WasPressedThisFrame() && Hero.Instance.MultiToolObject.isScanning)
+            if (dataSo.inputData.actionInput.action.WasPressedThisFrame())
             {
                 Hero.Instance.MultiToolObject.ScanDevice();
             }
@@ -81,6 +77,11 @@ namespace GameContent.Controller.Player
             }
             
             // Hacking Action
+            if (dataSo.inputData.actionInput.action.WasPressedThisFrame())
+            {
+                Hero.Instance.TryInteract();
+            }
+            
             if (dataSo.inputData.actionInput.action.IsPressed() && Hero.Instance.IsHacking)
             {
                 Hero.Instance.ContinueHack();
