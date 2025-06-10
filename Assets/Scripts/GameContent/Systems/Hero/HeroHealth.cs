@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class HeroHealth : MonoBehaviour
@@ -12,6 +13,14 @@ public class HeroHealth : MonoBehaviour
     {
         _currentHealth = _maxHealth;
         GameUIManager.Instance.UpdateText();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            TakeDamage(20);
+        }
     }
 
     public void TakeDamage(float damage)
@@ -31,7 +40,6 @@ public class HeroHealth : MonoBehaviour
         if (_currentHealth > _maxHealth)
         {
             _currentHealth = _maxHealth;
-            return;
         }
         GameUIManager.Instance.UpdateText();
         GameUIManager.Instance.HealthVisual.HealthHeal();
