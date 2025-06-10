@@ -1,50 +1,56 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using RunTimeContent.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Systems.SceneManagement
+namespace RunTimeContent.SceneManagement
 {
     public class SceneGroupManager
     {
+        #region events
+        
         public event Action<string> OnSceneLoaded = delegate { };
+        
         public event Action<string> OnSceneUnloaded = delegate { };
+        
         public event Action OnSceneGroupLoaded = delegate { };
         
-        SceneGroup ActiveSceneGroup;
-
+        #endregion
+        
+        #region methodes
+        
+        #region clean UI load
+            
         public async Task LoadScenes(SceneGroup group, IProgress<float> progress, bool reloadDupScenes = false)
         {
-            ActiveSceneGroup = group;
+            _activeSceneGroup = group;
             var loadedScenes = new List<string>();
 
             await UnloadScenes();
 
-            int sceneCount = SceneManager.sceneCount;
+            var sceneCount = SceneManager.sceneCount;
 
             for (var i = 0; i < sceneCount; i++)
             {
                 loadedScenes.Add(SceneManager.GetSceneAt(i).name);
             }
             
-            var totalScenesToLoad = ActiveSceneGroup.Scenes.Count;
+            var totalScenesToLoad = _activeSceneGroup.scenes.Count;
             
             var operationGroup = new AsyncOperationGroup(totalScenesToLoad);
 
             for (var i = 0; i < totalScenesToLoad; i++)
             {
-                var sceneData = group.Scenes[i];
-                if (reloadDupScenes == false && loadedScenes.Contains(sceneData.Name)) continue;
+                var sceneData = group.scenes[i];
                 
-                var operation = SceneManager.LoadSceneAsync(sceneData.Reference.Path, LoadSceneMode.Additive);
+                if (reloadDupScenes == false && loadedScenes.Contains(sceneData.Name))
+                    continue;
+                
+                var operation = SceneManager.LoadSceneAsync(sceneData.reference.Path, LoadSceneMode.Additive);
 
                 await Task.Delay(TimeSpan.FromSeconds(2.5f));
-                
-                operationGroup.Operations.Add(operation);
-                
+                operationGroup.operations.Add(operation);
                 OnSceneLoaded.Invoke(sceneData.Name);
             }
             
@@ -55,7 +61,7 @@ namespace Systems.SceneManagement
                 await Task.Delay(100);
             }
             
-            Scene activeScene = SceneManager.GetSceneByName(ActiveSceneGroup.FindSceneNameByType(SceneType.ActiveScene));
+            var activeScene = SceneManager.GetSceneByName(_activeSceneGroup.FindSceneNameByType(SceneType.ActiveScene));
             
             if (activeScene.IsValid())
             {
@@ -64,13 +70,13 @@ namespace Systems.SceneManagement
             
             OnSceneGroupLoaded.Invoke();
         }
-
+        
         public async Task UnloadScenes()
         {
             var scenes = new List<string>();
             var activeScene = SceneManager.GetActiveScene().name;
             
-            int sceneCount = SceneManager.sceneCount;
+            var sceneCount = SceneManager.sceneCount;
             
             for (var i = 0; i < sceneCount; i++)
             {
@@ -89,7 +95,7 @@ namespace Systems.SceneManagement
                 var operation = SceneManager.UnloadSceneAsync(scene);
                 if (operation == null) continue;
                 
-                operationGroup.Operations.Add(operation);
+                operationGroup.operations.Add(operation);
                 
                 OnSceneUnloaded.Invoke(scene);
             }
@@ -101,18 +107,35 @@ namespace Systems.SceneManagement
                 await Task.Delay(100);
             }
         }
-    }
-
-    public readonly struct AsyncOperationGroup
-    {
-        public readonly List<AsyncOperation> Operations;
-
-        public float Progress => Operations.Count == 0 ? 0 : Operations.Average(o => o.progress);
-        public bool IsDone => Operations.All(o => o.isDone);
         
-        public AsyncOperationGroup(int intialCapacity)
+        #endregion
+        
+        #region naive discrete load
+        
+        public static async Task NaiveLoadSceneGroup(SceneGroup group)
         {
-            Operations = new List<AsyncOperation>(intialCapacity);
+            foreach (var s in group)
+            {
+                await SceneManager.LoadSceneAsync(s.Name, LoadSceneMode.Additive);
+            }
         }
+
+        public static async Task NaiveUnloadSceneGroup(SceneGroup group)
+        {
+            foreach (var s in group)
+            {
+                await SceneManager.UnloadSceneAsync(s.Name);
+            }
+        }
+
+        #endregion
+        
+        #endregion
+        
+        #region fields
+        
+        private SceneGroup _activeSceneGroup;
+        
+        #endregion
     }
 }

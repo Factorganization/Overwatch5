@@ -32,6 +32,7 @@ namespace GameContent.Controller.Player.PlayerStates
             _jumpCounter += Time.deltaTime;
             
             HandleInputGather();
+            HandleSwayInputGather();
             OnRelease();
             
             if (dataSo.inputData.jumpInput.action.WasPressedThisFrame() && CheckGround())

@@ -20,7 +20,7 @@ public class RadialMenu : MonoBehaviour
     {
         entries = new List<RadialMenuEntry>();
         
-        numberOfEntries = Inventory.Instance.Controller.Model.Items.Count;
+            numberOfEntries = Inventory.Instance.Controller.Model.Items.Count;
 
         for (int i = 0; i < numberOfEntries; i++)
         {

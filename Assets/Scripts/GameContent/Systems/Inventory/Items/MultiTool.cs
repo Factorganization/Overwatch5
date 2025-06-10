@@ -3,6 +3,7 @@ using GameContent.Actors.EnemySystems.Seekers;
 using Systems;
 using Systems.Inventory;
 using UnityEngine;
+using Type = Systems.Inventory.Type;
 
 public class MultiTool : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class MultiTool : MonoBehaviour
         set => _currentBattery = value;
     }
     
+    public float ToolRange => _toolRange;
+    
     public float MaxBattery => _maxBattery;
     
     private void Start()
@@ -38,14 +41,40 @@ public class MultiTool : MonoBehaviour
         _currentBattery = _maxBattery;
         GameUIManager.Instance.UpdateText();
     }
-    
+
+    private void Update()
+    {
+        Ray ray = Hero.Instance.Camera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, _toolRange))
+        {
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Device"))
+            {
+                var device = hit.collider.GetComponent<Actor>();
+                
+                Debug.Log(device);
+                    
+                if (device != _currentDevice && device is EnemyCamera enemyCamera)
+                {
+                    device = enemyCamera;
+                    _currentDevice = device;
+                    GameUIManager.Instance.UpdateInteractibleUI(enemyCamera.NetworkNode.nodeId, true);
+                }
+            }
+        }
+        
+        if (_currentDevice != null)
+        {
+            _currentDevice = null;
+            GameUIManager.Instance.UpdateInteractibleUI("", false);
+        }
+    }
+
     public void ConsumeBattery(float amount)
     {
         _currentBattery -= amount;
         
         if (_currentBattery - amount < 0)
         {
-            GameUIManager.Instance.UpdateText();
             return;
         }
         
@@ -59,7 +88,6 @@ public class MultiTool : MonoBehaviour
         if (_currentBattery >= _maxBattery)
         {
             _currentBattery = _maxBattery;
-            GameUIManager.Instance.UpdateText();
             return;
         }
         

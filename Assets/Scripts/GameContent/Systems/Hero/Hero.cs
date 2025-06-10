@@ -1,11 +1,8 @@
 using System;
-using GameContent.Actors;
-using GameContent.Actors.EnemySystems.Seekers;
 using Systems.Inventory;
 using Systems.Inventory.Interface;
 using Systems.Persistence;
 using UnityEngine;
-using UnityEngine.UI;
 using Type = Systems.Inventory.Type;
 
 namespace Systems
@@ -82,17 +79,6 @@ namespace Systems
                     }
                     return;
                 }
-
-                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Device"))
-                {
-                    var device = hit.collider.GetComponent<Actor>();
-                    
-                    if (device != _multiToolObject.CurrentDevice && device is EnemyCamera enemyCamera)
-                    {
-                        _multiToolObject.CurrentDevice = enemyCamera;
-                        GameUIManager.Instance.UpdateInteractibleUI(enemyCamera.NetworkNode.nodeId, true);
-                    }
-                }
             }
             
             if (_currentInteractible != null)
@@ -128,10 +114,7 @@ namespace Systems
                         GameUIManager.Instance.hackProgressImage.fillAmount = 0;
                         return;
                     }
-                    _currentInteractible?.OnInteract();
-                    return;
                 }
-                
                 _currentInteractible?.OnInteract();
             }
         }
