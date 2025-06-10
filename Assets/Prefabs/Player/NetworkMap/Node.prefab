@@ -229,4 +229,7 @@ MonoBehaviour:
   type: 1
   nodeVisual: {fileID: 3997831096394787249}
   actor: {fileID: 0}
-  _name: {fileID: 7607143677245969210}
+  name: {fileID: 7607143677245969210}
+  _originalConnectedNodes: []
+  _connectedNodes: []
+  hidden: 0
