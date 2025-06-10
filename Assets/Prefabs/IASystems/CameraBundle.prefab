@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1342820494505378436}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: AAAAAAAAAAAAAAA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849951621955954175}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: Graph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8174963619924104794}
   - component: {fileID: 970180201814827025}
-  m_Layer: 0
+  - component: {fileID: 4028146970573691711}
+  m_Layer: 26
   m_Name: EnemyCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,12 +117,12 @@ MonoBehaviour:
   camDecalProjector: {fileID: 5891300611399622726}
   baseCamDecal: {fileID: 2100000, guid: 99421fcf37336404ab67fd8789b7f6e7, type: 2}
   flashCamDecal: {fileID: 2100000, guid: adab1622b25c60d40961fad3ddda2143, type: 2}
-  cableLinkRef: {fileID: 0}
+  networkNode: {fileID: 0}
   range: 100
   angle: 0.95
   collisionLayer:
     serializedVersion: 2
-    m_Bits: 3892314120
+    m_Bits: 3892314112
   cameraRotations:
   - rotationType: 2
     rotationRef: 1
@@ -132,6 +133,28 @@ MonoBehaviour:
       stepNumbers: 1
       waitTime: 3
       loopAround: 0
+  scanningTime: 1.5
+--- !u!65 &4028146970573691711
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3884415699494081651}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3922030808357333770
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +198,7 @@ GameObject:
   - component: {fileID: 4950364896096980757}
   - component: {fileID: 932609103964182017}
   - component: {fileID: 2967867983374572067}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: CAM_Rotate_Haut/Bas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +284,7 @@ GameObject:
   - component: {fileID: 1369638224952984926}
   - component: {fileID: 8247525787438640666}
   - component: {fileID: 4057541423110692431}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: SM_Cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,7 +369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8254578888128940080}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: "SM_Cam\xE9ra"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +401,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3058989066844923887}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: SM_Cam_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -413,7 +436,7 @@ GameObject:
   - component: {fileID: 6451628470359657017}
   - component: {fileID: 2510148215510881131}
   - component: {fileID: 3477624302595309715}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: Light_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -499,7 +522,7 @@ GameObject:
   - component: {fileID: 2656616573673320575}
   - component: {fileID: 7397781137165862113}
   - component: {fileID: 1424744053086313061}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: CAM_Rotate_Droite/Gauche
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -584,7 +607,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3896566342621463194}
   - component: {fileID: 5891300611399622726}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: Decal Projector (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
