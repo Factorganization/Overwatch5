@@ -24,7 +24,7 @@ public class GameUIManager : MonoBehaviour
 
     public GameObject PauseUI => _pauseMenu;
     public Image HackProgressImage => _hackProgressImage;
-    public HealthVisual HealthVisual { get; set; }
+    public HealthVisual HealthVisual => _healthVisual;
 
     private void Awake()
     {
