@@ -204,7 +204,7 @@ namespace GameContent.Controller.Player
 
         private void Sway()
         {
-            var invertLook = playerMachine.PlayerModel.lookInput * -dataSo.swayData.step;
+            var invertLook = playerMachine.PlayerModel.lookInput * (Time.fixedDeltaTime * -dataSo.swayData.step / 100);
             invertLook.x = Mathf.Clamp(invertLook.x, -dataSo.swayData.maxStepDistance, dataSo.swayData.maxStepDistance);
             invertLook.y = Mathf.Clamp(invertLook.y, -dataSo.swayData.maxStepDistance, dataSo.swayData.maxStepDistance);
             

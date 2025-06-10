@@ -60,14 +60,12 @@ public class RadialMenuEntry : MonoBehaviour, IPointerClickHandler, IPointerEnte
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("OnPointerEnter");
         rect.DOComplete();
         rect.DOScale(Vector3.one * 1.5f, .3f).SetEase(Ease.OutQuad);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("OnPointerExit");
         rect.DOComplete();
         rect.DOScale(Vector3.one, .3f).SetEase(Ease.OutQuad);
     }
