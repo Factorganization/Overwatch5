@@ -1093,13 +1093,13 @@ MonoBehaviour:
   _gameUI: {fileID: 1674227831111764419}
   _pauseMenu: {fileID: 5464608226409698229}
   _interactibleInfoUI: {fileID: 4565654102217335431}
-  _settingsMenu: {fileID: 0}
+  _settingsMenu: {fileID: 8721191899938895173}
   _healthVisual: {fileID: 7447103239959029393}
   _healthText: {fileID: 5157878197338503947}
   _batteryText: {fileID: 7722684347906512889}
   _interactibleText: {fileID: 4888455578742952393}
   _notificationText: {fileID: 6477594430205084743}
-  hackProgressImage: {fileID: 8142486296405568307}
+  _hackProgressImage: {fileID: 8142486296405568307}
 --- !u!114 &8980523605838235469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4999,7 +4999,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &681317366672705143
 RectTransform:
   m_ObjectHideFlags: 0

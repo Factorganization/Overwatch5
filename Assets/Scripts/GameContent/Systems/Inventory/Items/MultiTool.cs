@@ -42,18 +42,22 @@ public class MultiTool : MonoBehaviour
         GameUIManager.Instance.UpdateText();
     }
 
-    private void Update()
+    public void CheckDevice()
     {
+        if (Hero.Instance.CurrentEquipedItem == null ||
+            Hero.Instance.CurrentEquipedItem.type != Type.MultiTool)
+        {
+            return;
+        }
+        
         Ray ray = Hero.Instance.Camera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, _toolRange))
         {
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Device"))
             {
                 var device = hit.collider.GetComponent<Actor>();
-                
-                Debug.Log(device);
                     
-                if (device != _currentDevice && device is EnemyCamera enemyCamera)
+                if (device != null && device != _currentDevice && device is EnemyCamera enemyCamera)
                 {
                     device = enemyCamera;
                     _currentDevice = device;
@@ -61,11 +65,13 @@ public class MultiTool : MonoBehaviour
                 }
             }
         }
-        
-        if (_currentDevice != null)
+        else
         {
-            _currentDevice = null;
-            GameUIManager.Instance.UpdateInteractibleUI("", false);
+            if (_currentDevice != null)
+            {
+                _currentDevice = null;
+                GameUIManager.Instance.UpdateInteractibleUI("", false);
+            }
         }
     }
 
@@ -98,15 +104,18 @@ public class MultiTool : MonoBehaviour
     {
         if (Hero.Instance.CurrentEquipedItem.type == Type.MultiTool)
         {
-            if (_currentDevice != null && _currentDevice is EnemyCamera enemyCamera)
+            if (_currentDevice != null && 
+                _currentDevice is EnemyCamera enemyCamera)
             {
                 if (enemyCamera != null && enemyCamera.IsActive)
                 {
+                    Debug.Log("Scanning device: " + enemyCamera.NetworkNode.nodeId);
+                    
                     _currentScanTimer = 0f;
                     isScanning = true;
                         
-                    GameUIManager.Instance.hackProgressImage.gameObject.SetActive(true);
-                    GameUIManager.Instance.hackProgressImage.fillAmount = 0;
+                    GameUIManager.Instance.HackProgressImage.gameObject.SetActive(true);
+                    GameUIManager.Instance.HackProgressImage.fillAmount = 0;
                 }
             }
         }
@@ -123,7 +132,7 @@ public class MultiTool : MonoBehaviour
             if (enemyCamera.NetworkNode.hidden == false) return;
             
             float progress = _currentScanTimer / enemyCamera.ScanningTime;
-            GameUIManager.Instance.hackProgressImage.fillAmount = Mathf.Clamp01(progress);
+            GameUIManager.Instance.HackProgressImage.fillAmount = Mathf.Clamp01(progress);
             
             if (_currentScanTimer >= enemyCamera.ScanningTime)
             {
@@ -139,8 +148,8 @@ public class MultiTool : MonoBehaviour
         isScanning = false;
         _currentScanTimer = 0f;
         _currentDevice = null;
-        GameUIManager.Instance.hackProgressImage.fillAmount = 0;
-        GameUIManager.Instance.hackProgressImage.gameObject.SetActive(false);
+        GameUIManager.Instance.HackProgressImage.fillAmount = 0;
+        GameUIManager.Instance.HackProgressImage.gameObject.SetActive(false);
     }
 }
 
