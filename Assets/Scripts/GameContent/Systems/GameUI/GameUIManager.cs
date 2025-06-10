@@ -20,10 +20,10 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _batteryText;
     [SerializeField] private TextMeshProUGUI _interactibleText;
     [SerializeField] private TextMeshProUGUI _notificationText;
-    
-    public Image hackProgressImage;
+    [SerializeField] private Image _hackProgressImage;
 
     public GameObject PauseUI => _pauseMenu;
+    public Image HackProgressImage => _hackProgressImage;
     public HealthVisual HealthVisual { get; set; }
 
     private void Awake()
