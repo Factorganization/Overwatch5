@@ -1,5 +1,6 @@
 using GameContent.Actors.ActorData;
 using GameContent.Actors.EnemySystems.EnemyNavigation;
+using GameContent.Management;
 using UnityEngine;
 using UnityEngine.AI;
 
