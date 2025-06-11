@@ -1,4 +1,5 @@
-﻿using GameContent.Actors.EnemySystems.Seekers;
+﻿using System.Threading.Tasks;
+using GameContent.Actors.EnemySystems.Seekers;
 using Systems;
 using UnityEngine;
 
@@ -40,8 +41,14 @@ namespace GameContent.Management
             Manager = this;
         }
 
-        private void Start()
+        private async void Start()
         {
+            await Task.Delay(3000);
+            if (playerTransform == null)
+            {
+                playerTransform = GameManager.Instance.playerTransform;
+            }
+            
             _suspicionLevel = 0;
             _debugHoundStartPos = debugHound.transform.position;
             _playerHealth = playerTransform.GetComponent<HeroHealth>();
