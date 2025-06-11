@@ -1,4 +1,7 @@
-﻿using GameContent.Actors.EnemySystems.Seekers;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using GameContent.Actors.EnemySystems.Seekers;
 using Systems;
 using UnityEngine;
 
@@ -40,11 +43,19 @@ namespace GameContent.Management
             Manager = this;
         }
 
-        private void Start()
+        private async void Start()
         {
+            await Task.Delay(3000);
+            if (playerTransform == null)
+            {
+                playerTransform = GameManager.Instance.playerTransform;
+            }
+            
             _suspicionLevel = 0;
             _debugHoundStartPos = debugHound.transform.position;
             _playerHealth = playerTransform.GetComponent<HeroHealth>();
+            
+            listOfHounds = FindObjectsByType<Hound>(FindObjectsSortMode.None).ToList();
         }
 
         private void Update()
@@ -76,13 +87,17 @@ namespace GameContent.Management
             if (_suspicionLevel > investigationLevel && !IsInvestigating)
             {
                 IsInvestigating = true;
-                
-                
             }
 
             if (_suspicionLevel > trackingLevel && !IsTracking)
             {
                 IsTracking = true;
+            }
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                Debug.Log("Starting track on player");
+                StartTrackPlayer(Hero.Instance);
             }
         }
 
@@ -105,6 +120,7 @@ namespace GameContent.Management
         {
             IsTracking = true;
             TrackedPos = cam.BaitTarget.position;
+            debugHound = GetClosestEnemy(TrackedPos);
             
             debugHound.SetTargetPosition(cam.BaitTarget.position);
         }
@@ -113,8 +129,31 @@ namespace GameContent.Management
         {
             IsTracking = true;
             TrackedPos = player.transform.position;
+            debugHound = GetClosestEnemy(TrackedPos);
             
             debugHound.SetTargetPosition(player.transform.position);
+        }
+
+        public Hound GetClosestEnemy(Vector3 pos)
+        {
+            Hound closestEnemy = null;
+            float closestDistance = Mathf.Infinity;
+
+            foreach (Hound hound in listOfHounds)
+            {
+                if (hound == null || !hound.gameObject.activeInHierarchy)
+                    continue;
+
+                float distance = Vector3.Distance(pos, hound.transform.position);
+                
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestEnemy = hound;
+                }
+            }
+
+            return closestEnemy;
         }
         
         #endregion
@@ -138,6 +177,8 @@ namespace GameContent.Management
         [SerializeField] private MeshRenderer[] suspicionRenderer;
         
         [SerializeField] private Hound debugHound;
+        
+        [SerializeField] private List<Hound> listOfHounds = new List<Hound>();
 
         private Vector3 _debugHoundStartPos;
         

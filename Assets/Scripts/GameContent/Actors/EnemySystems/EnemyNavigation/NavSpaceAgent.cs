@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace GameContent.Actors.EnemySystems.EnemyNavigation
 {
     public class NavSpaceAgent : MonoBehaviour
     {
+        #region properties
+
+        public bool IsRoaming => _isRoaming;
+
+        #endregion
+        
         #region methodes
 
         private void Start()
@@ -72,9 +79,13 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
             
             if (_isStopped)
                 return;
-            
+
             if (_currentPath.Count <= 0 || _currentWayPointId >= _currentPath.Count)
+            {
+                if (_isRoaming)
+                    _isRoaming = false;
                 return;
+            }
             
             if (Vector3.Distance(_currentPath[_currentWayPointId].position, transform.position) <= accuracy)
                 _currentWayPointId++;
@@ -100,6 +111,20 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
             
             HandlePathStarted(pos, target);
         }
+
+        public void SetRandomTargetPosition()
+        {
+            if (_calculatingPath)
+                return;
+            
+            _calculatingPath = true;
+            _calculationTime = 0;
+
+            var ri = Random.Range(0, _runTimeManager.Count);
+            var pos = transform.position;
+            
+            HandlePathStarted(pos, _runTimeManager.RunTimePathNodes[ri].position);
+        }
         
         public void SetSpeed(float newSpeed) => speed = newSpeed;
         
@@ -124,7 +149,8 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
                 }
                 
                 _currentPath = await UniTask.RunOnThreadPool(() => _pathFinder.FindPath(closestNode, dest), cancellationToken: _ct);
-                
+
+                _isRoaming = true;
                 _currentWayPointId = 0;
                 _calculatingPath = false;
             }
@@ -215,6 +241,8 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
 
         private float _calculationTime;
 
+        private bool _isRoaming;
+        
         private CancellationToken _ct;
 
         private readonly CancellationTokenSource _cancellationTokenSource = new();
