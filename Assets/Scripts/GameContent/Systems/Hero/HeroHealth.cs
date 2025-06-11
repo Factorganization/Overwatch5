@@ -15,14 +15,6 @@ public class HeroHealth : MonoBehaviour
         GameUIManager.Instance.UpdateText();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            TakeDamage(20);
-        }
-    }
-
     public void TakeDamage(float damage)
     {
         _currentHealth -= damage;

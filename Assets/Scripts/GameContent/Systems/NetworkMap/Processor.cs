@@ -1,8 +1,23 @@
+using System;
 using UnityEngine;
 
 public class Processor : HackableJunction
 {
-    
+    public static Processor Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Start()
     {
         _alrHacked = false;
