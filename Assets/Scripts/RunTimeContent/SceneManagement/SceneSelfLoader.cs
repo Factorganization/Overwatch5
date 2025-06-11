@@ -10,13 +10,24 @@ namespace RunTimeContent.SceneManagement
         
         private async void Update()
         {
-            if (Vector3.Distance(_playerTransform.position, transform.position) < loadRadius && !_loaded)
+            _delay += Time.deltaTime;
+            
+            if (_delay < 1f)
+                return;
+
+            _delay = 0;
+            
+            if ((Mathf.Abs(_playerTransform.position.x - transform.position.x) <= xLoadDistance && 
+                 Mathf.Abs(_playerTransform.position.z - transform.position.z) <= zLoadDistance) 
+                && !_loaded)
             {
                 _loaded = true;
                 await SceneLoader.Loader.LoadSceneGroup(sceneIndex);
             }
             
-            else if (Vector3.Distance(_playerTransform.position, transform.position) > unloadRadius && _loaded)
+            else if ((Mathf.Abs(_playerTransform.position.x - transform.position.x) > xLoadDistance + unloadOffset && 
+                      Mathf.Abs(_playerTransform.position.z - transform.position.z) > zLoadDistance + unloadOffset) 
+                     && _loaded)
             {
                 _loaded = false;
                 await SceneLoader.Loader.UnloadSceneGroup(sceneIndex);
@@ -26,10 +37,10 @@ namespace RunTimeContent.SceneManagement
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, loadRadius);
+            Gizmos.DrawWireCube(transform.position, new Vector3(xLoadDistance, 100, zLoadDistance));
             
             Gizmos.color = Color.Lerp(Color.red, Color.yellow, 0.5f);
-            Gizmos.DrawWireSphere(transform.position, unloadRadius);
+            Gizmos.DrawWireCube(transform.position, new Vector3(xLoadDistance + unloadOffset, 100, zLoadDistance + unloadOffset));
         }
         
         #endregion
@@ -38,13 +49,17 @@ namespace RunTimeContent.SceneManagement
         
         [SerializeField] private int sceneIndex;
         
-        [SerializeField] private float loadRadius;
+        [SerializeField] private float xLoadDistance;
         
-        [SerializeField] private float unloadRadius;
+        [SerializeField] private float zLoadDistance;
+        
+        [SerializeField] private float unloadOffset;
         
         private Transform _playerTransform;
         
         private bool _loaded;
+
+        private float _delay;
 
         #endregion
     }

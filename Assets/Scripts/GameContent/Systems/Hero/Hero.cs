@@ -25,7 +25,7 @@ namespace Systems
         [SerializeField] private ItemDetails _currentEquippedItem;
         [SerializeField] private float _interactDistance;
         
-        private HackableJunction _currentJunction;
+        [SerializeField] private HackableJunction _currentJunction;
         private IInteractible _currentInteractible;
         private float _currentHackTimer;
         private bool _isHacking;
@@ -60,31 +60,37 @@ namespace Systems
             transform.rotation = data.rotation;
         }
 
-        private void Update()
+        public void CheckInteractible()
         {
-            _data.position = transform.position;
-            _data.rotation = transform.rotation;
+            if (_currentEquippedItem == null || 
+                _currentEquippedItem.type != Type.MultiTool)
+            {
+                return;
+            }
             
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, _interactDistance))
             {
-                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Interactible"))
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Interactibles"))
                 {
                     var interactible = hit.collider.GetComponent<IInteractible>();
-
+                    
                     if (interactible != null && interactible != _currentInteractible)
                     {
                         _currentInteractible = interactible;
+                        Debug.Log("Interactible: " + interactible.InteractibleName);
                         GameUIManager.Instance.UpdateInteractibleUI(interactible.InteractibleName, true);
                     }
-                    return;
                 }
             }
-            
-            if (_currentInteractible != null)
+            else
             {
-                _currentInteractible = null;
-                GameUIManager.Instance.UpdateInteractibleUI("", false);
+                if (_currentInteractible != null)
+                {
+                    _currentInteractible = null;
+                    _currentJunction = null;
+                    GameUIManager.Instance.UpdateInteractibleUI("", false);
+                }
             }
         }
 
@@ -99,24 +105,20 @@ namespace Systems
         {
             if (!_currentEquippedItem) return;
             
-            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, _interactDistance))
+            if (_currentEquippedItem.type == Type.MultiTool)
             {
-                if (_currentEquippedItem.type == Type.MultiTool)
+                if (_currentInteractible is HackableJunction junction && junction._alrHacked == false)
                 {
-                    if (_currentInteractible is HackableJunction junction && junction._alrHacked == false)
-                    {
-                        _currentJunction = junction;
-                        _isHacking = true;
-                        _currentHackTimer = 0f;
+                    _currentJunction = junction;
+                    _isHacking = true;
+                    _currentHackTimer = 0f;
                         
-                        GameUIManager.Instance.hackProgressImage.gameObject.SetActive(true);
-                        GameUIManager.Instance.hackProgressImage.fillAmount = 0;
-                        return;
-                    }
+                    GameUIManager.Instance.HackProgressImage.gameObject.SetActive(true);
+                    GameUIManager.Instance.HackProgressImage.fillAmount = 0;
+                    return;
                 }
-                _currentInteractible?.OnInteract();
             }
+            _currentInteractible?.OnInteract();
         }
 
         public void ContinueHack()
@@ -126,7 +128,7 @@ namespace Systems
             _currentHackTimer += Time.deltaTime;
             
             float progress = _currentHackTimer / _currentJunction.HackingTime;
-            GameUIManager.Instance.hackProgressImage.fillAmount = Mathf.Clamp01(progress);
+            GameUIManager.Instance.HackProgressImage.fillAmount = Mathf.Clamp01(progress);
 
             if (_currentHackTimer >= _currentJunction.HackingTime)
             {
@@ -146,8 +148,8 @@ namespace Systems
             _isHacking = false;
             _currentHackTimer = 0f;
             _currentJunction = null;
-            GameUIManager.Instance.hackProgressImage.fillAmount = 0;
-            GameUIManager.Instance.hackProgressImage.gameObject.SetActive(false);
+            GameUIManager.Instance.HackProgressImage.fillAmount = 0;
+            GameUIManager.Instance.HackProgressImage.gameObject.SetActive(false);
         }
 
         #endregion

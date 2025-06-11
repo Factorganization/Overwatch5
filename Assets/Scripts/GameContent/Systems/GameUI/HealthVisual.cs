@@ -8,6 +8,7 @@ public class HealthVisual : MonoBehaviour
 
     public void HealthDamage()
     {
+        Debug.Log("HealthVisual: HealthDamage called");
         float transparency = 1f - (Hero.Instance.Health.CurrentHealth / Hero.Instance.Health.MaxHealth);
         _healthBorder.color = new Color(_healthBorder.color.r, _healthBorder.color.g, _healthBorder.color.b, transparency);
     }
