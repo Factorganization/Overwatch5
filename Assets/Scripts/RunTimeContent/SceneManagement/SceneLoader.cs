@@ -20,21 +20,21 @@ namespace RunTimeContent.SceneManagement
             _manager.OnSceneGroupLoaded += () => Debug.Log("Scene group loaded");
         }
 
-        private async void Start()
+        private void Start()
         {
-            await LoadSceneGroup(0);
+            LoadSceneGroup(0);
         }
         
         #region simple loading
 
-        public async Task LoadSceneGroup(int index)
+        public void LoadSceneGroup(int index)
         {
-            await SceneGroupManager.NaiveLoadSceneGroup(sceneGroups[index]);
+            SceneGroupManager.NaiveLoadSceneGroup(sceneGroups[index]);
         }
 
-        public async Task UnloadSceneGroup(int index)
+        public void UnloadSceneGroup(int index)
         {
-            await SceneGroupManager.NaiveUnloadSceneGroup(sceneGroups[index]);
+            SceneGroupManager.NaiveUnloadSceneGroup(sceneGroups[index]);
         }
         
         #endregion
