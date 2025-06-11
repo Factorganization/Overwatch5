@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace RunTimeContent.SceneManagement
@@ -7,17 +8,30 @@ namespace RunTimeContent.SceneManagement
         #region methodes
         
         public void Init(Transform player) => _playerTransform = player;
-        
+
+        private void Start()
+        {
+            _mesh = GetComponent<MeshFilter>().mesh;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                
+            }
+        }
+
         private void Update()
         {
-            _delay += Time.deltaTime;
+            /*_delay += Time.deltaTime;
             
             if (_delay < 1f)
                 return;
 
             _delay = 0;
             
-            if (Mathf.Abs(_playerTransform.position.x - transform.position.x) <= xLoadDistance && 
+            /*if (Mathf.Abs(_playerTransform.position.x - transform.position.x) <= xLoadDistance && 
                  Mathf.Abs(_playerTransform.position.z - transform.position.z) <= zLoadDistance
                 && !_loaded)
             {
@@ -31,16 +45,19 @@ namespace RunTimeContent.SceneManagement
             {
                 _loaded = false;
                 SceneLoader.Loader.UnloadSceneGroup(sceneIndex);
-            }
+            }*/
         }
 
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireCube(transform.position, new Vector3(xLoadDistance, 100, zLoadDistance));
             
-            Gizmos.color = Color.Lerp(Color.red, Color.yellow, 0.5f);
-            Gizmos.DrawWireCube(transform.position, new Vector3(xLoadDistance + unloadOffset, 100, zLoadDistance + unloadOffset));
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawMesh(_mesh);
+            //Gizmos.DrawWireCube(transform.position, new Vector3(xLoadDistance, 100, zLoadDistance));
+            
+            //Gizmos.color = Color.Lerp(Color.red, Color.yellow, 0.5f);
+            //Gizmos.DrawMesh();
+            //Gizmos.DrawWireCube(transform.position, new Vector3(xLoadDistance + unloadOffset, 100, zLoadDistance + unloadOffset));
         }
         
         #endregion
@@ -55,7 +72,13 @@ namespace RunTimeContent.SceneManagement
         
         [SerializeField] private float unloadOffset;
         
+        [SerializeField] private MeshFilter loadOffset;
+        
         private Transform _playerTransform;
+
+        private Mesh _mesh;
+        
+        private MeshCollider _collider;
         
         private bool _loaded;
 

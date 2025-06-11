@@ -42,7 +42,7 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
                 
                 var d2 = DateTime.Now;
                 var t = d2 - d1;
-                if (t.Seconds > 5)
+                if (t.Seconds > 10)
                 {
                     Debug.LogWarning("Cancelling Path Calculation");
                     return new List<RunTimePathNode>();

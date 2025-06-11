@@ -18,6 +18,8 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
         public List<NavSpaceObstacle> Obstacles => _obstacles;
         
         public bool NavSpaceLoaded => _navSpaceLoaded;
+        
+        public int Count { get; private set; }
 
         #endregion
         
@@ -63,6 +65,8 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
             }
             
             _navSpaceLoaded = true;
+            
+            Count = _runTimePathNodes.Count;
         }
         
         private void OnDrawGizmos()
