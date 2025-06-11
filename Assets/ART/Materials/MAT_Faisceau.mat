@@ -166,7 +166,7 @@ Material:
     - _ATDistance: 1
     - _AddPrecomputedVelocity: 0
     - _AlbedoAffectEmissive: 0
-    - _AlphaClip: 0.19
+    - _AlphaClip: 2.6
     - _AlphaCutoff: 0.5
     - _AlphaCutoffEnable: 1
     - _AlphaCutoffPostpass: 0.5
@@ -208,7 +208,7 @@ Material:
     - _ExcludeFromTUAndAA: 0
     - _Float: 2.68
     - _Float_1: 7.01
-    - _Fresnel_Power: 0.09
+    - _Fresnel_Power: 1.21
     - _HeightAmplitude: 0.02
     - _HeightCenter: 0.5
     - _HeightMapParametrization: 0
@@ -228,7 +228,7 @@ Material:
     - _Metallic: 0
     - _MetallicRemapMax: 1
     - _MetallicRemapMin: 0
-    - _Noise_Scale: 115.4
+    - _Noise_Scale: 509.4
     - _NormalMapSpace: 0
     - _NormalScale: 1
     - _ObjectSpaceUVMapping: 0
@@ -240,14 +240,14 @@ Material:
     - _PPDPrimitiveLength: 1
     - _PPDPrimitiveWidth: 1
     - _PerPixelSorting: 0
-    - _Power: 0.002
+    - _Power: 1
     - _RayTracing: 0
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
     - _RenderQueueType: 4
     - _RequireSplitLighting: 0
-    - _ScaleNoise: 70
+    - _ScaleNoise: 4630
     - _Smoothness: 0.5
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
@@ -256,7 +256,7 @@ Material:
     - _SpecularOcclusionMode: 1
     - _Speed: 1
     - _Speed_Flash: 0
-    - _Speed_Simple_Noise: 0.05
+    - _Speed_Simple_Noise: 0.01
     - _Speed_Voronoi: 1.8
     - _SrcBlend: 1
     - _StencilRef: 0
@@ -295,8 +295,8 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 0, b: 0, a: 0.46666667}
-    - _Bottom_Color: {r: 220.26173, g: 36.36396, b: 36.36396, a: 1}
-    - _Color: {r: 1, g: 0, b: 0, a: 0.46666667}
+    - _Bottom_Color: {r: 1, g: 0, b: 0, a: 1}
+    - _Color: {r: 1, g: 0, b: 0, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
@@ -306,7 +306,7 @@ Material:
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _Top_color: {r: 0, g: 0, b: 0, a: 0}
+    - _Top_color: {r: 0.28841054, g: 1, b: 0, a: 1}
     - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
