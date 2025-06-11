@@ -8,7 +8,7 @@ namespace RunTimeContent.SceneManagement
         
         public void Init(Transform player) => _playerTransform = player;
         
-        private async void Update()
+        private void Update()
         {
             _delay += Time.deltaTime;
             
@@ -17,20 +17,20 @@ namespace RunTimeContent.SceneManagement
 
             _delay = 0;
             
-            if ((Mathf.Abs(_playerTransform.position.x - transform.position.x) <= xLoadDistance && 
-                 Mathf.Abs(_playerTransform.position.z - transform.position.z) <= zLoadDistance) 
+            if (Mathf.Abs(_playerTransform.position.x - transform.position.x) <= xLoadDistance && 
+                 Mathf.Abs(_playerTransform.position.z - transform.position.z) <= zLoadDistance
                 && !_loaded)
             {
                 _loaded = true;
-                await SceneLoader.Loader.LoadSceneGroup(sceneIndex);
+                SceneLoader.Loader.LoadSceneGroup(sceneIndex);
             }
             
-            else if ((Mathf.Abs(_playerTransform.position.x - transform.position.x) > xLoadDistance + unloadOffset && 
-                      Mathf.Abs(_playerTransform.position.z - transform.position.z) > zLoadDistance + unloadOffset) 
+            else if (Mathf.Abs(_playerTransform.position.x - transform.position.x) > xLoadDistance + unloadOffset && 
+                      Mathf.Abs(_playerTransform.position.z - transform.position.z) > zLoadDistance + unloadOffset
                      && _loaded)
             {
                 _loaded = false;
-                await SceneLoader.Loader.UnloadSceneGroup(sceneIndex);
+                SceneLoader.Loader.UnloadSceneGroup(sceneIndex);
             }
         }
 

@@ -112,19 +112,19 @@ namespace RunTimeContent.SceneManagement
         
         #region naive discrete load
         
-        public static async Task NaiveLoadSceneGroup(SceneGroup group)
+        public static void NaiveLoadSceneGroup(SceneGroup group)
         {
             foreach (var s in group)
             {
-                await SceneManager.LoadSceneAsync(s.Name, LoadSceneMode.Additive);
+                SceneManager.LoadSceneAsync(s.Name, LoadSceneMode.Additive);
             }
         }
 
-        public static async Task NaiveUnloadSceneGroup(SceneGroup group)
+        public static void NaiveUnloadSceneGroup(SceneGroup group)
         {
             foreach (var s in group)
             {
-                await SceneManager.UnloadSceneAsync(s.Name);
+                SceneManager.UnloadSceneAsync(s.Name);
             }
         }
 
