@@ -21,7 +21,7 @@ MonoBehaviour:
     Part2: 1185139399
     Part3: 1122340252
     Part4: 1312083889
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: -1737642861, guid: 31f01bce877cd3941b965b899165b682, type: 3}
   description: 'Battery
 
 '
