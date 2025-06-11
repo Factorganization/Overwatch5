@@ -196,7 +196,7 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 0.018452026, b: 0, a: 1}
-  m_Intensity: 318309.9
+  m_Intensity: 16082534
   m_Range: 14.1
   m_SpotAngle: 39.18651
   m_InnerSpotAngle: 21.80208
@@ -248,7 +248,7 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 2
-  m_LuxAtDistance: 150000
+  m_LuxAtDistance: 256
   m_EnableSpotReflector: 1
 --- !u!114 &6115413740739064155
 MonoBehaviour:
