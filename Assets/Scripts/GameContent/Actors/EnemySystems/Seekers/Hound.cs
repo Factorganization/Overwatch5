@@ -1,5 +1,6 @@
 using GameContent.Actors.ActorData;
 using GameContent.Actors.EnemySystems.EnemyNavigation;
+using GameContent.Management;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -20,9 +21,17 @@ namespace GameContent.Actors.EnemySystems.Seekers
         {
             _atkTimer += Time.deltaTime;
 
-            if (Input.GetKeyDown(KeyCode.T))
+            if (!navSpaceAgent.IsRoaming)
             {
-                SetTargetPosition(playerTransform.position);
+                if (_timerPos > 2f)
+                {
+                    _timerPos = 0;
+                    navSpaceAgent.SetRandomTargetPosition();
+                }
+                else
+                {
+                    _timerPos += Time.deltaTime;
+                }
             }
             
             /*if (Vector3.Distance(transform.position, playerTransform.position) < 10 && Vector3.Distance(transform.position, SuspicionManager.Manager.StartDebugPos) > 2)
@@ -70,6 +79,8 @@ namespace GameContent.Actors.EnemySystems.Seekers
         private Vector3 _currentTargetPosition;
 
         private float _atkTimer;
+
+        private float _timerPos;
 
         #endregion
     }

@@ -88,7 +88,7 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
                     var ray = new Ray(el.bounds.center, ol.bounds.center - el.bounds.center);
                     var cast = Physics.Raycast(ray, 10, _bakeLayer);
                     
-                    if (cast || Vector3.Distance(el.bounds.center, ol.bounds.center) > 29)
+                    if (cast || Vector3.Distance(el.bounds.center, ol.bounds.center) > 9.9f)
                         continue;
                     
                     _navGraph.AddEdge(el, ol);

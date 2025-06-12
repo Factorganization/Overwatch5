@@ -136,8 +136,8 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
 
         private async void HandlePathStarted(Vector3 pos, Vector3 target)
         {
-            try
-            {
+            //try
+            //{
                 var closestNode = await UniTask.RunOnThreadPool(() => GetClosestNode(pos), cancellationToken: _ct);
                 var dest = await UniTask.RunOnThreadPool(() => GetClosestNode(target), cancellationToken: _ct);
 
@@ -153,15 +153,15 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
                 _isRoaming = true;
                 _currentWayPointId = 0;
                 _calculatingPath = false;
-            }
+            //}
             
-            catch (Exception e)
+            /*catch (Exception e)
             {
                 _currentWayPointId = 0;
                 _calculatingPath = false;
                 _calculationTime = 0;
                 throw new Exception(e.Message);
-            }
+            }*/
         }
         
         private RunTimePathNode GetClosestNode(Vector3 pos)

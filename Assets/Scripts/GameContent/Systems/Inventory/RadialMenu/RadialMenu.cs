@@ -102,7 +102,7 @@ public class RadialMenu : MonoBehaviour
 
     void Rearrange()
     {
-        float radiansOfSeparation = 2 * Mathf.PI / entries.Count;
+        float radiansOfSeparation = 2.5f * Mathf.PI / entries.Count;
         for (int i = 0; i < entries.Count; i++)
         {
             float x = Mathf.Sin(radiansOfSeparation * i) * radius;
