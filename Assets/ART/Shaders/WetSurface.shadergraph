@@ -250,9 +250,6 @@
             "m_Id": "4719f22cff244740a9c36ad588b28138"
         },
         {
-            "m_Id": "3995dd0dfc3140babc0f482700c3da90"
-        },
-        {
             "m_Id": "8a92e648b499425ea62427ddee24c32f"
         },
         {
@@ -3182,42 +3179,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
-    "m_ObjectId": "3995dd0dfc3140babc0f482700c3da90",
-    "m_Group": {
-        "m_Id": ""
-    },
-    "m_Name": "Property",
-    "m_DrawState": {
-        "m_Expanded": true,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": 1572.9998779296875,
-            "y": 623.9999389648438,
-            "width": 133.0,
-            "height": 34.00006103515625
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "8367f819739645ab996e3b48f5b41e0b"
-        }
-    ],
-    "synonyms": [],
-    "m_Precision": 0,
-    "m_PreviewExpanded": true,
-    "m_DismissedVersion": 0,
-    "m_PreviewMode": 0,
-    "m_CustomColors": {
-        "m_SerializableColors": []
-    },
-    "m_Property": {
-        "m_Id": "f9169f5069514c58ac0814bad376de5a"
-    }
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "3bd3fdffa2c140f6a7d649b84c6c6241",
     "m_Id": 1,
@@ -5392,31 +5353,6 @@
         "z": 0.0,
         "w": 0.0
     }
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
-    "m_ObjectId": "8367f819739645ab996e3b48f5b41e0b",
-    "m_Id": 0,
-    "m_DisplayName": "ColorMoss",
-    "m_SlotType": 1,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Out",
-    "m_StageCapability": 3,
-    "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
-    },
-    "m_DefaultValue": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
-    },
-    "m_Labels": []
 }
 
 {
@@ -9018,9 +8954,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 2550.999755859375,
-            "y": 489.0,
-            "width": 130.000244140625,
+            "x": 2579.0,
+            "y": 444.0,
+            "width": 130.0,
             "height": 118.0
         }
     },
