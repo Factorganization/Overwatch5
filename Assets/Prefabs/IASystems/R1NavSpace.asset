@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   subData:
   - {fileID: 11400000, guid: 31ce0ca79436dc24c89ac06938f49301, type: 2}
-  - {fileID: 11400000, guid: 6eb5d4f204e58e04697de1badf2bd99a, type: 2}
-  minBoundSize: 3
+  minBoundSize: 2.5
   subDataPath: Assets\Prefabs\IASystems\R1NavSpaceSubs

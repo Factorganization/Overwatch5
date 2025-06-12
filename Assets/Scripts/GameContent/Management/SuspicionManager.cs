@@ -23,6 +23,8 @@ namespace GameContent.Management
 
         public Vector3 StartDebugPos => _debugHoundStartPos;
         
+        public List<Hound> ClosestHounds => closestHounds;
+        
         public float DetectionTime { get; set; }
 
         public float TrackTimer { get; set; }
@@ -52,7 +54,6 @@ namespace GameContent.Management
             }
             
             _suspicionLevel = 0;
-            _debugHoundStartPos = debugHound.transform.position;
             _playerHealth = playerTransform.GetComponent<HeroHealth>();
             
             listOfHounds = FindObjectsByType<Hound>(FindObjectsSortMode.None).ToList();
@@ -94,7 +95,7 @@ namespace GameContent.Management
                 IsTracking = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.Q))
             {
                 Debug.Log("Starting track on player");
                 StartTrackPlayer(Hero.Instance);
@@ -112,47 +113,55 @@ namespace GameContent.Management
             IsTracking = false;
             TrackedPos = Vector3.zero;
             TrackTimer = 0;
-            
-            debugHound.SetTargetPosition(_debugHoundStartPos);
         }
 
         public void StartTrack(EnemyCamera cam)
         {
             IsTracking = true;
             TrackedPos = cam.BaitTarget.position;
-            debugHound = GetClosestEnemy(TrackedPos);
+            closestHounds = GetClosestEnemy(cam.transform.position, closestEnemyRange);
             
-            debugHound.SetTargetPosition(cam.BaitTarget.position);
+            foreach (Hound hound in closestHounds)
+            {
+                if (!hound || !hound.gameObject.activeInHierarchy)
+                    continue;
+
+                hound.SetTargetPosition(cam.transform.position);
+            }
         }
 
         public void StartTrackPlayer(Hero player)
         {
             IsTracking = true;
             TrackedPos = player.transform.position;
-            debugHound = GetClosestEnemy(TrackedPos);
+            closestHounds = GetClosestEnemy(player.transform.position, closestEnemyRange);
             
-            debugHound.SetTargetPosition(player.transform.position);
+            foreach (Hound hound in closestHounds)
+            {
+                if (!hound || !hound.gameObject.activeInHierarchy)
+                    continue;
+
+                hound.SetTargetPosition(player.transform.position);
+            }
         }
 
-        public Hound GetClosestEnemy(Vector3 pos)
+        private List<Hound> GetClosestEnemy(Vector3 pos, float range)
         {
-            Hound closestEnemy = null;
-            float closestDistance = Mathf.Infinity;
+            List<Hound> closestEnemy = new List<Hound>();
+            float closestDistance = range * range;
 
             foreach (Hound hound in listOfHounds)
             {
-                if (hound == null || !hound.gameObject.activeInHierarchy)
+                if (!hound || !hound.gameObject.activeInHierarchy)
                     continue;
 
-                float distance = Vector3.Distance(pos, hound.transform.position);
+                float distance = (hound.transform.position - pos).sqrMagnitude;
                 
                 if (distance < closestDistance)
                 {
-                    closestDistance = distance;
-                    closestEnemy = hound;
+                    closestEnemy.Add(hound);
                 }
             }
-
             return closestEnemy;
         }
         
@@ -160,6 +169,8 @@ namespace GameContent.Management
 
         #region fields
 
+        [SerializeField] private float closestEnemyRange;
+        
         [SerializeField] private float investigationLevel;
 
         [SerializeField] private float trackingLevel;
@@ -176,11 +187,15 @@ namespace GameContent.Management
 
         [SerializeField] private MeshRenderer[] suspicionRenderer;
         
-        [SerializeField] private Hound debugHound;
+        //[SerializeField] private Hound debugHound;
         
         [SerializeField] private List<Hound> listOfHounds = new List<Hound>();
 
+        [SerializeField] private List<Hound> closestHounds = new List<Hound>();
+        
         private Vector3 _debugHoundStartPos;
+        
+        //private List<Vector3> _debugHoundPositions = new List<Vector3>();
         
         private Pool<Hound> _houndPool;
 
