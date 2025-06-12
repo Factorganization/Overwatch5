@@ -19,6 +19,11 @@ namespace GameContent.Actors.EnemySystems.Seekers
 
         public override void OnUpdate()
         {
+            if (Vector3.Distance(transform.position, playerTransform.position) > 50f)
+            {
+                return;
+            }
+            
             _atkTimer += Time.deltaTime;
             
             if (!navSpaceAgent.IsRoaming)
@@ -34,18 +39,19 @@ namespace GameContent.Actors.EnemySystems.Seekers
                 }
             }
             
-            if (Vector3.Distance(transform.position, playerTransform.position) < 10)
+            if (Vector3.Distance(transform.position, playerTransform.position) < 9.9f)
             {
-                navSpaceAgent.IsRoaming = false;
-                navSpaceAgent.SetTargetPosition(playerTransform.position);
+                _closeEnough = true;
+                //navSpaceAgent.SetTargetPosition(playerTransform.position);
                 SuspicionManager.Manager.DetectionTime += 1;
             }
-            else if (Vector3.Distance(transform.position, playerTransform.position) > 10)
+
+            if (Vector3.Distance(transform.position, playerTransform.position) > 10 && _closeEnough)
             {
-                SuspicionManager.Manager.ClosestHounds.Remove(this);
+                navSpaceAgent.SetTargetPosition(playerTransform.position);
                 SuspicionManager.Manager.DetectionTime -= 1;
+                _closeEnough = false;
             }
-            
             
             /*if (Vector3.Distance(transform.position, playerTransform.position) < 2.5f)
             {
@@ -88,6 +94,8 @@ namespace GameContent.Actors.EnemySystems.Seekers
         private float _atkTimer;
 
         private float _timerPos;
+
+        private bool _closeEnough;
 
         #endregion
     }

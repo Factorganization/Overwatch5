@@ -32,7 +32,18 @@ public class MapLink : MonoBehaviour
      private void Start()
      {
           _enemyCamera = _linkedNode.actor as EnemyCamera;
-          _linkNameInputField.text = _linkedNode.nodeId;
+          if (_linkedNode.hidden)
+          {
+               _linkNameInputField.text = "";
+               _sabotageButton.interactable = false;
+               _linkNameInputField.interactable = false;
+          }
+          else
+          {
+               _linkNameInputField.text = _linkedNode.nodeId;
+               _sabotageButton.interactable = true;
+               _linkNameInputField.interactable = true;
+          }
      }
 
      // Verify if the Id is correct, if it's not correct,
