@@ -11,7 +11,11 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
     {
         #region properties
 
-        public bool IsRoaming => _isRoaming;
+        public bool IsRoaming
+        {
+            get => _isRoaming;
+            set => _isRoaming = value;
+        }
 
         #endregion
         
