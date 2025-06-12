@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace GameContent.Actors.EnemySystems.EnemyNavigation
 {
@@ -10,13 +12,14 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
         
         public List<RunTimePathNode> FindPath(RunTimePathNode start, RunTimePathNode end)
         {
-            var d1 = DateTime.Now;
+            var swRef = new Stopwatch();
+            swRef.Start();
             
             _pathList.Clear();
             
             if (start is null || end is null)
             {
-                //Debug.LogError("No start or end node found");
+                Debug.LogWarning("No start or end node found");
                 return new List<RunTimePathNode>();
             }
 
@@ -36,13 +39,11 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
                 
                 if (++iterationCount > GameConstants.MaxPathFindIteration)
                 {
-                    //Debug.LogError("Pathfind iteration exceeded");
+                    Debug.LogWarning("Pathfind iteration exceeded");
                     return new List<RunTimePathNode>();
                 }
                 
-                var d2 = DateTime.Now;
-                var t = d2 - d1;
-                if (t.Seconds > 10)
+                if (swRef.Elapsed.Seconds > 10)
                 {
                     Debug.LogWarning("Cancelling Path Calculation");
                     return new List<RunTimePathNode>();

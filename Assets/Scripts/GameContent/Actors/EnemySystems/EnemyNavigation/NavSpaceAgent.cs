@@ -73,7 +73,7 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
             if (_calculatingPath)
                 _calculationTime += Time.deltaTime;
             
-            if (_calculationTime > 10)
+            if (_calculationTime > 10.1f)
             {
                 //_cancellationTokenSource.Cancel();
                 _currentPath = new List<RunTimePathNode>();
