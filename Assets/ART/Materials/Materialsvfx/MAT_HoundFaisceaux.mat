@@ -23,7 +23,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MAT_Faisceau
+  m_Name: MAT_HoundFaisceaux
   m_Shader: {fileID: -6465566751694194690, guid: 3570f1dea5c6d9e4b8eae0f19d98fa50, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -135,6 +135,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2d:
+        m_Texture: {fileID: 2800000, guid: 50a5068b452d0f54cace5b7e3fd3b9b0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _ThicknessMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -166,7 +170,7 @@ Material:
     - _ATDistance: 1
     - _AddPrecomputedVelocity: 0
     - _AlbedoAffectEmissive: 0
-    - _AlphaClip: 2.36
+    - _AlphaClip: 5.04
     - _AlphaCutoff: 0.5
     - _AlphaCutoffEnable: 1
     - _AlphaCutoffPostpass: 0.5
@@ -178,6 +182,7 @@ Material:
     - _AlphaSrcBlend: 1
     - _Anisotropy: 0
     - _BlendMode: 1
+    - _Boolean: 0
     - _CellsSize: -6.15
     - _CoatMask: 0
     - _ConservativeDepthOffsetEnable: 0
@@ -209,7 +214,7 @@ Material:
     - _ExcludeFromTUAndAA: 0
     - _Float: 2.68
     - _Float_1: 7.01
-    - _Fresnel_Power: 0.41
+    - _Fresnel_Power: 0.001
     - _HeightAmplitude: 0.02
     - _HeightCenter: 0.5
     - _HeightMapParametrization: 0
@@ -241,14 +246,14 @@ Material:
     - _PPDPrimitiveLength: 1
     - _PPDPrimitiveWidth: 1
     - _PerPixelSorting: 0
-    - _Power: 1
+    - _Power: 13.2
     - _RayTracing: 0
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
     - _RenderQueueType: 4
     - _RequireSplitLighting: 0
-    - _ScaleNoise: 4968.41
+    - _ScaleNoise: 15.14
     - _Smoothness: 0.5
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
@@ -257,8 +262,8 @@ Material:
     - _SpecularOcclusionMode: 1
     - _Speed: 1
     - _Speed_Flash: 0
-    - _Speed_Simple_Noise: 0.002
-    - _Speed_Voronoi: 1.8
+    - _Speed_Simple_Noise: 0.5
+    - _Speed_Voronoi: 1
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 1
@@ -297,17 +302,18 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 0, b: 0, a: 0.46666667}
     - _Bottom_Color: {r: 1, g: 0, b: 0, a: 1}
-    - _Color: {r: 1, g: 0, b: 0, a: 1}
+    - _Color: {r: 1, g: 0.12941177, b: 0, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 1, g: 0, b: 0, a: 1}
     - _EmissiveColorLDR: {r: 1, g: 0, b: 0, a: 1}
+    - _Emmissive: {r: 785404.06, g: 0, b: 15225.697, a: 0}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _Top_color: {r: 0, g: 0, b: 0, a: 1}
+    - _Top_color: {r: 32768, g: 5413.8433, b: 0, a: 1}
     - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
