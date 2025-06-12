@@ -1,6 +1,7 @@
 using UnityEngine.UI;
 using System.Collections.Generic;
 using DG.Tweening;
+using Systems;
 using Systems.Inventory;
 using UnityEngine;
 
@@ -26,8 +27,7 @@ public class RadialMenu : MonoBehaviour
         {
             if (Inventory.Instance.Controller.Model.Items[i].details.Name == null) continue;
             
-            AddEntry(Inventory.Instance.Controller.Model.Items[i].details.Name,
-                     Inventory.Instance.Controller.Model.Items[i].details.icon,
+            AddEntry(Inventory.Instance.Controller.Model.Items[i].details.icon,
                      Inventory.Instance.Controller.Model.Items[i].quantity,
                      EquipItem);
             
@@ -37,12 +37,11 @@ public class RadialMenu : MonoBehaviour
         Rearrange();
     }
     
-    void AddEntry(string pLabel, Sprite pIcon, int pQuantity, RadialMenuEntry.RadialMenuEntryDelegate Callback)
+    void AddEntry( Sprite pIcon, int pQuantity, RadialMenuEntry.RadialMenuEntryDelegate Callback)
     {
         GameObject entry = Instantiate(radialMenuEntryPrefab, transform);
         RadialMenuEntry rme = entry.GetComponent<RadialMenuEntry>();
         
-        rme.SetLabel(pLabel);
         rme.SetIcon(pIcon);
         rme.SetCallback(Callback);
         rme.SetNumberOfItems(pQuantity);
@@ -111,17 +110,28 @@ public class RadialMenu : MonoBehaviour
             entries[i].Rect.localScale = Vector3.zero;
             entries[i].Rect.DOScale(Vector3.one, .3f).SetEase(Ease.OutQuad).SetDelay(.05f * i);
             entries[i].Rect.DOAnchorPos(new Vector3(x, y, 0), .3f).SetEase(Ease.OutQuad).SetDelay(.05f * i);
+
+            switch (i)
+            {
+                case 1:
+                    entries[i].BackgroundImage.transform.rotation = Quaternion.Euler(0, 0, -90f);
+                    entries[i].BackgroundImage.transform.position = new Vector3(25, 0, 0);
+                    break;
+                case 2:
+                    entries[i].BackgroundImage.transform.rotation = Quaternion.Euler(0, 0, 90f);
+                    entries[i].BackgroundImage.transform.position = new Vector3(-25, 0, 0);
+                    break;
+            }
         }
-    }
-    
-    void SetTargetIcon(RadialMenuEntry icon)
-    {
-        targetIcon.sprite = icon.GetIcon().sprite;
     }
     
     void EquipItem(RadialMenuEntry icon)
     {
         Inventory.Instance.EquipItem(Inventory.Instance.Controller.Model.Items[entries.IndexOf(icon)].details);
-        SetTargetIcon(icon);
+
+        if (Hero.Instance.CurrentEquipedItem == Inventory.Instance.Controller.Model.Items[entries.IndexOf(icon)].details)
+        {
+            entries[entries.IndexOf(icon)].SetIcon(Inventory.Instance.Controller.Model.Items[entries.IndexOf(icon)].details.chosenIcon);
+        }
     }
 }

@@ -19,6 +19,12 @@ namespace GameContent.Actors.EnemySystems.Seekers
 
         public override void OnUpdate()
         {
+            if (Vector3.Distance(transform.position, playerTransform.position) > 50f)
+            {
+                Debug.Log("Hound is too far from player, deactivating.");
+                return;
+            }
+            
             _atkTimer += Time.deltaTime;
             
             if (!navSpaceAgent.IsRoaming)
@@ -36,14 +42,8 @@ namespace GameContent.Actors.EnemySystems.Seekers
             
             if (Vector3.Distance(transform.position, playerTransform.position) < 10)
             {
-                navSpaceAgent.IsRoaming = false;
                 navSpaceAgent.SetTargetPosition(playerTransform.position);
                 SuspicionManager.Manager.DetectionTime += 1;
-            }
-            else if (Vector3.Distance(transform.position, playerTransform.position) > 10)
-            {
-                SuspicionManager.Manager.ClosestHounds.Remove(this);
-                SuspicionManager.Manager.DetectionTime -= 1;
             }
             
             

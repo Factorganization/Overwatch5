@@ -75,7 +75,8 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
             
             if (_calculationTime > 10)
             {
-                _cancellationTokenSource.Cancel();
+                //_cancellationTokenSource.Cancel();
+                _currentPath = new List<RunTimePathNode>();
                 _calculationTime = 0;
                 _calculatingPath = false;
                 Debug.LogError("Agent discarded, Nav Space too heavy for calculation");
@@ -142,6 +143,7 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
         {
             //try
             //{
+                _isRoaming = true;
                 var closestNode = await UniTask.RunOnThreadPool(() => GetClosestNode(pos), cancellationToken: _ct);
                 var dest = await UniTask.RunOnThreadPool(() => GetClosestNode(target), cancellationToken: _ct);
 
@@ -153,8 +155,12 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
                 }
                 
                 _currentPath = await UniTask.RunOnThreadPool(() => _pathFinder.FindPath(closestNode, dest), cancellationToken: _ct);
-
-                _isRoaming = true;
+                
+                if (_currentPath is null || _currentPath.Count == 0)
+                {
+                    _isRoaming = false;
+                }
+                
                 _currentWayPointId = 0;
                 _calculatingPath = false;
             //}
