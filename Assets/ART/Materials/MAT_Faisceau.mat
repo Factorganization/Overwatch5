@@ -166,7 +166,7 @@ Material:
     - _ATDistance: 1
     - _AddPrecomputedVelocity: 0
     - _AlbedoAffectEmissive: 0
-    - _AlphaClip: 2.6
+    - _AlphaClip: 2.36
     - _AlphaCutoff: 0.5
     - _AlphaCutoffEnable: 1
     - _AlphaCutoffPostpass: 0.5
@@ -178,6 +178,7 @@ Material:
     - _AlphaSrcBlend: 1
     - _Anisotropy: 0
     - _BlendMode: 1
+    - _CellsSize: -6.15
     - _CoatMask: 0
     - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 2
@@ -208,7 +209,7 @@ Material:
     - _ExcludeFromTUAndAA: 0
     - _Float: 2.68
     - _Float_1: 7.01
-    - _Fresnel_Power: 1.21
+    - _Fresnel_Power: 0.41
     - _HeightAmplitude: 0.02
     - _HeightCenter: 0.5
     - _HeightMapParametrization: 0
@@ -247,7 +248,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 4
     - _RequireSplitLighting: 0
-    - _ScaleNoise: 4630
+    - _ScaleNoise: 4968.41
     - _Smoothness: 0.5
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
@@ -256,7 +257,7 @@ Material:
     - _SpecularOcclusionMode: 1
     - _Speed: 1
     - _Speed_Flash: 0
-    - _Speed_Simple_Noise: 0.01
+    - _Speed_Simple_Noise: 0.002
     - _Speed_Voronoi: 1.8
     - _SrcBlend: 1
     - _StencilRef: 0
@@ -306,10 +307,11 @@ Material:
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _Top_color: {r: 0.28841054, g: 1, b: 0, a: 1}
+    - _Top_color: {r: 0, g: 0, b: 0, a: 1}
     - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
+    - _Vector4: {r: 3.66, g: 7.66, b: 4.79, a: 2.34}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
