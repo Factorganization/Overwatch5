@@ -128,10 +128,23 @@ public class RadialMenu : MonoBehaviour
     void EquipItem(RadialMenuEntry icon)
     {
         Inventory.Instance.EquipItem(Inventory.Instance.Controller.Model.Items[entries.IndexOf(icon)].details);
-
-        if (Hero.Instance.CurrentEquipedItem == Inventory.Instance.Controller.Model.Items[entries.IndexOf(icon)].details)
+        
+        foreach (RadialMenuEntry entry in entries)
         {
-            entries[entries.IndexOf(icon)].SetIcon(Inventory.Instance.Controller.Model.Items[entries.IndexOf(icon)].details.chosenIcon);
+            if (Hero.Instance.CurrentEquipedItem == Inventory.Instance.Controller.Model.Items[entries.IndexOf(entry)].details)
+            {
+                entries[entries.IndexOf(icon)].SetIcon(Inventory.Instance.Controller.Model.Items[entries.IndexOf(icon)].details.chosenIcon);
+            }
+            else
+            {
+                for (int i = 0; i < entries.Count; i++)
+                {
+                    if (Inventory.Instance.Controller.Model.Items[i].details == Hero.Instance.CurrentEquipedItem)
+                        continue;
+                    
+                    entries[i].SetIcon(Inventory.Instance.Controller.Model.Items[i].details.icon);
+                }
+            }
         }
     }
 }

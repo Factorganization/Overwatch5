@@ -21,7 +21,6 @@ namespace GameContent.Actors.EnemySystems.Seekers
         {
             if (Vector3.Distance(transform.position, playerTransform.position) > 50f)
             {
-                Debug.Log("Hound is too far from player, deactivating.");
                 return;
             }
             
@@ -45,7 +44,6 @@ namespace GameContent.Actors.EnemySystems.Seekers
                 navSpaceAgent.SetTargetPosition(playerTransform.position);
                 SuspicionManager.Manager.DetectionTime += 1;
             }
-            
             
             /*if (Vector3.Distance(transform.position, playerTransform.position) < 2.5f)
             {
