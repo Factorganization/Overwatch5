@@ -3748,10 +3748,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 2064.999755859375,
-            "y": 1866.0,
-            "width": 208.0,
-            "height": 278.0
+            "x": 2056.999755859375,
+            "y": 1858.9998779296875,
+            "width": 208.000244140625,
+            "height": 278.0001220703125
         }
     },
     "m_Slots": [
@@ -5452,7 +5452,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "8f23511bf977463e92fe9abedb435b6b",
     "m_Id": 0,
-    "m_DisplayName": "Faux Boolean",
+    "m_DisplayName": "Scanning Mode",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
