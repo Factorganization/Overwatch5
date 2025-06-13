@@ -128,7 +128,7 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
             var ri = Random.Range(0, _runTimeManager.Count);
             var pos = transform.position;
             
-            HandlePathStarted(pos, _runTimeManager.RunTimePathNodes[ri].position);
+            HandlePathStarted(pos, subRunTimeArea is null ? _runTimeManager.RunTimePathNodes[ri].position : subRunTimeArea.Nodes[ri].position);
         }
         
         public void SetSpeed(float newSpeed) => speed = newSpeed;
@@ -229,6 +229,8 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
 
         [SerializeField] private float accuracy = 0.5f;
 
+        [SerializeField] private NavSpaceSubRunTimeArea subRunTimeArea;
+        
         private NavSpaceRunTimeManager _runTimeManager;
         
         private PathFinder _pathFinder;

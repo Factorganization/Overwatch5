@@ -7,6 +7,9 @@
         <ui:VisualElement class="section" style="flex-grow: 1;">
             <uie:PropertyField data-source-type="GameContent.Actors.EnemySystems.EnemyNavigation.NavSpaceRunTimeManager, Assembly-CSharp" binding-path="navSpaceData" />
         </ui:VisualElement>
+        <ui:VisualElement class="section" style="flex-grow: 1;">
+            <uie:PropertyField data-source-type="GameContent.Actors.EnemySystems.EnemyNavigation.NavSpaceRunTimeManager, Assembly-CSharp" binding-path="navSpaceSubRunTimeAreas" style="border-left-width: 20px; border-right-width: 15px;" />
+        </ui:VisualElement>
         <ui:VisualElement class="section" style="flex-grow: 1; padding-left: 25px;">
             <uie:PropertyField data-source-type="GameContent.Actors.EnemySystems.EnemyNavigation.NavSpaceRunTimeManager, Assembly-CSharp" binding-path="viewOptions" />
         </ui:VisualElement>
