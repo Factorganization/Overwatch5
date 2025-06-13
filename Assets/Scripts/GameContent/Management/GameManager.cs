@@ -47,7 +47,7 @@ namespace GameContent.Management
             if (respawnPoint != null)
             {
                 Time.timeScale = 1f;
-                GameUIManager.Instance.DeathScreen.FallDeath = false;
+                GameUIManager.Instance.DeathScreen.NotFallDeath = true;
                 playerTransform.position = respawnPoint.position;
                 playerTransform.rotation = respawnPoint.rotation;
                 Debug.Log("Player respawned at checkpoint.");
@@ -58,6 +58,21 @@ namespace GameContent.Management
             }
         }
         
+        public void TerminateProcessor()
+        {
+            numberOfProcessorsTerminated++;
+        }
+        
+        public int GetNumberOfProcessorsTerminated()
+        {
+            return numberOfProcessorsTerminated;
+        }
+        
+        public void WinGame()
+        {
+            Debug.Log("Win");
+        }
+        
         #endregion
 
         #region variables
@@ -65,6 +80,8 @@ namespace GameContent.Management
         public Transform playerTransform;
 
         public Transform respawnPoint;
+        
+        private int numberOfProcessorsTerminated = 0;
 
         #endregion
     }

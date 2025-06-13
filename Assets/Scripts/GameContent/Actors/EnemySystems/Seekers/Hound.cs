@@ -15,48 +15,51 @@ namespace GameContent.Actors.EnemySystems.Seekers
             IsActive = true;
             base.Init(player);
             GetComponent<NavMeshAgent>();
+            //navSpaceAgent.SetRandomTargetPosition();
         }
 
         public override void OnUpdate()
         {
-            if (Vector3.Distance(transform.position, playerTransform.position) > 50f)
+            float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
+
+            
+            if (Vector3.Distance(transform.position, playerTransform.position) > 100f)
             {
                 return;
             }
             
             _atkTimer += Time.deltaTime;
             
-            if (!navSpaceAgent.IsRoaming)
+            if (!navSpaceAgent.IsRoaming && !SuspicionManager.Manager.IsTracking)
             {
+                _timerPos += Time.deltaTime;
                 if (_timerPos > 5f)
                 {
-                    _timerPos = 0;
                     navSpaceAgent.SetRandomTargetPosition();
-                }
-                else
-                {
-                    _timerPos += Time.deltaTime;
+                    _timerPos = 0;
                 }
             }
             
-            if (Vector3.Distance(transform.position, playerTransform.position) < 9.9f)
+            if (distanceToPlayer < 5f)
             {
                 _closeEnough = true;
-                //navSpaceAgent.SetTargetPosition(playerTransform.position);
                 SuspicionManager.Manager.DetectionTime += 1;
             }
-
-            if (Vector3.Distance(transform.position, playerTransform.position) > 10 && _closeEnough)
+            else if (distanceToPlayer > 10f && _closeEnough)
             {
                 navSpaceAgent.SetTargetPosition(playerTransform.position);
                 SuspicionManager.Manager.DetectionTime -= 1;
                 _closeEnough = false;
             }
-
-            if (!(Vector3.Distance(transform.position, playerTransform.position) < 12.5f) || !_closeEnough) return;
-            if (!(_atkTimer > 2) || !SuspicionManager.Manager.IsTracking) return;
-            _atkTimer = 0;
-            SuspicionManager.Manager.PlayerHealth.TakeDamage(10);
+            
+            if (distanceToPlayer < 12.5f && _closeEnough)
+            {
+                if (_atkTimer > 2 && SuspicionManager.Manager.IsTracking)
+                {
+                    _atkTimer = 0;
+                    SuspicionManager.Manager.PlayerHealth.TakeDamage(10);
+                }
+            }
         }
 
         public override void OnFixedUpdate()
