@@ -90,6 +90,9 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
         {
             while (current is not null)
             {
+                if (_pathList.Contains(current))
+                    break;
+                
                 _pathList.Add(current);
                 current = current.from;
             }

@@ -20,6 +20,9 @@ namespace GameContent.Actors.EnemySystems.Seekers
 
         public override void OnUpdate()
         {
+            if (playerTransform is null)
+                return;
+            
             var distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
             
             if (distanceToPlayer > SuspicionManager.Manager.Range)

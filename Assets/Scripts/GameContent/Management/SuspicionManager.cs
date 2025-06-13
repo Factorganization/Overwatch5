@@ -71,6 +71,17 @@ namespace GameContent.Management
                 StartTrackPlayer(Hero.Instance);
             }
 
+            if (_needPersistentLocation)
+            {
+                _persistentLocationCounter += Time.deltaTime;
+
+                if (_persistentLocationCounter > 3)
+                {
+                    _needPersistentLocation = false;
+                    StartTrackPlayer(Hero.Instance);
+                }
+            }
+
             if (IsTracking)
             {
                 TrackTimer += Time.deltaTime;
@@ -134,6 +145,8 @@ namespace GameContent.Management
 
         public void StartTrackPlayer(Hero player)
         {
+            _needPersistentLocation = true;
+            _persistentLocationCounter = 0;
             IsTracking = true;
             TrackedPos = player.transform.position;
             closestHounds = GetClosestEnemy(player.transform.position, closestEnemyRange);
@@ -206,6 +219,10 @@ namespace GameContent.Management
         private float _suspicionLevel; //Game Core
 
         private float _suspicionDecreaseTimer;
+
+        private bool _needPersistentLocation;
+
+        private float _persistentLocationCounter;
 
         #endregion
     }
