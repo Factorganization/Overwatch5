@@ -33,6 +33,7 @@ public class AudioManager : MonoBehaviour
         if (Instance != null)
         {
             Debug.LogError("Multiple instances of AudioManager detected. Destroying the new instance.");
+            Destroy(gameObject);
         }
         
         Instance = this;
@@ -44,6 +45,8 @@ public class AudioManager : MonoBehaviour
         musicBus = RuntimeManager.GetBus("bus:/Music");
         ambienceBus = RuntimeManager.GetBus("bus:/Ambience");
         SFXBus = RuntimeManager.GetBus("bus:/SFX");
+        
+        DontDestroyOnLoad(gameObject);
     }
     
     private void Start()
