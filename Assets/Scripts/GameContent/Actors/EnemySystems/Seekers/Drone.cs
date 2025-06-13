@@ -17,7 +17,6 @@ namespace GameContent.Actors.EnemySystems.Seekers
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _currentWaypoint = waypoints[0].position;
             _currentWaypointIndex = 0;
-            transform.DOMove(_currentWaypoint, 5f);
         }
         
         public override void OnUpdate()
@@ -27,6 +26,7 @@ namespace GameContent.Actors.EnemySystems.Seekers
 
         public override void OnFixedUpdate()
         {
+            HandleMovement();
         }
 
         private void HandleWayDist()
@@ -36,8 +36,14 @@ namespace GameContent.Actors.EnemySystems.Seekers
 
             _currentWaypointIndex = (_currentWaypointIndex + 1) % waypoints.Length;
             _currentWaypoint = waypoints[_currentWaypointIndex].position;
+        }
+
+        private void HandleMovement()
+        {
+            var dir = (_currentWaypoint - transform.position).normalized;
             
-            transform.DOMove(_currentWaypoint, 5f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), 5 * Time.fixedDeltaTime);
+            transform.position += dir * (Time.fixedDeltaTime * 2.5f);
         }
         
         #endregion

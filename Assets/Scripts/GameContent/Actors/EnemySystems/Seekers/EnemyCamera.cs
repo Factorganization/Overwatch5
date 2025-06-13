@@ -2,7 +2,6 @@
 using GameContent.ActorViews.Player;
 using GameContent.Management;
 using UnityEngine;
-using UnityEngine.Rendering.HighDefinition;
 
 namespace GameContent.Actors.EnemySystems.Seekers
 {
@@ -43,6 +42,9 @@ namespace GameContent.Actors.EnemySystems.Seekers
 
         public override void OnUpdate()
         {
+            if (playerTransform is null)
+                return;
+            
             HandleCameraRotation();
             
             var s = HasPlayerInSight();
@@ -79,7 +81,7 @@ namespace GameContent.Actors.EnemySystems.Seekers
             if (Vector3.Dot(transform.forward, (playerTransform.position - transform.position).normalized) < angle)
                 return false;
             
-            var r = Physics.Raycast(transform.position, playerTransform.position - transform.position, out var hit, range, collisionLayer);
+            var r = Physics.Raycast(transform.position, (playerTransform.position - transform.position).normalized, out var hit, range, collisionLayer);
 
             return r && hit.collider.gameObject.layer == LayerMask.NameToLayer("Player");
         }
@@ -198,17 +200,18 @@ namespace GameContent.Actors.EnemySystems.Seekers
 
         private void HandleGraphicAdaptation()
         {
+            if (_pBCone is null)
+                return;
+            
             if (SuspicionManager.Manager.IsTracking)
             {
                 _pBCone.SetFloat(SpeedFlash, 20);
                 coneRenderer.SetPropertyBlock(_pBCone);
-                camDecalProjector.material = flashCamDecal;
             }
             else
             {
                 _pBCone.SetFloat(SpeedFlash, 0);
                 coneRenderer.SetPropertyBlock(_pBCone);
-                camDecalProjector.material = baseCamDecal;
             }
         }
         
@@ -217,14 +220,8 @@ namespace GameContent.Actors.EnemySystems.Seekers
         #region fields
 
         [SerializeField] private Transform baitTarget;
-        
-        [SerializeField] private MeshRenderer coneRenderer;
 
-        [SerializeField] private DecalProjector camDecalProjector;
-        
-        [SerializeField] private Material baseCamDecal;
-        
-        [SerializeField] private Material flashCamDecal;
+        [SerializeField] private MeshRenderer coneRenderer;
         
         [SerializeField] private NetworkNode networkNode;
 

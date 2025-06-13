@@ -12,24 +12,24 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private SceneListSo sceneList;
 #endif
     
-    private Button newGameButton, loadGameButton, settingsButton, quitButton;
+    private Button newGameButton, settingsButton, creditsButton, quitButton;
 
     private void Awake()
     {
         newGameButton = mainMenu.rootVisualElement.Q<Button>("NewGameButton");
         newGameButton.RegisterCallback<ClickEvent>(NewGame);
         
-        /*loadGameButton = mainMenu.rootVisualElement.Q<Button>("LoadButton");
-        loadGameButton.RegisterCallback<ClickEvent>(LoadGame);
-        
         settingsButton = mainMenu.rootVisualElement.Q<Button>("SettingsButton");
-        settingsButton.RegisterCallback<ClickEvent>(OpenSettings);*/
+        settingsButton.RegisterCallback<ClickEvent>(OpenSettings);
+        
+        creditsButton = mainMenu.rootVisualElement.Q<Button>("CreditsButton");
+        creditsButton.RegisterCallback<ClickEvent>(OpenCredits);
         
         quitButton = mainMenu.rootVisualElement.Q<Button>("QuitButton");
         quitButton.RegisterCallback<ClickEvent>(QuitGame);
     }
 
-    private void LoadGame(ClickEvent evt)
+    private void OpenCredits(ClickEvent evt)
     {
         Debug.Log("Load Game");
     }
@@ -42,6 +42,7 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadSceneAsync("SC_GA_01", LoadSceneMode.Additive);
         SceneManager.LoadSceneAsync("SC_GA_VFX", LoadSceneMode.Additive);
         SceneManager.LoadSceneAsync("SC_GD", LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync("MainMenu");
     }
     
     public void OpenSettings(ClickEvent evt)
@@ -51,6 +52,6 @@ public class MainMenu : MonoBehaviour
     
     public void QuitGame(ClickEvent evt)
     {
-        Debug.Log("Quit Game");
+        Application.Quit();
     }
 }

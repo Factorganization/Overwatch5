@@ -10,24 +10,20 @@ public class Settings : MonoBehaviour
     [SerializeField] private Toggle _fullscreenToggle;
     [SerializeField] private TMP_Dropdown _resolutionDropdown;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         SetResolutionDropdownOptions();
+        
+        _fullscreenToggle.onValueChanged.AddListener(delegate { ToggleFullscreen(); });
+        _resolutionDropdown.onValueChanged.AddListener(ResolutionChanged);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void ToggleFullscreen()
     {
-        
+        Screen.fullScreen = _fullscreenToggle.isOn;
     }
     
-    public void ToggleFullscreen(bool isFullscreen)
-    {
-        Screen.fullScreen = isFullscreen;
-    }
-    
-    public void ResolutionChanged(int resolutionIndex)
+    private void ResolutionChanged(int resolutionIndex)
     {
         Resolution[] resolutions = Screen.resolutions;
         if (resolutionIndex < 0 || resolutionIndex >= resolutions.Length) return;

@@ -24,6 +24,8 @@ namespace GameContent.Management
         public Vector3 StartDebugPos => _debugHoundStartPos;
         
         public List<Hound> ClosestHounds => closestHounds;
+
+        public float Range => closestEnemyRange;
         
         public float DetectionTime { get; set; }
 
