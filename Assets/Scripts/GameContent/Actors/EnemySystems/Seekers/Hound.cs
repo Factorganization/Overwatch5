@@ -52,15 +52,11 @@ namespace GameContent.Actors.EnemySystems.Seekers
                 SuspicionManager.Manager.DetectionTime -= 1;
                 _closeEnough = false;
             }
-            
-            if (Vector3.Distance(transform.position, playerTransform.position) < 12.5f && _closeEnough)
-            {
-                if (_atkTimer > 2 && SuspicionManager.Manager.IsTracking)
-                {
-                    _atkTimer = 0;
-                    SuspicionManager.Manager.PlayerHealth.TakeDamage(10);
-                }
-            }
+
+            if (!(Vector3.Distance(transform.position, playerTransform.position) < 12.5f) || !_closeEnough) return;
+            if (!(_atkTimer > 2) || !SuspicionManager.Manager.IsTracking) return;
+            _atkTimer = 0;
+            SuspicionManager.Manager.PlayerHealth.TakeDamage(10);
         }
 
         public override void OnFixedUpdate()

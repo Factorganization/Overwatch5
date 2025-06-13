@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 namespace GameContent.Actors.EnemySystems.Seekers
 {
-    [RequireComponent(typeof(NavMeshAgent))]
     public class Drone : Actor
     {
         #region methodes

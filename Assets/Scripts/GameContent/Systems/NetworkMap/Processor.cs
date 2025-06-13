@@ -1,23 +1,16 @@
 using System;
 using UnityEngine;
 
+enum ProcessorType
+{
+    Normal,
+    TheOne
+}
+
 public class Processor : HackableJunction
 {
-    public static Processor Instance;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
+    [SerializeField] private RoomMap _roomMap;
+    
     private void Start()
     {
         _alrHacked = false;
@@ -32,6 +25,9 @@ public class Processor : HackableJunction
     {
         _alrHacked = true;
         
-        Debug.Log("Processor hacked");
+        foreach (MapLink link in _roomMap.MapLink)
+        {
+            link.UnlinkDevice();
+        }
     }
 }

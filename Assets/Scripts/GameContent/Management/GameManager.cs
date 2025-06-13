@@ -42,12 +42,29 @@ namespace GameContent.Management
             Debug.Log($"Async found {typeof(T).Name} at position: {transform.position}");
         }
         
+        public void Respawn()
+        {
+            if (respawnPoint != null)
+            {
+                Time.timeScale = 1f;
+                GameUIManager.Instance.DeathScreen.FallDeath = false;
+                playerTransform.position = respawnPoint.position;
+                playerTransform.rotation = respawnPoint.rotation;
+                Debug.Log("Player respawned at checkpoint.");
+            }
+            else
+            {
+                Debug.LogWarning("No respawn point set.");
+            }
+        }
         
         #endregion
 
         #region variables
         
         public Transform playerTransform;
+
+        public Transform respawnPoint;
 
         #endregion
     }
