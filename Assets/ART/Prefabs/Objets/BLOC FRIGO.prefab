@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3413412623272083682}
+  - component: {fileID: 5120430542148482231}
   m_Layer: 0
   m_Name: BLOC FRIGO
   m_TagString: Untagged
@@ -41,6 +42,27 @@ Transform:
   - {fileID: 4989099725512058050}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5120430542148482231
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005211272768248246}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.4923706, y: 2.3849735, z: 2.6314583}
+  m_Center: {x: 0.21313477, y: -0.0093278885, z: -0.6273594}
 --- !u!1001 &2314154959589535207
 PrefabInstance:
   m_ObjectHideFlags: 0
