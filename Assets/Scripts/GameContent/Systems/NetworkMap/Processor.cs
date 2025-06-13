@@ -24,10 +24,6 @@ public class Processor : HackableJunction
     protected override void OnHack()
     {
         _alrHacked = true;
-        
-        foreach (MapLink link in _roomMap.MapLink)
-        {
-            link.UnlinkDevice();
-        }
+       
     }
 }
