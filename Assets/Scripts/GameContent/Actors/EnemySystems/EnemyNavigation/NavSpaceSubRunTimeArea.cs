@@ -11,11 +11,17 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
         
         public Vector3 Position
         {
+            get => position;
             set => position = value;
         }
 
         public Bounds Bounds
         {
+            get
+            {
+                bounds.center = Position;
+                return bounds;
+            }
             set => bounds = value;
         }
 
@@ -50,7 +56,7 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
         
         #region fields
         
-        [HideInInspector] [SerializeField] private Bounds bounds;
+        [HideInInspector] [SerializeField] private Bounds bounds = new(Vector3.zero, Vector3.one * 50);
         
         [HideInInspector] [SerializeField] private Vector3 position;
 
