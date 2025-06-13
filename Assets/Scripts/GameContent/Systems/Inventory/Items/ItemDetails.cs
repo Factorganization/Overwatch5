@@ -23,13 +23,13 @@ namespace Systems.Inventory
         public Action action;
         public int maxStack;
         public SerializableGuid id = SerializableGuid.NewGuid();
+        public Sprite icon, chosenIcon;
         
         private void AssignNewGuid()
         {
             id = SerializableGuid.NewGuid();
         }
         
-        public Sprite icon;
         [TextArea] public string description;
 
         public Item CreateItem(int quantity)

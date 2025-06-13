@@ -73,9 +73,10 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
             if (_calculatingPath)
                 _calculationTime += Time.deltaTime;
             
-            if (_calculationTime > 10)
+            if (_calculationTime > 10.1f)
             {
-                _cancellationTokenSource.Cancel();
+                //_cancellationTokenSource.Cancel();
+                _currentPath = new List<RunTimePathNode>();
                 _calculationTime = 0;
                 _calculatingPath = false;
                 Debug.LogError("Agent discarded, Nav Space too heavy for calculation");
@@ -124,10 +125,10 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
             _calculatingPath = true;
             _calculationTime = 0;
 
-            var ri = Random.Range(0, _runTimeManager.Count);
+            var ri = Random.Range(0, subRunTimeArea is null ? _runTimeManager.Count : subRunTimeArea.Nodes.Count);
             var pos = transform.position;
             
-            HandlePathStarted(pos, _runTimeManager.RunTimePathNodes[ri].position);
+            HandlePathStarted(pos, subRunTimeArea is null ? _runTimeManager.RunTimePathNodes[ri].position : subRunTimeArea.Nodes[ri].position);
         }
         
         public void SetSpeed(float newSpeed) => speed = newSpeed;
@@ -142,6 +143,7 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
         {
             //try
             //{
+                _isRoaming = true;
                 var closestNode = await UniTask.RunOnThreadPool(() => GetClosestNode(pos), cancellationToken: _ct);
                 var dest = await UniTask.RunOnThreadPool(() => GetClosestNode(target), cancellationToken: _ct);
 
@@ -153,8 +155,12 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
                 }
                 
                 _currentPath = await UniTask.RunOnThreadPool(() => _pathFinder.FindPath(closestNode, dest), cancellationToken: _ct);
-
-                _isRoaming = true;
+                
+                if (_currentPath is null || _currentPath.Count == 0)
+                {
+                    _isRoaming = false;
+                }
+                
                 _currentWayPointId = 0;
                 _calculatingPath = false;
             //}
@@ -223,6 +229,8 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
 
         [SerializeField] private float accuracy = 0.5f;
 
+        [SerializeField] private NavSpaceSubRunTimeArea subRunTimeArea;
+        
         private NavSpaceRunTimeManager _runTimeManager;
         
         private PathFinder _pathFinder;

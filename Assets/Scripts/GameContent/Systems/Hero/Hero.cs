@@ -62,8 +62,7 @@ namespace Systems
 
         public void CheckInteractible()
         {
-            if (_currentEquippedItem == null || 
-                _currentEquippedItem.type != Type.MultiTool)
+            if (_currentEquippedItem == null)
             {
                 return;
             }
@@ -77,6 +76,11 @@ namespace Systems
                     
                     if (interactible != null && interactible != _currentInteractible)
                     {
+                        if (interactible is HackableJunction && _currentEquippedItem.type != Type.MultiTool)
+                        {
+                            return;
+                        }
+                        
                         _currentInteractible = interactible;
                         Debug.Log("Interactible: " + interactible.InteractibleName);
                         GameUIManager.Instance.UpdateInteractibleUI(interactible.InteractibleName, true);
@@ -107,18 +111,18 @@ namespace Systems
             
             if (_currentEquippedItem.type == Type.MultiTool)
             {
-                if (_currentInteractible is HackableJunction junction && junction._alrHacked == false)
-                {
-                    _currentJunction = junction;
-                    _isHacking = true;
-                    _currentHackTimer = 0f;
+                if (_currentInteractible is not HackableJunction junction || junction._alrHacked != false) return;
+                _currentJunction = junction;
+                _isHacking = true;
+                _currentHackTimer = 0f;
                         
-                    GameUIManager.Instance.HackProgressImage.gameObject.SetActive(true);
-                    GameUIManager.Instance.HackProgressImage.fillAmount = 0;
-                    return;
-                }
+                GameUIManager.Instance.HackProgressImage.gameObject.SetActive(true);
+                GameUIManager.Instance.HackProgressImage.fillAmount = 0;
             }
-            _currentInteractible?.OnInteract();
+            else
+            {
+                _currentInteractible?.OnInteract();
+            }
         }
 
         public void ContinueHack()
