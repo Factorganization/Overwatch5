@@ -33,7 +33,7 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
         
         private void OnSceneGUI()
         {
-            var navBounds = (NavSpaceBoundsDataHandling)target;
+            var navBounds = (NavSpaceSubRunTimeArea)target;
 
             _mBoundsHandle.center = navBounds.Bounds.center;
             _mBoundsHandle.size = navBounds.Bounds.size;
@@ -42,7 +42,7 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
             EditorGUI.BeginChangeCheck();
 
             _mBoundsHandle.DrawHandle();
-            _mBoundsHandle.SetColor(Color.cyan);
+            _mBoundsHandle.SetColor(Color.red);
             Handles.Label(navBounds.Position, "Bound Center");
             var pos = Handles.PositionHandle(navBounds.Position, Quaternion.identity);
             
