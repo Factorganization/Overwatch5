@@ -125,7 +125,7 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
             _calculatingPath = true;
             _calculationTime = 0;
 
-            var ri = Random.Range(0, _runTimeManager.Count);
+            var ri = Random.Range(0, subRunTimeArea is null ? _runTimeManager.Count : subRunTimeArea.Nodes.Count);
             var pos = transform.position;
             
             HandlePathStarted(pos, subRunTimeArea is null ? _runTimeManager.RunTimePathNodes[ri].position : subRunTimeArea.Nodes[ri].position);
