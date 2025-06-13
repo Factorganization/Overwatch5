@@ -64,9 +64,12 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
                 }
             }
             
-            _navSpaceLoaded = true;
-            
             Count = _runTimePathNodes.Count;
+
+            foreach (var nss in navSpaceSubRunTimeAreas)
+                nss.Init(_runTimePathNodes);
+            
+            _navSpaceLoaded = true;
         }
         
         private void OnDrawGizmos()
@@ -134,6 +137,8 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
         #region fields
 
         [SerializeField] private NavSpaceData navSpaceData;
+        
+        [SerializeField] private NavSpaceSubRunTimeArea[] navSpaceSubRunTimeAreas;
         
         [SerializeField] private ViewOptions viewOptions;
         

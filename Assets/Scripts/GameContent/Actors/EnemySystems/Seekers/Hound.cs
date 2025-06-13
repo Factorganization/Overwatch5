@@ -53,22 +53,14 @@ namespace GameContent.Actors.EnemySystems.Seekers
                 _closeEnough = false;
             }
             
-            /*if (Vector3.Distance(transform.position, playerTransform.position) < 2.5f)
+            if (Vector3.Distance(transform.position, playerTransform.position) < 12.5f && _closeEnough)
             {
                 if (_atkTimer > 2 && SuspicionManager.Manager.IsTracking)
                 {
                     _atkTimer = 0;
                     SuspicionManager.Manager.PlayerHealth.TakeDamage(10);
                 }
-                _navMeshAgent.isStopped = true;
             }
-            else
-                _navMeshAgent.isStopped = false;
-
-            if (Vector3.Distance(transform.position, playerTransform.position) > 10 && !SuspicionManager.Manager.IsTracking)
-            {
-                _navMeshAgent.destination = SuspicionManager.Manager.StartDebugPos;
-            }*/
         }
 
         public override void OnFixedUpdate()
