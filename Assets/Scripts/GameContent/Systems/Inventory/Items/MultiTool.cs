@@ -124,8 +124,6 @@ public class MultiTool : MonoBehaviour
         if (!_currentDevice) return;
         
         _currentScanTimer += Time.deltaTime;
-
-        Debug.Log(_currentDevice);
         
         if (_currentDevice is EnemyCamera enemyCamera)
         {
@@ -139,6 +137,7 @@ public class MultiTool : MonoBehaviour
             {
                 enemyCamera.NetworkNode.name.text = enemyCamera.NetworkNode.nodeId;
                 enemyCamera.NetworkNode.hidden = false;
+                NetworkMapController.Instance.CheckAllHidden();
                 CancelScan();
             }
         }
