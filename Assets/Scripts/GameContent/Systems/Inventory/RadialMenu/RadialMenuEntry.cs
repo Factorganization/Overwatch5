@@ -8,11 +8,13 @@ public class RadialMenuEntry : MonoBehaviour, IPointerClickHandler, IPointerEnte
 {
     public delegate void RadialMenuEntryDelegate(RadialMenuEntry entry);
     
-    [SerializeField] private TextMeshProUGUI Label, NumberOfItems;
-    [SerializeField] private Image Icon;
+    [SerializeField] private TextMeshProUGUI NumberOfItems;
+    [SerializeField] private Image Icon, BGImage;
     [SerializeField] private RectTransform rect;
 
     private RadialMenuEntryDelegate Callback;
+    
+    public Image BackgroundImage => BGImage;
 
     public RectTransform Rect => rect;
     
@@ -23,7 +25,6 @@ public class RadialMenuEntry : MonoBehaviour, IPointerClickHandler, IPointerEnte
 
     public void Refresh(string pLabel, Sprite pIcon, int pQuantity)
     {
-        SetLabel(pLabel);
         SetIcon(pIcon);
         SetNumberOfItems(pQuantity);
     }
@@ -31,11 +32,6 @@ public class RadialMenuEntry : MonoBehaviour, IPointerClickHandler, IPointerEnte
     public void SetNumberOfItems(int number)
     {
         NumberOfItems.text = number.ToString();
-    }
-
-    public void SetLabel(string label)
-    {
-        Label.text = label;
     }
 
     public void SetIcon(Sprite icon)
@@ -61,12 +57,12 @@ public class RadialMenuEntry : MonoBehaviour, IPointerClickHandler, IPointerEnte
     public void OnPointerEnter(PointerEventData eventData)
     {
         rect.DOComplete();
-        rect.DOScale(Vector3.one * 1.5f, .3f).SetEase(Ease.OutQuad);
+        rect.DOScale(1.2f, 0.2f).SetEase(Ease.OutBack);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         rect.DOComplete();
-        rect.DOScale(Vector3.one, .3f).SetEase(Ease.OutQuad);
+        rect.DOScale(1f, 0.2f).SetEase(Ease.OutBack);
     }
 }

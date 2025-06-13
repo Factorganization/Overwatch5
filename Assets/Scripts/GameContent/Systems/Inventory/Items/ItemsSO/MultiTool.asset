@@ -22,4 +22,5 @@ MonoBehaviour:
     Part3: 2637244095
     Part4: 43617777
   icon: {fileID: 1792246092, guid: 31f01bce877cd3941b965b899165b682, type: 3}
+  chosenIcon: {fileID: -1041440941, guid: 970a227944a971348ab10558ba0a1c1d, type: 3}
   description: This tool can help you to hack and desactivate the drones

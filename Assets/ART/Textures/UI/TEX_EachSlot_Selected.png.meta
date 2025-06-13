@@ -97,67 +97,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Healing
+      name: ChosenHeal
       rect:
         serializedVersion: 2
-        x: 0
-        y: 512
-        width: 512
-        height: 512
+        x: 199
+        y: 744
+        width: 100
+        height: 91
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 574ac7eb15329e2478b0bba972b70d40
-      internalID: 1016647516
+      spriteID: ad1c766f67c64eb45bbc991d36b31ac1
+      internalID: 1923474894
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MultiTool
+      name: ChosenMultiTool
       rect:
         serializedVersion: 2
-        x: 512
-        y: 512
-        width: 512
-        height: 512
+        x: 717
+        y: 735
+        width: 129
+        height: 102
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb02ed2d3a80d4e4b84a6a41158a5856
-      internalID: -589459431
+      spriteID: 49d4a9864b2e12a43b99206c43e1367a
+      internalID: -1041440941
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Battery
+      name: ChosenBattery
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 512
-        height: 512
+        x: 212
+        y: 205
+        width: 67
+        height: 148
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c56335bf92be914c8f69c0122a92f60
-      internalID: 951533369
+      spriteID: 7550ddf3e0032a34ba4841f7ddc98d01
+      internalID: -651057953
       vertices: []
       indices: 
       edges: []
@@ -177,6 +177,9 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Battery: 951533369
+      ChosenBattery: -651057953
+      ChosenHeal: 1923474894
+      ChosenMultiTool: -1041440941
       Healing: 1016647516
       MultiTool: -589459431
   mipmapLimitGroupName: 
