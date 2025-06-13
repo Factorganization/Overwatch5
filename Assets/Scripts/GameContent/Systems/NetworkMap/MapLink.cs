@@ -1,3 +1,4 @@
+using System.Collections;
 using GameContent.Actors.EnemySystems.Seekers;
 using GameContent.Management;
 using Systems;
@@ -11,6 +12,7 @@ public class MapLink : MonoBehaviour
      [SerializeField] private Button _sabotageButton;
      [SerializeField] private NetworkNode _linkedNode;
      [SerializeField] private float _suspicionValue;
+     [SerializeField] private float _sabotageTime = 10f;
      
      private RoomMap _roomMap;
      private EnemyCamera _enemyCamera;
@@ -26,7 +28,7 @@ public class MapLink : MonoBehaviour
 
      private void Awake()
      {
-          _sabotageButton.onClick.AddListener(UnlinkDevice);
+          _sabotageButton.onClick.AddListener(UnlinkButton);
      }
 
      private void Start()
@@ -79,14 +81,30 @@ public class MapLink : MonoBehaviour
                }
           }
      }
-
+     
      public void UnlinkDevice()
      {
           if (_linkedNode.type != NodeType.Device) return;
           
           _enemyCamera = _linkedNode.actor as EnemyCamera;
           _enemyCamera!.IsActive = !_enemyCamera.IsActive;
+          _sabotageButton.interactable = false;
+     }
+
+     private void UnlinkButton()
+     {
+          StartCoroutine(UnlinkDeviceCoroutine());
+     }
+
+     IEnumerator UnlinkDeviceCoroutine()
+     {
+          _enemyCamera = _linkedNode.actor as EnemyCamera;
+          _enemyCamera!.IsActive = !_enemyCamera.IsActive;
+          _sabotageButton.interactable = false;
           SuspicionManager.Manager.StartTrack(_linkedNode.actor as EnemyCamera);
           Hero.Instance.MultiToolObject.ConsumeBattery(5);
+          yield return new WaitForSeconds(_sabotageTime);
+          _sabotageButton.interactable = true;
+          _enemyCamera!.IsActive = !_enemyCamera.IsActive;
      }
 }

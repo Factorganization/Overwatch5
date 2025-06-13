@@ -7,7 +7,11 @@ public class HeroHealth : MonoBehaviour
     [SerializeField] private float _currentHealth;
 
     public float MaxHealth => _maxHealth;
-    public float CurrentHealth => _currentHealth;
+    public float CurrentHealth
+    {
+        get => _currentHealth;
+        set => _currentHealth = value;
+    }
 
     private void Start()
     {
@@ -39,5 +43,6 @@ public class HeroHealth : MonoBehaviour
 
     private void Die()
     {
+        GameUIManager.Instance.DeathScreen.Show();
     }
 }

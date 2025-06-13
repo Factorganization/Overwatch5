@@ -14,6 +14,7 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private GameObject _interactibleInfoUI;
     [SerializeField] private Settings _settingsMenu;
     [SerializeField] private HealthVisual _healthVisual;
+    [SerializeField] private DeathScreen _deathScreen;
     
     [Header("UI Elements")]
     [SerializeField] private TextMeshProUGUI _healthText;
@@ -25,6 +26,7 @@ public class GameUIManager : MonoBehaviour
     public GameObject PauseUI => _pauseMenu;
     public Image HackProgressImage => _hackProgressImage;
     public HealthVisual HealthVisual => _healthVisual;
+    public DeathScreen DeathScreen => _deathScreen;
 
     private void Awake()
     {
@@ -97,4 +99,5 @@ public class GameUIManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+    
 }
