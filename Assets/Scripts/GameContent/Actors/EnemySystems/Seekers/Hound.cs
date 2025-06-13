@@ -20,10 +20,9 @@ namespace GameContent.Actors.EnemySystems.Seekers
 
         public override void OnUpdate()
         {
-            float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
-
+            var distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
             
-            if (Vector3.Distance(transform.position, playerTransform.position) > 100f)
+            if (distanceToPlayer > SuspicionManager.Manager.Range)
             {
                 return;
             }
