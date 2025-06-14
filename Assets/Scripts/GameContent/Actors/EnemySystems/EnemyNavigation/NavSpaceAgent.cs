@@ -143,7 +143,6 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
         {
             //try
             //{
-                _isRoaming = true;
                 var closestNode = await UniTask.RunOnThreadPool(() => GetClosestNode(pos), cancellationToken: _ct);
                 var dest = await UniTask.RunOnThreadPool(() => GetClosestNode(target), cancellationToken: _ct);
 
@@ -156,10 +155,8 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
                 
                 _currentPath = await UniTask.RunOnThreadPool(() => _pathFinder.FindPath(closestNode, dest), cancellationToken: _ct);
                 
-                if (_currentPath is null || _currentPath.Count == 0)
-                {
-                    _isRoaming = false;
-                }
+                if (_currentPath is not null)
+                    _isRoaming = true;
                 
                 _currentWayPointId = 0;
                 _calculatingPath = false;
