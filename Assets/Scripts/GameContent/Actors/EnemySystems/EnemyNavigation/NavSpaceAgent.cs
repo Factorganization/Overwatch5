@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using NUnit.Framework;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -108,7 +109,9 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
         public void SetTargetPosition(Vector3 target)
         {
             if (_calculatingPath)
+            {
                 return;
+            }
             
             _calculatingPath = true;
             _calculationTime = 0;
@@ -146,7 +149,7 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
                 _isRoaming = true;
                 var closestNode = await UniTask.RunOnThreadPool(() => GetClosestNode(pos), cancellationToken: _ct);
                 var dest = await UniTask.RunOnThreadPool(() => GetClosestNode(target), cancellationToken: _ct);
-
+                
                 if (closestNode is null || dest is null)
                 {
                     _calculatingPath = false;
@@ -156,13 +159,14 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
                 
                 _currentPath = await UniTask.RunOnThreadPool(() => _pathFinder.FindPath(closestNode, dest), cancellationToken: _ct);
                 
-                if (_currentPath is null || _currentPath.Count == 0)
-                {
-                    _isRoaming = false;
-                }
+                
+                if (_currentPath is not null)
+                    _isRoaming = true;
+                
                 
                 _currentWayPointId = 0;
                 _calculatingPath = false;
+               
             //}
             
             /*catch (Exception e)

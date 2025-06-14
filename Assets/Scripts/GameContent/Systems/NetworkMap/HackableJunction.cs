@@ -13,7 +13,6 @@ public class HackableJunction : MonoBehaviour, IInteractible
     public string InteractibleName => _interactibleName;
     public bool _alrHacked;
     
-    
     private void Start()
     {
         _alrHacked = false;

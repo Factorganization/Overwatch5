@@ -7,7 +7,6 @@ public class FallTrigger : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            GameUIManager.Instance.DeathScreen.NotFallDeath = true;
             Hero.Instance.Health.TakeDamage(100);
         }
     }
