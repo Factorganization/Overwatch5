@@ -19,10 +19,10 @@ MonoBehaviour:
     sprintInput: {fileID: -5405772900591877546, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
     crouchInput: {fileID: 7040659881675835329, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
     actionInput: {fileID: -6549209242970463939, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
-    mapInput: {fileID: 0}
-    wheelInput: {fileID: 0}
-    useInput: {fileID: 0}
-    menuInput: {fileID: 0}
+    mapInput: {fileID: -4381108756153151012, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
+    wheelInput: {fileID: -7940495298482418737, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
+    useInput: {fileID: 4954656632983714576, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
+    menuInput: {fileID: 7747562978286151114, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
   moveData:
     playerHeight: 2
     playerSpeed: 250

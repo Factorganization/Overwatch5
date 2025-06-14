@@ -91,7 +91,7 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
                     _isRoaming = false;
                 return;
             }
-            
+
             if (Vector3.Distance(_currentPath[_currentWayPointId].position, transform.position) <= accuracy)
                 _currentWayPointId++;
 

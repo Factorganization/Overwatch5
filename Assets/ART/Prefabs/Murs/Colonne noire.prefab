@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4367769231335879072}
+  - component: {fileID: 3522294355037800913}
   m_Layer: 0
   m_Name: Colonne noire
   m_TagString: Untagged
@@ -43,6 +44,27 @@ Transform:
   - {fileID: 4336751882973771929}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3522294355037800913
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374466086537484528}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.9683838, y: 5.993744, z: 1.7683334}
+  m_Center: {x: -14.962952, y: 16.10596, z: -75.54555}
 --- !u!1001 &591547314401426501
 PrefabInstance:
   m_ObjectHideFlags: 0
