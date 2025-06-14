@@ -10,6 +10,8 @@ public class Settings : MonoBehaviour
     [SerializeField] private Toggle _fullscreenToggle;
     [SerializeField] private TMP_Dropdown _resolutionDropdown;
     
+    public Slider MouseSensitivitySlider => _mouseSensitivitySlider;
+    
     void Start()
     {
         SetResolutionDropdownOptions();
