@@ -57,7 +57,7 @@ public class MultiTool : MonoBehaviour
             {
                 var device = hit.collider.GetComponent<Actor>();
                     
-                if (device != null && device != _currentDevice && device is EnemyCamera enemyCamera)
+                if (device != null && device != _currentDevice && device is EnemyCamera enemyCamera && !enemyCamera.IsScanned)
                 {
                     device = enemyCamera;
                     _currentDevice = device;
@@ -137,6 +137,7 @@ public class MultiTool : MonoBehaviour
             {
                 enemyCamera.NetworkNode.name.text = enemyCamera.NetworkNode.nodeId;
                 enemyCamera.NetworkNode.hidden = false;
+                enemyCamera.IsScanned = true;
                 NetworkMapController.Instance.CheckAllHidden();
                 CancelScan();
             }
@@ -150,6 +151,7 @@ public class MultiTool : MonoBehaviour
         _currentDevice = null;
         GameUIManager.Instance.HackProgressImage.fillAmount = 0;
         GameUIManager.Instance.HackProgressImage.gameObject.SetActive(false);
+        GameUIManager.Instance.UpdateInteractibleUI("", false);
     }
 }
 

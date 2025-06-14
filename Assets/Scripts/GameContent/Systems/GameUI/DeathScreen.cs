@@ -9,8 +9,6 @@ public class DeathScreen : MonoBehaviour
     [SerializeField] private Image _backgroundImage;
     [SerializeField] private Button _respawnButton, _returnButton;
     [SerializeField] private float _fadeDuration = 1f;
-
-    public bool NotFallDeath;
     
     void Start()
     {
@@ -61,7 +59,7 @@ public class DeathScreen : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         
-        _respawnButton.gameObject.SetActive(NotFallDeath);
+        _respawnButton.gameObject.SetActive(true);
         _returnButton.gameObject.SetActive(true);
     }
 }

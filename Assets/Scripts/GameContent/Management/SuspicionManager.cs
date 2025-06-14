@@ -22,14 +22,18 @@ namespace GameContent.Management
         public Vector3 TrackedPos { get; private set; }
 
         public Vector3 StartDebugPos => _debugHoundStartPos;
-        
-        public List<Hound> ClosestHounds => closestHounds;
 
         public float Range => closestEnemyRange;
         
         public float DetectionTime { get; set; }
 
         public float TrackTimer { get; set; }
+        
+        public EnemyCamera DetectedCamera
+        {
+            get => detectedCamera;
+            set => detectedCamera = value;
+        }
         
         #endregion
 
@@ -68,7 +72,20 @@ namespace GameContent.Management
             if (DetectionTime > minCameraTimeForSuspicion)
             {
                 DetectionTime = 0;
-                StartTrackPlayer(Hero.Instance);
+                
+                if (detectedCamera == null)
+                {
+                    return;
+                }
+                
+                if (detectedCamera.CameraType == CameraType.Drone)
+                {
+                    StartTrack(detectedCamera);
+                }
+                else
+                {
+                    StartTrack(detectedCamera.NetworkNode.actor);
+                }
             }
 
             if (_needPersistentLocation)
@@ -108,11 +125,11 @@ namespace GameContent.Management
                 IsTracking = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.Q))
+            /*if (Input.GetKeyDown(KeyCode.Q))
             {
                 Debug.Log("Starting track on player");
                 StartTrackPlayer(Hero.Instance);
-            }
+            }*/
         }
 
         public void AddSuspicion(float value) => _suspicionLevel += value;
@@ -127,7 +144,8 @@ namespace GameContent.Management
             TrackedPos = Vector3.zero;
             TrackTimer = 0;
         }
-
+        
+        
         public void StartTrack(EnemyCamera cam)
         {
             IsTracking = true;
@@ -139,7 +157,7 @@ namespace GameContent.Management
                 if (!hound || !hound.gameObject.activeInHierarchy)
                     continue;
 
-                hound.SetTargetPosition(cam.transform.position);
+                hound.SetTargetPosition(TrackedPos);
             }
         }
 
@@ -208,9 +226,9 @@ namespace GameContent.Management
 
         [SerializeField] private List<Hound> closestHounds = new List<Hound>();
         
-        private Vector3 _debugHoundStartPos;
+        [SerializeField] private EnemyCamera detectedCamera;
         
-        //private List<Vector3> _debugHoundPositions = new List<Vector3>();
+        private Vector3 _debugHoundStartPos;
         
         private Pool<Hound> _houndPool;
 

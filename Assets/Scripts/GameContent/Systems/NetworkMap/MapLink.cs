@@ -53,7 +53,7 @@ public class MapLink : MonoBehaviour
                     if (nodeID._linkedNode.nodeId == _linkNameInputField.text)
                     {
                          // Will change the information that the camera will send to the processor
-                         _linkedNode._connectedNodes = nodeID._linkedNode._connectedNodes;
+                         _linkedNode.actor = nodeID._linkedNode.OriginalActor;
                          SuspicionManager.Manager.AddSuspicion(_suspicionValue);
                          return;
                     }
