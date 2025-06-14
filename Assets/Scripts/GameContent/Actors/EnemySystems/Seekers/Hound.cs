@@ -23,13 +23,14 @@ namespace GameContent.Actors.EnemySystems.Seekers
             var distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
             
             if (distanceToPlayer > SuspicionManager.Manager.Range)
-            {
                 return;
-            }
             
             _atkTimer += Time.deltaTime;
+
+            if (SuspicionManager.Manager.IsTracking && navSpaceAgent.IsRoaming)
+                navSpaceAgent.IsRoaming = false;
             
-            if (navSpaceAgent.IsRoaming == false && !SuspicionManager.Manager.IsTracking)
+            if (!navSpaceAgent.IsRoaming && !SuspicionManager.Manager.IsTracking)
             {
                 _timerPos += Time.deltaTime;
                 if (_timerPos > 5f)
@@ -38,13 +39,18 @@ namespace GameContent.Actors.EnemySystems.Seekers
                     _timerPos = 0;
                 }
             }
+
+            if (distanceToPlayer < detectionRange)
+            {
+                
+            }
             
-            if (distanceToPlayer < 5f)
+            if (distanceToPlayer < atkRange)
             {
                 _closeEnough = true;
                 SuspicionManager.Manager.DetectionTime += 1;
             }
-            else if (distanceToPlayer > 10f && _closeEnough)
+            else if (distanceToPlayer > detectionRange && _closeEnough)
             {
                 navSpaceAgent.SetTargetPosition(playerTransform.position);
                 SuspicionManager.Manager.DetectionTime -= 1;
@@ -77,6 +83,12 @@ namespace GameContent.Actors.EnemySystems.Seekers
 
         [SerializeField] private float speed;
 
+        [SerializeField] private float trackSpeed;
+
+        [SerializeField] private float atkRange;
+
+        [SerializeField] private float detectionRange;
+        
         [SerializeField] private NavSpaceAgent navSpaceAgent;
 
         private Vector3 _currentTargetPosition;
