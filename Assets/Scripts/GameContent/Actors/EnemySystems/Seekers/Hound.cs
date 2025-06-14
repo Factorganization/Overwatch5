@@ -1,8 +1,6 @@
-using GameContent.Actors.ActorData;
 using GameContent.Actors.EnemySystems.EnemyNavigation;
 using GameContent.Management;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace GameContent.Actors.EnemySystems.Seekers
 {
@@ -14,7 +12,7 @@ namespace GameContent.Actors.EnemySystems.Seekers
         {
             IsActive = true;
             base.Init(player);
-            GetComponent<NavMeshAgent>();
+            navSpaceAgent.SetSpeed(speed);
         }
 
         public override void OnUpdate()
@@ -79,7 +77,7 @@ namespace GameContent.Actors.EnemySystems.Seekers
 
         #region fields
 
-        [SerializeField] private HoundData houndData;
+        [SerializeField] private float speed;
 
         [SerializeField] private NavSpaceAgent navSpaceAgent;
 
