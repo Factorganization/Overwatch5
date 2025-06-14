@@ -29,8 +29,6 @@ namespace GameContent.Actors.EnemySystems.Seekers
             
             _atkTimer += Time.deltaTime;
             
-            Debug.Log(navSpaceAgent.IsRoaming);
-            
             if (navSpaceAgent.IsRoaming == false && !SuspicionManager.Manager.IsTracking)
             {
                 _timerPos += Time.deltaTime;
