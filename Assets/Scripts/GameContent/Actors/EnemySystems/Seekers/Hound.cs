@@ -15,7 +15,6 @@ namespace GameContent.Actors.EnemySystems.Seekers
             IsActive = true;
             base.Init(player);
             GetComponent<NavMeshAgent>();
-            //navSpaceAgent.SetRandomTargetPosition();
         }
 
         public override void OnUpdate()
@@ -32,7 +31,9 @@ namespace GameContent.Actors.EnemySystems.Seekers
             
             _atkTimer += Time.deltaTime;
             
-            if (!navSpaceAgent.IsRoaming && !SuspicionManager.Manager.IsTracking)
+            Debug.Log(navSpaceAgent.IsRoaming);
+            
+            if (navSpaceAgent.IsRoaming == false && !SuspicionManager.Manager.IsTracking)
             {
                 _timerPos += Time.deltaTime;
                 if (_timerPos > 5f)

@@ -111,13 +111,23 @@ namespace Systems
             
             if (_currentEquippedItem.type == Type.MultiTool)
             {
-                if (_currentInteractible is not HackableJunction junction || junction._alrHacked != false) return;
-                _currentJunction = junction;
-                _isHacking = true;
-                _currentHackTimer = 0f;
+                if (_currentInteractible is HackableJunction junction)
+                {
+                    if (junction._alrHacked)
+                    {
+                        return;
+                    }
+                    _currentJunction = junction;
+                    _isHacking = true;
+                    _currentHackTimer = 0f;
                         
-                GameUIManager.Instance.HackProgressImage.gameObject.SetActive(true);
-                GameUIManager.Instance.HackProgressImage.fillAmount = 0;
+                    GameUIManager.Instance.HackProgressImage.gameObject.SetActive(true);
+                    GameUIManager.Instance.HackProgressImage.fillAmount = 0;
+                }
+                else
+                {
+                    _currentInteractible?.OnInteract();
+                }
             }
             else
             {

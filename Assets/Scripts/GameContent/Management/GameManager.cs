@@ -47,7 +47,6 @@ namespace GameContent.Management
             if (respawnPoint != null)
             {
                 Time.timeScale = 1f;
-                GameUIManager.Instance.DeathScreen.NotFallDeath = true;
                 playerTransform.position = respawnPoint.position;
                 playerTransform.rotation = respawnPoint.rotation;
                 Debug.Log("Player respawned at checkpoint.");
