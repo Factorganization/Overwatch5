@@ -1,5 +1,6 @@
-using System.Collections.Generic;
+using System;
 using GameContent.Actors;
+using GameContent.Actors.EnemySystems.Seekers;
 using TMPro;
 using UnityEngine;
 
@@ -7,25 +8,32 @@ public enum NodeType { Junction, Device, Processor }
 
 public class NetworkNode : MonoBehaviour
 {
+    public bool hidden;
     public string nodeId;
     public NodeType type;
-    public GameObject nodeVisual;
-    public Actor actor;
+    public EnemyCamera actor;
     public TextMeshProUGUI name;
-    public List<NetworkNode> _originalConnectedNodes = new List<NetworkNode>();
-    public List<NetworkNode> _connectedNodes = new List<NetworkNode>();
-    public bool hidden;
+    
+    public EnemyCamera OriginalActor => originalActor;
+    
+    [Header("Private Variables")]
+    [SerializeField] private GameObject nodeVisual;
+    [SerializeField]private EnemyCamera originalActor;
 
-    private void Start()
+    private void Awake()
     {
-        if (hidden)
+        if (actor != null)
         {
-            name.text = "???";
+            originalActor = actor;
         }
         else
         {
-            name.text = nodeId;
-            _originalConnectedNodes = new List<NetworkNode>(_connectedNodes);
+            originalActor = null;
         }
+    }
+
+    private void Start()
+    {
+        name.text = hidden ? "???" : nodeId;
     }
 }

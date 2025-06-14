@@ -3,6 +3,12 @@ using GameContent.ActorViews.Player;
 using GameContent.Management;
 using UnityEngine;
 
+public enum CameraType
+{
+    Camera,
+    Drone
+}
+
 namespace GameContent.Actors.EnemySystems.Seekers
 {
     public class EnemyCamera : Actor
@@ -20,6 +26,11 @@ namespace GameContent.Actors.EnemySystems.Seekers
         }
 
         public Transform BaitTarget => baitTarget ?? transform;
+        
+        public bool IsScanned { set; get; }
+
+        public CameraType CameraType { get => cameraType; }
+
 
         #endregion
         
@@ -30,6 +41,7 @@ namespace GameContent.Actors.EnemySystems.Seekers
             playerTransform = player;
             _playerView = playerTransform.GetComponent<PlayerView>();
             IsActive = true;
+            IsScanned = false;
 
             foreach (var c in cameraRotations)
                 c.Init(gameObject);
@@ -51,6 +63,7 @@ namespace GameContent.Actors.EnemySystems.Seekers
             switch (s)
             {
                 case true when !_inSight:
+                    SuspicionManager.Manager.DetectedCamera = this;
                     _inSight = true;
                     coneRenderer.material.color = new Color(1, 0, 0, 0.2f);
                     _playerView.SightCount++;
@@ -234,6 +247,8 @@ namespace GameContent.Actors.EnemySystems.Seekers
 
         [SerializeField] private CameraRotation[] cameraRotations;
 
+        [SerializeField] private CameraType cameraType;
+        
         [SerializeField] private float scanningTime;
         
         private PlayerView _playerView;

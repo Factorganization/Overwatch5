@@ -1,6 +1,7 @@
 #if UNITY_EDITOR
 using RunTimeContent.CustomSceneManagement;
 #endif
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -8,11 +9,14 @@ using UnityEngine.UIElements;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private UIDocument mainMenu;
+    [SerializeField] private GameObject settingsMenu, creditsMenu;
 #if UNITY_EDITOR
     [SerializeField] private SceneListSo sceneList;
 #endif
     
     private Button newGameButton, settingsButton, creditsButton, quitButton;
+    
+    private bool isMenuOpen;
 
     private void Awake()
     {
@@ -29,9 +33,19 @@ public class MainMenu : MonoBehaviour
         quitButton.RegisterCallback<ClickEvent>(QuitGame);
     }
 
+    private void Start()
+    {
+        isMenuOpen = true;
+        mainMenu.rootVisualElement.style.display = DisplayStyle.Flex;
+        
+        settingsMenu.SetActive(false);
+        creditsMenu.SetActive(false);
+    }
+
     private void OpenCredits(ClickEvent evt)
     {
-        Debug.Log("Load Game");
+        ToggleMainMenu();
+        creditsMenu.SetActive(!creditsMenu.activeSelf);
     }
 
     public void NewGame(ClickEvent evt)
@@ -45,13 +59,27 @@ public class MainMenu : MonoBehaviour
         SceneManager.UnloadSceneAsync("MainMenu");
     }
     
-    public void OpenSettings(ClickEvent evt)
+    private void OpenSettings(ClickEvent evt)
     {
-        Debug.Log("Open Settings");
+        ToggleMainMenu();
+        settingsMenu.SetActive(!settingsMenu.activeSelf);
     }
     
-    public void QuitGame(ClickEvent evt)
+    private void QuitGame(ClickEvent evt)
     {
         Application.Quit();
+    }
+
+    public void ToggleMainMenu()
+    {
+        isMenuOpen = !isMenuOpen;
+        mainMenu.rootVisualElement.style.display = isMenuOpen ? DisplayStyle.Flex : DisplayStyle.None;
+    }
+    
+    public void ReturnToMainMenu()
+    {
+        creditsMenu.SetActive(false);
+        settingsMenu.SetActive(false);
+        ToggleMainMenu();
     }
 }

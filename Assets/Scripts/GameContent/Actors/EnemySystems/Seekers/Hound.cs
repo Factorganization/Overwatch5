@@ -1,8 +1,6 @@
-using GameContent.Actors.ActorData;
 using GameContent.Actors.EnemySystems.EnemyNavigation;
 using GameContent.Management;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace GameContent.Actors.EnemySystems.Seekers
 {
@@ -14,12 +12,14 @@ namespace GameContent.Actors.EnemySystems.Seekers
         {
             IsActive = true;
             base.Init(player);
-            GetComponent<NavMeshAgent>();
-            //navSpaceAgent.SetRandomTargetPosition();
+            navSpaceAgent.SetSpeed(speed);
         }
 
         public override void OnUpdate()
         {
+            if (playerTransform is null)
+                return;
+            
             var distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
             
             if (distanceToPlayer > SuspicionManager.Manager.Range)
@@ -29,7 +29,9 @@ namespace GameContent.Actors.EnemySystems.Seekers
             
             _atkTimer += Time.deltaTime;
             
-            if (!navSpaceAgent.IsRoaming && !SuspicionManager.Manager.IsTracking)
+            Debug.Log(navSpaceAgent.IsRoaming);
+            
+            if (navSpaceAgent.IsRoaming == false && !SuspicionManager.Manager.IsTracking)
             {
                 _timerPos += Time.deltaTime;
                 if (_timerPos > 5f)
@@ -75,7 +77,7 @@ namespace GameContent.Actors.EnemySystems.Seekers
 
         #region fields
 
-        [SerializeField] private HoundData houndData;
+        [SerializeField] private float speed;
 
         [SerializeField] private NavSpaceAgent navSpaceAgent;
 
