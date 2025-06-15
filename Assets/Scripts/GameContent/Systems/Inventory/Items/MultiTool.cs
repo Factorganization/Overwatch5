@@ -64,6 +64,14 @@ public class MultiTool : MonoBehaviour
                     GameUIManager.Instance.UpdateInteractibleUI(enemyCamera.NetworkNode.nodeId, true);
                 }
             }
+            else
+            {
+                if (_currentDevice != null)
+                {
+                    _currentDevice = null;
+                    GameUIManager.Instance.UpdateInteractibleUI("", false);
+                }
+            }
         }
         else
         {
@@ -115,13 +123,24 @@ public class MultiTool : MonoBehaviour
                     GameUIManager.Instance.HackProgressImage.gameObject.SetActive(true);
                     GameUIManager.Instance.HackProgressImage.fillAmount = 0;
                 }
+                else
+                {
+                    GameUIManager.Instance.UpdateInteractibleUI("", false);
+                    _currentDevice = null;
+                    isScanning = false;
+                    GameUIManager.Instance.HackProgressImage.gameObject.SetActive(false);
+                }
             }
         }
     }
 
     public void Scanning()
     {
-        if (!_currentDevice) return;
+        if (!_currentDevice)
+        {
+            CancelScan();
+            return;
+        }
         
         _currentScanTimer += Time.deltaTime;
         
