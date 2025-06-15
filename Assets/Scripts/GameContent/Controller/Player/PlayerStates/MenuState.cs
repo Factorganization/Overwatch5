@@ -12,7 +12,7 @@ namespace GameContent.Controller.Player.PlayerStates
         
         #endregion
 
-        #region methodes
+         #region methodes
 
         public override void OnEnterState()
         {
@@ -25,6 +25,11 @@ namespace GameContent.Controller.Player.PlayerStates
         public override sbyte OnUpdate()
         {
             ChangeStateToIdle();
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                GameUIManager.Instance.TogglePauseMenu();
+            }
             return 0;
         }
 
