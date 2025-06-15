@@ -4956,7 +4956,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: f8cc9fe7d0a348a4c8080d1c8f1dd29d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5026,7 +5026,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1d3143005f434c9ac1a0340a18691a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  houndData: {fileID: 0}
+  speed: 0
+  trackSpeed: 0
+  atkRange: 0
+  detectionRange: 0
   navSpaceAgent: {fileID: 609227519664161207}
 --- !u!114 &609227519664161207
 MonoBehaviour:
@@ -5057,7 +5060,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e195f2d94d0695344bb1024c6c7d0ed7, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.5576
+      value: 3.462029
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e195f2d94d0695344bb1024c6c7d0ed7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1712927
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e195f2d94d0695344bb1024c6c7d0ed7, type: 3}
       propertyPath: m_LocalPosition.x
