@@ -131,6 +131,7 @@ MonoBehaviour:
       stepNumbers: 2
       waitTime: 3
       loopAround: 0
+  cameraType: 0
   scanningTime: 1.5
 --- !u!65 &4028146970573691711
 BoxCollider:
@@ -151,8 +152,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.455633, z: 1.3582829}
-  m_Center: {x: 0.000000001187851, y: -0.22781645, z: -0.29810977}
+  m_Size: {x: 2.0259247, y: 2.333175, z: 1.9869645}
+  m_Center: {x: -0.08162689, y: -0.3554995, z: -0.43753016}
 --- !u!1 &3922030808357333770
 GameObject:
   m_ObjectHideFlags: 0
