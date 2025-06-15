@@ -42,9 +42,8 @@ public class MapLink : MonoBehaviour
      public void VerifyID(string playerInput)
      {
           if (_linkedNode.type != NodeType.Device) return;
-          
-          if (_linkNameInputField.text == _linkedNode.nodeId)
-               return;
+          if (_linkNameInputField.text == _linkedNode.nodeId) return;
+          if (_linkedNode.hidden) return;
           
           if (_linkNameInputField.text != _linkedNode.nodeId)
           {
@@ -84,7 +83,7 @@ public class MapLink : MonoBehaviour
      {
           if (_linkedNode.hidden)
           {
-               _linkNameInputField.text = "";
+               _linkNameInputField.text = "...";
                _sabotageButton.interactable = false;
                _linkNameInputField.interactable = false;
           }
