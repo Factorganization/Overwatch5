@@ -47,7 +47,6 @@ namespace GameContent.Management
             if (respawnPoint != null)
             {
                 Time.timeScale = 1f;
-                GameUIManager.Instance.DeathScreen.NotFallDeath = true;
                 playerTransform.position = respawnPoint.position;
                 playerTransform.rotation = respawnPoint.rotation;
                 Debug.Log("Player respawned at checkpoint.");
@@ -70,7 +69,8 @@ namespace GameContent.Management
         
         public void WinGame()
         {
-            Debug.Log("Win");
+            GameUIManager.Instance.DeathScreen.DeathMessageText.text = "You heve successfully desactivated the heart";
+            GameUIManager.Instance.DeathScreen.Show();
         }
         
         #endregion
@@ -81,7 +81,7 @@ namespace GameContent.Management
 
         public Transform respawnPoint;
         
-        private int numberOfProcessorsTerminated = 0;
+        [SerializeField] private int numberOfProcessorsTerminated;
 
         #endregion
     }

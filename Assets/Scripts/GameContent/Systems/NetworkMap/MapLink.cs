@@ -34,18 +34,7 @@ public class MapLink : MonoBehaviour
      private void Start()
      {
           _enemyCamera = _linkedNode.actor as EnemyCamera;
-          if (_linkedNode.hidden)
-          {
-               _linkNameInputField.text = "";
-               _sabotageButton.interactable = false;
-               _linkNameInputField.interactable = false;
-          }
-          else
-          {
-               _linkNameInputField.text = _linkedNode.nodeId;
-               _sabotageButton.interactable = true;
-               _linkNameInputField.interactable = true;
-          }
+          CheckHidden();
      }
 
      // Verify if the Id is correct, if it's not correct,
@@ -64,7 +53,7 @@ public class MapLink : MonoBehaviour
                     if (nodeID._linkedNode.nodeId == _linkNameInputField.text)
                     {
                          // Will change the information that the camera will send to the processor
-                         _linkedNode._connectedNodes = nodeID._linkedNode._connectedNodes;
+                         _linkedNode.actor = nodeID._linkedNode.OriginalActor;
                          SuspicionManager.Manager.AddSuspicion(_suspicionValue);
                          return;
                     }
@@ -89,6 +78,22 @@ public class MapLink : MonoBehaviour
           _enemyCamera = _linkedNode.actor as EnemyCamera;
           _enemyCamera!.IsActive = !_enemyCamera.IsActive;
           _sabotageButton.interactable = false;
+     }
+
+     public void CheckHidden()
+     {
+          if (_linkedNode.hidden)
+          {
+               _linkNameInputField.text = "";
+               _sabotageButton.interactable = false;
+               _linkNameInputField.interactable = false;
+          }
+          else
+          {
+               _linkNameInputField.text = _linkedNode.nodeId;
+               _sabotageButton.interactable = true;
+               _linkNameInputField.interactable = true;
+          }
      }
 
      private void UnlinkButton()

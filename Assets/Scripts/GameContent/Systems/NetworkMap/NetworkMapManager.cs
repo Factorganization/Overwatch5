@@ -50,4 +50,15 @@ public class NetworkMapController : MonoBehaviour
             }
         }
     }
+    
+    public void CheckAllHidden()
+    {
+        foreach (var roomMap in _roomMaps)
+        {
+            foreach (var mapLink in roomMap.MapLink)
+            {
+                mapLink.CheckHidden();
+            }
+        }
+    }
 }

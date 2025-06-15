@@ -17,7 +17,7 @@ public class Processor : HackableJunction
         _alrHacked = false;
     }
     
-    public new void OnInteract() 
+    public override void OnInteract() 
     {
         if (_alrHacked == false) OnHack();
     }
@@ -31,8 +31,12 @@ public class Processor : HackableJunction
             GameManager.Instance.TerminateProcessor();
         }
         
-        if (_processorType == ProcessorType.TheOne && GameManager.Instance.GetNumberOfProcessorsTerminated() > 4)
+        if (_processorType == ProcessorType.TheOne)
         {
+            if (GameManager.Instance.GetNumberOfProcessorsTerminated() < 4)
+                return;
+            
+            GameManager.Instance.TerminateProcessor();
             GameManager.Instance.WinGame();
         }
     }

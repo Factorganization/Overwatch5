@@ -1,8 +1,6 @@
-using GameContent.Actors.ActorData;
 using GameContent.Actors.EnemySystems.EnemyNavigation;
 using GameContent.Management;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace GameContent.Actors.EnemySystems.Seekers
 {
@@ -14,20 +12,23 @@ namespace GameContent.Actors.EnemySystems.Seekers
         {
             IsActive = true;
             base.Init(player);
-            GetComponent<NavMeshAgent>();
-            //navSpaceAgent.SetRandomTargetPosition();
+            navSpaceAgent.SetSpeed(speed);
         }
 
         public override void OnUpdate()
         {
+            if (playerTransform is null)
+                return;
+            
             var distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
             
             if (distanceToPlayer > SuspicionManager.Manager.Range)
-            {
                 return;
-            }
             
             _atkTimer += Time.deltaTime;
+
+            if (SuspicionManager.Manager.IsTracking && navSpaceAgent.IsRoaming)
+                navSpaceAgent.IsRoaming = false;
             
             if (!navSpaceAgent.IsRoaming && !SuspicionManager.Manager.IsTracking)
             {
@@ -38,13 +39,18 @@ namespace GameContent.Actors.EnemySystems.Seekers
                     _timerPos = 0;
                 }
             }
+
+            if (distanceToPlayer < detectionRange)
+            {
+                
+            }
             
-            if (distanceToPlayer < 5f)
+            if (distanceToPlayer < atkRange)
             {
                 _closeEnough = true;
                 SuspicionManager.Manager.DetectionTime += 1;
             }
-            else if (distanceToPlayer > 10f && _closeEnough)
+            else if (distanceToPlayer > detectionRange && _closeEnough)
             {
                 navSpaceAgent.SetTargetPosition(playerTransform.position);
                 SuspicionManager.Manager.DetectionTime -= 1;
@@ -75,8 +81,14 @@ namespace GameContent.Actors.EnemySystems.Seekers
 
         #region fields
 
-        [SerializeField] private HoundData houndData;
+        [SerializeField] private float speed;
 
+        [SerializeField] private float trackSpeed;
+
+        [SerializeField] private float atkRange;
+
+        [SerializeField] private float detectionRange;
+        
         [SerializeField] private NavSpaceAgent navSpaceAgent;
 
         private Vector3 _currentTargetPosition;
