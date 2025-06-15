@@ -1,14 +1,28 @@
 using System.Collections;
 using GameContent.Management;
 using Systems;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DeathScreen : MonoBehaviour
 {
     [SerializeField] private Image _backgroundImage;
+    [SerializeField] private TextMeshProUGUI _deathMessageText;
     [SerializeField] private Button _respawnButton, _returnButton;
     [SerializeField] private float _fadeDuration = 1f;
+    
+    public TextMeshProUGUI DeathMessageText
+    {
+        get => _deathMessageText;
+        set => _deathMessageText = value;
+    }
+    
+    public Button RespawnButton
+    {
+        get => _respawnButton;
+        set => _respawnButton = value;
+    }
     
     void Start()
     {
@@ -61,5 +75,10 @@ public class DeathScreen : MonoBehaviour
         
         _respawnButton.gameObject.SetActive(true);
         _returnButton.gameObject.SetActive(true);
+
+        if (GameManager.Instance.GetNumberOfProcessorsTerminated() > 4)
+        {
+            _respawnButton.gameObject.SetActive(false);
+        }
     }
 }

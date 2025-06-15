@@ -159,10 +159,8 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
                 
                 _currentPath = await UniTask.RunOnThreadPool(() => _pathFinder.FindPath(closestNode, dest), cancellationToken: _ct);
                 
-                
                 if (_currentPath is not null)
                     _isRoaming = true;
-                
                 
                 _currentWayPointId = 0;
                 _calculatingPath = false;

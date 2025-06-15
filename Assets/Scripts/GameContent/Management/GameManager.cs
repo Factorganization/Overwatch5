@@ -69,7 +69,8 @@ namespace GameContent.Management
         
         public void WinGame()
         {
-            Debug.Log("Win");
+            GameUIManager.Instance.DeathScreen.DeathMessageText.text = "You heve successfully desactivated the heart";
+            GameUIManager.Instance.DeathScreen.Show();
         }
         
         #endregion
@@ -80,7 +81,7 @@ namespace GameContent.Management
 
         public Transform respawnPoint;
         
-        private int numberOfProcessorsTerminated = 0;
+        [SerializeField] private int numberOfProcessorsTerminated;
 
         #endregion
     }

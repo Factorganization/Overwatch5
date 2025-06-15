@@ -43,6 +43,7 @@ public class HeroHealth : MonoBehaviour
 
     private void Die()
     {
+        GameUIManager.Instance.DeathScreen.DeathMessageText.text = "You have died!";
         GameUIManager.Instance.DeathScreen.Show();
     }
 }
