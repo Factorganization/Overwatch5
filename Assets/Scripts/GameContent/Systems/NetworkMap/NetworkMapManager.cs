@@ -9,7 +9,11 @@ public class NetworkMapController : MonoBehaviour
     
     [SerializeField] private GameObject _networkMapUI;
     [SerializeField] private Button _validateButton;
+    [SerializeField] private int unlinkCost, changeIDCost;
     [SerializeField] private List<RoomMap> _roomMaps = new List<RoomMap>();
+    
+    public int UnlinkCost => unlinkCost;
+    public int ChangeIDCost => changeIDCost;
     
     private void Awake()
     {

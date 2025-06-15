@@ -53,6 +53,7 @@ public class MapLink : MonoBehaviour
                     {
                          // Will change the information that the camera will send to the processor
                          _linkedNode.actor = nodeID._linkedNode.OriginalActor;
+                         Hero.Instance.MultiToolObject.ConsumeBattery(NetworkMapController.Instance.ChangeIDCost);
                          SuspicionManager.Manager.AddSuspicion(_suspicionValue);
                          return;
                     }
@@ -106,7 +107,7 @@ public class MapLink : MonoBehaviour
           _enemyCamera!.IsActive = !_enemyCamera.IsActive;
           _sabotageButton.interactable = false;
           SuspicionManager.Manager.StartTrack(_linkedNode.actor as EnemyCamera);
-          Hero.Instance.MultiToolObject.ConsumeBattery(5);
+          Hero.Instance.MultiToolObject.ConsumeBattery(NetworkMapController.Instance.UnlinkCost);
           yield return new WaitForSeconds(_sabotageTime);
           _sabotageButton.interactable = true;
           _enemyCamera!.IsActive = !_enemyCamera.IsActive;
