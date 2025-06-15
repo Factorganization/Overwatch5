@@ -28,13 +28,13 @@ namespace GameContent.Management
             await WaitForObjectOfTypeAsync<Hero>();
         }
         
-        async UniTask WaitForObjectOfTypeAsync<T>() where T : MonoBehaviour
+        private async UniTask WaitForObjectOfTypeAsync<T>() where T : MonoBehaviour
         {
             T found = null;
 
             while (found == null)
             {
-                found = FindObjectOfType<T>();
+                found = FindFirstObjectByType<T>();
                 await UniTask.Yield(); // yield to next frame
             }
             
