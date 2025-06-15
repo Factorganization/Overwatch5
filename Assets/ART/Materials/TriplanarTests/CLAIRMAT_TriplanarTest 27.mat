@@ -250,7 +250,7 @@ Material:
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
     - _LinkDetailsWithBase: 1
-    - _MainSmooth: 0.68
+    - _MainSmooth: 1.47
     - _MaterialID: 1
     - _MaterialTypeMask: 2
     - _Metallic: 0
@@ -302,7 +302,7 @@ Material:
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
     - _Thickness: 1
-    - _Tiling: 1.61
+    - _Tiling: -0.8
     - _Tilling: 0.1
     - _TransmissionEnable: 1
     - _TransmissionMask: 1
