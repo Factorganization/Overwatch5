@@ -27,6 +27,7 @@ public class GameUIManager : MonoBehaviour
     public Image HackProgressImage => _hackProgressImage;
     public HealthVisual HealthVisual => _healthVisual;
     public DeathScreen DeathScreen => _deathScreen;
+    public Settings SettingsMenu => _settingsMenu;
 
     private void Awake()
     {

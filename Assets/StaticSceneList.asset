@@ -33,4 +33,20 @@ MonoBehaviour:
       additionalScenePath: 
     - scene: {fileID: 102900000, guid: 35e78de33b9f8e04a9bc019fa84b6932, type: 3}
       additionalScenePath: 
-  currentSceneGroupName: SecondPlayable
+  - sceneGroupName: AllColliders
+    scenePaths:
+    - scene: {fileID: 102900000, guid: 1d0a2817dbbdd354ba945ce915886891, type: 3}
+      additionalScenePath: GD_Scenes/
+    - scene: {fileID: 102900000, guid: b095ea755260d7243908e487f3ee517b, type: 3}
+      additionalScenePath: GD_Scenes/
+    - scene: {fileID: 102900000, guid: bf8004fb2eb955647876000891412067, type: 3}
+      additionalScenePath: Colliders Scene GA Multip/
+    - scene: {fileID: 102900000, guid: 7593b37aad7171447a2651d2a18df259, type: 3}
+      additionalScenePath: Colliders Scene GA Multip/
+    - scene: {fileID: 102900000, guid: 6bd260a0665095249888701f67386d77, type: 3}
+      additionalScenePath: Colliders Scene GA Multip/
+    - scene: {fileID: 102900000, guid: bdf5cbf679a0d6d4f85427ca1648bd9a, type: 3}
+      additionalScenePath: Colliders Scene GA Multip/
+    - scene: {fileID: 102900000, guid: ab689805d2b3ba5468cf64e4ebd32304, type: 3}
+      additionalScenePath: Colliders Scene GA Multip/
+  currentSceneGroupName: AllColliders
