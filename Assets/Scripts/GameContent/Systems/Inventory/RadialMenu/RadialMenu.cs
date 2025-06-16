@@ -1,6 +1,7 @@
 using UnityEngine.UI;
 using System.Collections.Generic;
 using DG.Tweening;
+using GameContent.Management;
 using Systems;
 using Systems.Inventory;
 using UnityEngine;
@@ -66,6 +67,9 @@ public class RadialMenu : MonoBehaviour
         targetIcon.gameObject.SetActive(true);
         isOpen = true;
         
+        AudioManager.Instance.PlayOneShot(
+            FMODEvents.Instance.SelectionWheelOpen, GameManager.Instance.playerTransform.position);
+        
         for (int i = 0; i < entries.Count; i++)
         {
             RectTransform rect = entries[i].Rect;
@@ -83,6 +87,10 @@ public class RadialMenu : MonoBehaviour
     public void Close()
     {
         targetIcon.gameObject.SetActive(false);
+        isOpen = false;
+        
+        AudioManager.Instance.PlayOneShot(
+            FMODEvents.Instance.SelectionWheelClose, GameManager.Instance.playerTransform.position);
         
         for (int i = 0; i < entries.Count; i++)
         {
@@ -95,8 +103,6 @@ public class RadialMenu : MonoBehaviour
                     entries[i1].gameObject.SetActive(false);
                 };
         }
-        
-        isOpen = false;
     }
 
     void Rearrange()
