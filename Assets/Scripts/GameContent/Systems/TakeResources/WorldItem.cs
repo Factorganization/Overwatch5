@@ -14,7 +14,7 @@ namespace Systems.TakeResources
         public void OnInteract()
         {
             Inventory.Inventory.Instance.Controller.AddItem(itemDetails, quantity);
-            //AudioManager.Instance.PlayOneShot(FMODEvents.Instance.AvatarPickUP, transform.position);
+            AudioManager.Instance.PlayOneShot(FMODEvents.Instance.AvatarPickUP, transform.position);
             gameObject.SetActive(false);
         }
     }

@@ -1,3 +1,4 @@
+using FMOD.Studio;
 using GameContent.Actors;
 using GameContent.Actors.EnemySystems.Seekers;
 using GameContent.Management;
@@ -18,7 +19,13 @@ public class MultiTool : MonoBehaviour
     
     [Header("Device Information")]
     [SerializeField] private Actor _currentDevice;
+    
     public bool isScanning;
+    
+    private EventInstance _scanEventInstance;
+    
+    public EventInstance ScanEventInstance => _scanEventInstance;
+    
     
     public Actor CurrentDevice
     {
@@ -41,6 +48,7 @@ public class MultiTool : MonoBehaviour
         _maxBattery = 100f;
         _currentBattery = _maxBattery;
         GameUIManager.Instance.UpdateText();
+        _scanEventInstance = AudioManager.Instance.CreateEventInstance(FMODEvents.Instance.Scan);
     }
 
     public void CheckDevice()
@@ -155,9 +163,6 @@ public class MultiTool : MonoBehaviour
             
             float progress = _currentScanTimer / enemyCamera.ScanningTime;
             GameUIManager.Instance.HackProgressImage.fillAmount = Mathf.Clamp01(progress);
-            /*AudioManager.Instance.PlayOneShot(
-                FMODEvents.Instance.Scan, 
-                GameManager.Instance.playerTransform.position);*/
             
             if (_currentScanTimer >= enemyCamera.ScanningTime)
             {
@@ -165,9 +170,10 @@ public class MultiTool : MonoBehaviour
                 enemyCamera.NetworkNode.hidden = false;
                 enemyCamera.IsScanned = true;
                 NetworkMapController.Instance.CheckAllHidden();
-                /*AudioManager.Instance.PlayOneShot(
+                AudioManager.Instance.PlayOneShot(
                     FMODEvents.Instance.ScanPeriphSuccess, 
-                    GameManager.Instance.playerTransform.position);*/
+                    GameManager.Instance.playerTransform.position);
+                _scanEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                 CancelScan();
             }
         }

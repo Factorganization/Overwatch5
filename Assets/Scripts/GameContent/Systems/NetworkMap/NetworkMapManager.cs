@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Systems;
 using UnityEngine;
 using UnityEngine.UI;
 using Cursor = UnityEngine.Cursor;
@@ -13,9 +14,11 @@ public class NetworkMapController : MonoBehaviour
     [SerializeField] private float unlinkCost, changeIDCost;
     [SerializeField] private List<RoomMap> _roomMaps = new List<RoomMap>();
 
-    private bool _isIDChanged;
-    private int numberOfChanges;
-    private float totalHackingCost;
+    [SerializeField] private bool _isIDChanged;
+    [SerializeField] private int numberOfChanges;
+    [SerializeField] private float totalHackingCost;
+
+    private float tempVar;
     
     public float UnlinkCost => unlinkCost;
     public float ChangeIDCost => changeIDCost;
@@ -23,6 +26,18 @@ public class NetworkMapController : MonoBehaviour
     {
         get => numberOfChanges;
         set => numberOfChanges = value;
+    }
+    
+    public bool IsIDChanged
+    {
+        get => _isIDChanged;
+        set => _isIDChanged = value;
+    }
+    
+    public float TotalHackingCost
+    {
+        get => totalHackingCost;
+        set => totalHackingCost = value;
     }
     
     private void Awake()
@@ -35,9 +50,15 @@ public class NetworkMapController : MonoBehaviour
     {
         if (_isIDChanged == false) return;
 
+        tempVar += Time.deltaTime;
+        
         if (_isIDChanged)
         {
-            
+            if (tempVar >= 1f)
+            {
+                Hero.Instance.MultiToolObject.ConsumeBattery(totalHackingCost);
+                tempVar = 0f;
+            }
         }
     }
 
@@ -73,9 +94,6 @@ public class NetworkMapController : MonoBehaviour
                 _roomMaps[i].MapLink[j].VerifyID(_roomMaps[i].MapLink[j].LinkNameInputField.text);
             }
         }
-
-        _isIDChanged = true;
-        totalHackingCost = ChangeIDCost * NumberOfChanges;
     }
     
     public void CheckAllHidden()
