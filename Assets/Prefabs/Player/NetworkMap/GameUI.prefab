@@ -1144,7 +1144,7 @@ MonoBehaviour:
   _gameUI: {fileID: 1674227831111764419}
   _pauseMenu: {fileID: 5464608226409698229}
   _interactibleInfoUI: {fileID: 4565654102217335431}
-  _settingsMenu: {fileID: 0}
+  _settingsMenu: {fileID: 7509571098401438263}
   _healthVisual: {fileID: 7447103239959029393}
   _deathScreen: {fileID: 4692268912350933994}
   _healthText: {fileID: 5157878197338503947}
