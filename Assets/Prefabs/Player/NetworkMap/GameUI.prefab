@@ -1378,7 +1378,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5410414224646209329
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2382,7 +2382,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8879168399499827732}
+      - m_Target: {fileID: 5292218717198338827}
         m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
         m_MethodName: OnSliderValueChanged
         m_Mode: 1
@@ -4207,7 +4207,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 190, y: 80}
-  m_SizeDelta: {x: 300, y: 200}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6094700722302671461
 CanvasRenderer:
@@ -7463,7 +7463,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8879168399499827732}
+      - m_Target: {fileID: 8966140771691785770}
         m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
         m_MethodName: OnSliderValueChanged
         m_Mode: 1
