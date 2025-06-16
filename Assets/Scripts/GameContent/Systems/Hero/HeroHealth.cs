@@ -39,11 +39,13 @@ public class HeroHealth : MonoBehaviour
         }
         GameUIManager.Instance.UpdateText();
         GameUIManager.Instance.HealthVisual.HealthHeal();
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.MedkitUsed, transform.position);
     }
 
     private void Die()
     {
         GameUIManager.Instance.DeathScreen.DeathMessageText.text = "You have died!";
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.AvatarDeath, transform.position);
         GameUIManager.Instance.DeathScreen.Show();
     }
 }
