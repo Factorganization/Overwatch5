@@ -1,5 +1,6 @@
 using GameContent.Actors;
 using GameContent.Actors.EnemySystems.Seekers;
+using GameContent.Management;
 using Systems;
 using Systems.Inventory;
 using UnityEngine;
@@ -151,6 +152,9 @@ public class MultiTool : MonoBehaviour
             
             float progress = _currentScanTimer / enemyCamera.ScanningTime;
             GameUIManager.Instance.HackProgressImage.fillAmount = Mathf.Clamp01(progress);
+            /*AudioManager.Instance.PlayOneShot(
+                FMODEvents.Instance.Scan, 
+                GameManager.Instance.playerTransform.position);*/
             
             if (_currentScanTimer >= enemyCamera.ScanningTime)
             {
@@ -158,6 +162,9 @@ public class MultiTool : MonoBehaviour
                 enemyCamera.NetworkNode.hidden = false;
                 enemyCamera.IsScanned = true;
                 NetworkMapController.Instance.CheckAllHidden();
+                /*AudioManager.Instance.PlayOneShot(
+                    FMODEvents.Instance.ScanPeriphSuccess, 
+                    GameManager.Instance.playerTransform.position);*/
                 CancelScan();
             }
         }
