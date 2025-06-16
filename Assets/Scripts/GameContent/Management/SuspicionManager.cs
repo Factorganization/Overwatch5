@@ -96,7 +96,7 @@ namespace GameContent.Management
                 if (_persistentLocationCounter > 3)
                 {
                     _needPersistentLocation = false;
-                    StartTrackPlayer(Hero.Instance);
+                    SoftStartTrack(Hero.Instance);
                 }
             }
 
@@ -125,12 +125,6 @@ namespace GameContent.Management
             {
                 IsTracking = true;
             }
-
-            /*if (Input.GetKeyDown(KeyCode.Q))
-            {
-                Debug.Log("Starting track on player");
-                StartTrackPlayer(Hero.Instance);
-            }*/
         }
 
         public void AddSuspicion(float value) => _suspicionLevel += value;
@@ -170,6 +164,20 @@ namespace GameContent.Management
             TrackedPos = player.transform.position;
             closestHounds = GetClosestEnemy(player.transform.position, closestEnemyRange);
             
+            foreach (Hound hound in closestHounds)
+            {
+                if (!hound || !hound.gameObject.activeInHierarchy || !hound.HasPlayerInZone)
+                    continue;
+
+                hound.SetTargetPosition(player.transform.position);
+            }
+        }
+
+        public void SoftStartTrack(Hero player)
+        {
+            TrackedPos = player.transform.position;
+            closestHounds = GetClosestEnemy(player.transform.position, closestEnemyRange);
+
             foreach (Hound hound in closestHounds)
             {
                 if (!hound || !hound.gameObject.activeInHierarchy || !hound.HasPlayerInZone)

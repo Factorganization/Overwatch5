@@ -33,7 +33,7 @@ public class MapLink : MonoBehaviour
 
      private void Start()
      {
-          _enemyCamera = _linkedNode.actor as EnemyCamera;
+          _enemyCamera = _linkedNode.actor;
           CheckHidden();
      }
 
@@ -42,7 +42,15 @@ public class MapLink : MonoBehaviour
      public void VerifyID(string playerInput)
      {
           if (_linkedNode.type != NodeType.Device) return;
-          if (_linkNameInputField.text == _linkedNode.nodeId) return;
+          
+          if (_linkNameInputField.text == _linkedNode.nodeId)
+          {
+               NetworkMapController.Instance.IsIDChanged = false;
+               NetworkMapController.Instance.NumberOfChanges--;
+               NetworkMapController.Instance.TotalHackingCost = NetworkMapController.Instance.ChangeIDCost * NetworkMapController.Instance.NumberOfChanges;
+               return;
+          }
+          
           if (_linkedNode.hidden) return;
           
           if (_linkNameInputField.text != _linkedNode.nodeId)
@@ -53,7 +61,6 @@ public class MapLink : MonoBehaviour
                     {
                          // Will change the information that the camera will send to the processor
                          _linkedNode.actor = nodeID._linkedNode.OriginalActor;
-                         Hero.Instance.MultiToolObject.ConsumeBattery(NetworkMapController.Instance.ChangeIDCost);
                          SuspicionManager.Manager.AddSuspicion(_suspicionValue);
                          return;
                     }
@@ -68,6 +75,10 @@ public class MapLink : MonoBehaviour
                     
                     SuspicionManager.Manager.StartTrackPlayer(Hero.Instance);
                }
+               
+               NetworkMapController.Instance.IsIDChanged = true;
+               NetworkMapController.Instance.NumberOfChanges++;
+               NetworkMapController.Instance.TotalHackingCost = NetworkMapController.Instance.ChangeIDCost * NetworkMapController.Instance.NumberOfChanges;
           }
      }
      

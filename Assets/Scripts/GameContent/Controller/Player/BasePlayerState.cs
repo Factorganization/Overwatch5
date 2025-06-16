@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using FMOD.Studio;
 using Systems;
 using GameContent.Controller.BaseMachine;
 using Systems.Inventory;
@@ -65,6 +66,7 @@ namespace GameContent.Controller.Player
             if (dataSo.inputData.actionInput.action.WasPressedThisFrame())
             {
                 Hero.Instance.MultiToolObject.ScanDevice();
+                playerMachine.Animator.Play("scan");
             }
             
             if (dataSo.inputData.actionInput.action.IsPressed() && Hero.Instance.MultiToolObject.isScanning)
@@ -73,13 +75,20 @@ namespace GameContent.Controller.Player
             }
             else if (dataSo.inputData.actionInput.action.WasReleasedThisFrame() && Hero.Instance.MultiToolObject.isScanning)
             {
+                Hero.Instance.MultiToolObject.ScanEventInstance.stop(STOP_MODE.IMMEDIATE);
                 Hero.Instance.MultiToolObject.CancelScan();
+            }
+            
+            if (dataSo.inputData.actionInput.action.WasPressedThisFrame() && Hero.Instance.MultiToolObject.isScanning)
+            {
+                Hero.Instance.MultiToolObject.ScanEventInstance.start();
             }
             
             // Hacking Action
             if (dataSo.inputData.actionInput.action.WasPressedThisFrame())
             {
                 Hero.Instance.TryInteract();
+                playerMachine.Animator.Play("JONCTION");
             }
             
             if (dataSo.inputData.actionInput.action.IsPressed() && Hero.Instance.IsHacking)
@@ -88,7 +97,13 @@ namespace GameContent.Controller.Player
             }
             else if (dataSo.inputData.actionInput.action.WasReleasedThisFrame() && Hero.Instance.IsHacking)
             {
+                Hero.Instance.HackEventInstance.stop(STOP_MODE.IMMEDIATE);
                 Hero.Instance.CancelHack();
+            }
+            
+            if (dataSo.inputData.actionInput.action.WasPressedThisFrame() && Hero.Instance.IsHacking)
+            {
+                Hero.Instance.HackEventInstance.start();
             }
             
             if (dataSo.inputData.crouchInput.action.IsPressed() && playerMachine.PlayerModel.currentHeightTarget > dataSo.moveData.crouchHeight - 1)
