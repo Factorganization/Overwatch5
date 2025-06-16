@@ -150,8 +150,7 @@ namespace Systems
             if (!_currentJunction) return;
 
             _currentHackTimer += Time.deltaTime;
-
-            _hackEventInstance.start();
+            
             float progress = _currentHackTimer / _currentJunction.HackingTime;
             GameUIManager.Instance.HackProgressImage.fillAmount = Mathf.Clamp01(progress);
             
@@ -178,6 +177,7 @@ namespace Systems
             _currentJunction = null;
             GameUIManager.Instance.HackProgressImage.fillAmount = 0;
             GameUIManager.Instance.HackProgressImage.gameObject.SetActive(false);
+            _hackEventInstance.stop(STOP_MODE.IMMEDIATE);
         }
 
         #endregion

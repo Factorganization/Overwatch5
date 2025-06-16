@@ -102,7 +102,6 @@ namespace GameContent.Controller.Player
             }
             else if (dataSo.inputData.useInput.action.WasReleasedThisFrame() && Hero.Instance.IsHacking)
             {
-                Hero.Instance.HackEventInstance.stop(STOP_MODE.IMMEDIATE);
                 Hero.Instance.CancelHack();
             }
             
