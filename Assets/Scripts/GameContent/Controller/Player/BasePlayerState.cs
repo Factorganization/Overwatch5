@@ -66,6 +66,7 @@ namespace GameContent.Controller.Player
             if (dataSo.inputData.actionInput.action.WasPressedThisFrame())
             {
                 Hero.Instance.MultiToolObject.ScanDevice();
+                playerMachine.Animator.Play("scan");
             }
             
             if (dataSo.inputData.actionInput.action.IsPressed() && Hero.Instance.MultiToolObject.isScanning)
@@ -87,6 +88,7 @@ namespace GameContent.Controller.Player
             if (dataSo.inputData.actionInput.action.WasPressedThisFrame())
             {
                 Hero.Instance.TryInteract();
+                playerMachine.Animator.Play("JONCTION");
             }
             
             if (dataSo.inputData.actionInput.action.IsPressed() && Hero.Instance.IsHacking)
