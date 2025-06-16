@@ -6,6 +6,14 @@ namespace GameContent.Actors.EnemySystems.Seekers
 {
     public class Hound : Actor
     {
+        #region properties
+
+        public bool HasPlayerInZone => navSpaceAgent.SubRunTimeArea is not null && 
+                                       playerTransform is not null &&
+                                       navSpaceAgent.SubRunTimeArea.Bounds.Contains(playerTransform.position);
+
+        #endregion
+        
         #region methodes
 
         public override void Init(Transform player)
@@ -19,6 +27,12 @@ namespace GameContent.Actors.EnemySystems.Seekers
         {
             if (playerTransform is null)
                 return;
+
+            if (navSpaceAgent.SubRunTimeArea is not null)
+            {
+                if (!navSpaceAgent.SubRunTimeArea.Bounds.Contains(playerTransform.position))
+                    return;
+            }
             
             var distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
             

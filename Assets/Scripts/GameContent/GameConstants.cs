@@ -8,6 +8,6 @@
     
         public const float AntiGroundGrabJumpTimer = 0.1f;
 
-        public const int MaxPathFindIteration = 100000;
+        public const int MaxPathFindIteration = 1000000;
     }
 }

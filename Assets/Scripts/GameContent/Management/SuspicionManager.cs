@@ -69,9 +69,10 @@ namespace GameContent.Management
         {
             _suspicionDecreaseTimer -= Time.deltaTime;
 
-            if (DetectionTime > minCameraTimeForSuspicion)
+            if (DetectionTime > minCameraTimeForSuspicion && !IsTracking)
             {
                 DetectionTime = 0;
+                IsTracking = true;
                 
                 if (detectedCamera == null)
                 {
@@ -154,7 +155,7 @@ namespace GameContent.Management
             
             foreach (Hound hound in closestHounds)
             {
-                if (!hound || !hound.gameObject.activeInHierarchy)
+                if (!hound || !hound.gameObject.activeInHierarchy || !hound.HasPlayerInZone)
                     continue;
 
                 hound.SetTargetPosition(TrackedPos);
@@ -171,7 +172,7 @@ namespace GameContent.Management
             
             foreach (Hound hound in closestHounds)
             {
-                if (!hound || !hound.gameObject.activeInHierarchy)
+                if (!hound || !hound.gameObject.activeInHierarchy || !hound.HasPlayerInZone)
                     continue;
 
                 hound.SetTargetPosition(player.transform.position);
@@ -185,7 +186,8 @@ namespace GameContent.Management
 
             foreach (Hound hound in listOfHounds)
             {
-                if (!hound || !hound.gameObject.activeInHierarchy)
+                Debug.Log(hound.HasPlayerInZone);
+                if (!hound || !hound.gameObject.activeInHierarchy || !hound.HasPlayerInZone)
                     continue;
 
                 float distance = (hound.transform.position - pos).sqrMagnitude;

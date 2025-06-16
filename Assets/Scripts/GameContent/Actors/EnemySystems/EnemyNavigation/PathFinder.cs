@@ -28,6 +28,9 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
             
             var iterationCount = 0;
 
+            var startCopy = RunTimePathNode.DeepCopy(start);
+            var endCopy = RunTimePathNode.DeepCopy(end);
+            
             start.g = 0;
             start.h = Heuristic(start, end);
             start.f = start.g + start.h;
@@ -36,14 +39,13 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
 
             while (_openList.Count > 0)
             {
-                
                 if (++iterationCount > GameConstants.MaxPathFindIteration)
                 {
                     Debug.LogWarning("Pathfind iteration exceeded");
                     return new List<RunTimePathNode>();
                 }
                 
-                if (swRef.Elapsed.Seconds > 10)
+                if (swRef.Elapsed.Seconds > 5)
                 {
                     Debug.LogWarning("Cancelling Path Calculation");
                     return new List<RunTimePathNode>();
@@ -71,6 +73,8 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
 
                     if ((tempG >= n.g && _openList.Contains(n)) || !n.isAvailable)
                         continue;
+                    
+                    var nCopy = RunTimePathNode.DeepCopy(n);
                     
                     n.g = tempG;
                     n.h = Heuristic(n, end);

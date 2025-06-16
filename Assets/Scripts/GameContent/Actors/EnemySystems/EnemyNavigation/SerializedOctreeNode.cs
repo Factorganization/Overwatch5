@@ -59,6 +59,25 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
             isAvailable = true;
             this.depth = depth;
         }
+
+        public RunTimePathNode(int id, Vector3 position, int depth, List<RunTimePathEdge> edges, bool isAvailable)
+        {
+            this.id = id;
+            this.position = position;
+            this.edges = edges;
+            this.isAvailable = isAvailable;
+        }
+        
+        #endregion
+        
+        #region methodes
+
+        public static RunTimePathNode DeepCopy(RunTimePathNode toCopy) => new(
+            toCopy.id, 
+            toCopy.position, 
+            toCopy.depth, 
+            toCopy.edges, 
+            toCopy.isAvailable);
         
         #endregion
         
@@ -83,5 +102,10 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
         public float f;
         
         #endregion
+    }
+
+    public class CalculationPathNode
+    {
+        
     }
 }

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
-using NUnit.Framework;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -17,6 +17,8 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
             get => _isRoaming;
             set => _isRoaming = value;
         }
+
+        public NavSpaceSubRunTimeArea SubRunTimeArea => subRunTimeArea; 
 
         #endregion
         
@@ -80,7 +82,7 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
                 _currentPath = new List<RunTimePathNode>();
                 _calculationTime = 0;
                 _calculatingPath = false;
-                Debug.LogError("Agent discarded, Nav Space too heavy for calculation");
+                Debug.LogWarning("Agent discarded, Nav Space too heavy for calculation");
             }
             
             if (_isStopped)
@@ -147,8 +149,12 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
             //try
             //{
                 _isRoaming = true;
-                var closestNode = await UniTask.RunOnThreadPool(() => GetClosestNode(pos), cancellationToken: _ct);
-                var dest = await UniTask.RunOnThreadPool(() => GetClosestNode(target), cancellationToken: _ct);
+                var closestNode = await Task.Run(() => GetClosestNode(pos), cancellationToken: _ct);
+                _startingNode = closestNode;
+                var dest = await Task.Run(() => GetClosestNode(target), cancellationToken: _ct);
+                _targetNode = dest;
+                //var closestNode = GetClosestNode(pos);
+                //var dest = GetClosestNode(target);
                 
                 if (closestNode is null || dest is null)
                 {
@@ -157,7 +163,9 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
                     return;
                 }
                 
-                _currentPath = await UniTask.RunOnThreadPool(() => _pathFinder.FindPath(closestNode, dest), cancellationToken: _ct);
+                //await UniTask.WaitUntil(() => !PathFinder.Calculating, cancellationToken: _ct);
+                _currentPath = await Task.Run(() => _pathFinder.FindPath(closestNode, dest), cancellationToken: _ct);
+                //_currentPath = _pathFinder.FindPath(closestNode, dest);
                 
                 if (_currentPath is not null)
                     _isRoaming = true;
@@ -199,6 +207,13 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
         {
             if (_runTimeManager is null || _currentPath is null)
                 return;
+            
+            Gizmos.color = Color.Lerp(Color.blue, Color.magenta, 0.5f);
+            if (_startingNode is not null)
+                Gizmos.DrawWireCube(_startingNode.position, Vector3.one * 0.35f);
+            Gizmos.color = Color.Lerp(Color.green, Color.cyan, 0.5f);
+            if (_targetNode is not null)
+                Gizmos.DrawWireCube(_targetNode.position, Vector3.one * 0.35f);
             
             if (_currentPath.Count == 0)
                 return;
@@ -245,6 +260,10 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
 
         private RunTimePathNode _currentNode;
 
+        private RunTimePathNode _targetNode;
+        
+        private RunTimePathNode _startingNode;
+        
         private int _currentWayPointId;
 
         private bool _isStopped;
