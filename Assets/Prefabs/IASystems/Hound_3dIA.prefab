@@ -5029,6 +5029,7 @@ MonoBehaviour:
   speed: 1
   trackSpeed: 3
   atkRange: 3
+  atkDamage: 3
   detectionRange: 8
   collidableLayer:
     serializedVersion: 2
