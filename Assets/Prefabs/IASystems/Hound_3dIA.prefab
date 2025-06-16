@@ -5026,10 +5026,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1d3143005f434c9ac1a0340a18691a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  trackSpeed: 7
-  atkRange: 7
-  detectionRange: 10
+  speed: 1
+  trackSpeed: 3
+  atkRange: 3
+  detectionRange: 8
   collidableLayer:
     serializedVersion: 2
     m_Bits: 4261412872
