@@ -529,7 +529,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5749860903984525215}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.32622814, y: 0, z: 0, w: 0.94529104}
+  m_LocalRotation: {x: 0.5202013, y: -0.0000004102783, z: -0.0000011888382, w: 0.8540437}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -554,7 +554,7 @@ MonoBehaviour:
   coneRenderer: {fileID: 7824857806055600008}
   networkNode: {fileID: 0}
   range: 15
-  angle: 0.95
+  angle: 0.92
   collisionLayer:
     serializedVersion: 2
     m_Bits: 2013265928
