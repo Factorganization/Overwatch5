@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Systems;
 using UnityEngine;
@@ -83,6 +82,13 @@ public class NetworkMapController : MonoBehaviour
 
     private void ValidateChanges()
     {
+        numberOfChanges = 0;
+        
+        if (numberOfChanges <= 0)
+        {
+            _isIDChanged = false;
+        }
+        
         for (int i = 0; i < _roomMaps.Count; i++)
         {
             for (int j = 0; j < _roomMaps[i].MapLink.Count; j++)

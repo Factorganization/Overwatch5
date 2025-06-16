@@ -45,9 +45,6 @@ public class MapLink : MonoBehaviour
           
           if (_linkNameInputField.text == _linkedNode.nodeId)
           {
-               NetworkMapController.Instance.IsIDChanged = false;
-               NetworkMapController.Instance.NumberOfChanges--;
-               NetworkMapController.Instance.TotalHackingCost = NetworkMapController.Instance.ChangeIDCost * NetworkMapController.Instance.NumberOfChanges;
                return;
           }
           
@@ -76,9 +73,13 @@ public class MapLink : MonoBehaviour
                     SuspicionManager.Manager.StartTrackPlayer(Hero.Instance);
                }
                
-               NetworkMapController.Instance.IsIDChanged = true;
                NetworkMapController.Instance.NumberOfChanges++;
                NetworkMapController.Instance.TotalHackingCost = NetworkMapController.Instance.ChangeIDCost * NetworkMapController.Instance.NumberOfChanges;
+
+               if (NetworkMapController.Instance.NumberOfChanges > 0)
+               {
+                    NetworkMapController.Instance.IsIDChanged = true;
+               }
           }
      }
      
