@@ -48,7 +48,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -980,7 +980,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 1
+        scalar: 0
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -1606,7 +1606,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 21.99
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1659,7 +1659,7 @@ ParticleSystem:
     z:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 21.99
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -5030,7 +5030,11 @@ MonoBehaviour:
   trackSpeed: 0
   atkRange: 0
   detectionRange: 0
+  collidableLayer:
+    serializedVersion: 2
+    m_Bits: 0
   navSpaceAgent: {fileID: 609227519664161207}
+  laserEmiter: {fileID: 1277266121568496668}
 --- !u!114 &609227519664161207
 MonoBehaviour:
   m_ObjectHideFlags: 0

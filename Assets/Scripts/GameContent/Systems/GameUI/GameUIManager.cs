@@ -60,6 +60,11 @@ public class GameUIManager : MonoBehaviour
         }
     }
 
+    public void UpdateLifeText()
+    {
+        _healthText.text = $"Health: {Hero.Instance.Health.CurrentHealth}/{Hero.Instance.Health.MaxHealth}";
+    }
+
     public void UpdateInteractibleUI(string name, bool onoff)
     {
         _interactibleText.text = name;
