@@ -93,7 +93,7 @@ namespace Systems
                         
                         _currentInteractible = interactible;
                         Debug.Log("Interactible: " + interactible.InteractibleName);
-                        GameUIManager.Instance.UpdateInteractibleUI(interactible.InteractibleName, true);
+                        GameUIManager.Instance.UpdateInteractibleUI(interactible.InteractibleName, "Right click to interact",true);
                     }
                 }
             }
@@ -103,7 +103,7 @@ namespace Systems
                 {
                     _currentInteractible = null;
                     _currentJunction = null;
-                    GameUIManager.Instance.UpdateInteractibleUI("", false);
+                    GameUIManager.Instance.UpdateInteractibleUI("", "E to pick up",false);
                 }
             }
         }
@@ -161,6 +161,7 @@ namespace Systems
                 AudioManager.Instance.PlayOneShot(
                     FMODEvents.Instance.ScanJunctionSuccess, 
                     gameObject.transform.position);
+                GameUIManager.Instance.ShowNotification($"Hacked {_currentJunction.InteractibleName} successfully!", 2f);
                 ResetHack();
             }
         }

@@ -69,6 +69,11 @@ public class MapLink : MonoBehaviour
                          // Will change the information that the camera will send to the processor
                          _linkedNode.actor = nodeID._linkedNode.OriginalActor;
                          SuspicionManager.Manager.AddSuspicion(_suspicionValue);
+                         NetworkMapController.Instance.NumberOfChanges++;
+                         if (NetworkMapController.Instance.NumberOfChanges > 0)
+                         {
+                              NetworkMapController.Instance.IsIDChanged = true;
+                         }
                          return;
                     }
                }
@@ -83,6 +88,7 @@ public class MapLink : MonoBehaviour
                     SuspicionManager.Manager.StartTrackPlayer(Hero.Instance);
                }
                
+               Debug.Log("AHHHHHHHHHHH");
                NetworkMapController.Instance.NumberOfChanges++;
 
                if (NetworkMapController.Instance.NumberOfChanges > 0)

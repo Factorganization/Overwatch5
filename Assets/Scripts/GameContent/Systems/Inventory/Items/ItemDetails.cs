@@ -24,6 +24,7 @@ namespace Systems.Inventory
         public int maxStack;
         public SerializableGuid id = SerializableGuid.NewGuid();
         public Sprite icon, chosenIcon;
+        public float healAmount, rechargeAmount;
         
         private void AssignNewGuid()
         {
@@ -55,7 +56,7 @@ namespace Systems.Inventory
                         return;
                     }
                     
-                    Hero.Instance.Health.Heal(25);
+                    Hero.Instance.Health.Heal(healAmount);
                     Inventory.Instance.Controller.SubtractItem(this,1);
                     break;
                 case Action.Recharge:
@@ -70,7 +71,7 @@ namespace Systems.Inventory
                         return;
                     }
                     
-                    Hero.Instance.MultiToolObject.RechargeBattery(25);
+                    Hero.Instance.MultiToolObject.RechargeBattery(rechargeAmount);
                     Inventory.Instance.Controller.SubtractItem(this,1);
                     break;
                 default:

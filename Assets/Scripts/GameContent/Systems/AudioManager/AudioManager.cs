@@ -52,9 +52,8 @@ public class AudioManager : MonoBehaviour
     
     private void Start()
     {
+        InitializeMainMenu(FMODEvents.Instance.Menus);
         InitializeAmbience(FMODEvents.Instance.Ambient);
-        InitializeMusic(FMODEvents.Instance.IntroCinematic);
-        //InitializeMusic(FMODEvents.Instance.Menus);
     }
 
     private void Update()
@@ -68,13 +67,17 @@ public class AudioManager : MonoBehaviour
     private void InitializeAmbience(EventReference eventPath)
     {
         ambienceEventInstance = CreateInstance(eventPath);
-        ambienceEventInstance.start();
     }
 
     private void InitializeMusic(EventReference eventPath)
     {
         musicEventInstance = CreateInstance(eventPath);
-        musicEventInstance.start();
+    }
+    
+    public void InitializeMainMenu(EventReference eventPath)
+    {
+        mainMenuEventInstance = CreateInstance(eventPath);
+        mainMenuEventInstance.start();
     }
 
     public void SetMusicArea(MusicArea musicArea)
