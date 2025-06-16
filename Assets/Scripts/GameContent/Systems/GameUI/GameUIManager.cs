@@ -1,3 +1,4 @@
+using GameContent.Management;
 using Systems;
 using TMPro;
 using UnityEngine;
@@ -56,8 +57,13 @@ public class GameUIManager : MonoBehaviour
         
         if (Hero.Instance.MultiToolObject)
         {
-            _batteryText.text = $"Battery: {Hero.Instance.MultiToolObject.CurrentBattery}/{Hero.Instance.MultiToolObject.MaxBattery}";
+            _batteryText.text = $"Battery: {(int)Hero.Instance.MultiToolObject.CurrentBattery}/{Hero.Instance.MultiToolObject.MaxBattery}";
         }
+    }
+
+    public void UpdateLifeText()
+    {
+        _healthText.text = $"Health: {Hero.Instance.Health.CurrentHealth}/{Hero.Instance.Health.MaxHealth}";
     }
 
     public void UpdateInteractibleUI(string name, bool onoff)
@@ -70,7 +76,11 @@ public class GameUIManager : MonoBehaviour
     {
         bool isActive = _pauseMenu.activeSelf;
         _pauseMenu.SetActive(!isActive);
-        
+
+        AudioManager.Instance.PlayOneShot(
+            isActive == false ? FMODEvents.Instance.MenuPauseOpen : FMODEvents.Instance.MenuPauseClose,
+            GameManager.Instance.playerTransform.position);
+            
         Time.timeScale = isActive ? 1 : 0;
     }
     

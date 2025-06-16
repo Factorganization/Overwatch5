@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Systems;
 using UnityEngine;
 using UnityEngine.UI;
 using Cursor = UnityEngine.Cursor;
@@ -9,12 +10,55 @@ public class NetworkMapController : MonoBehaviour
     
     [SerializeField] private GameObject _networkMapUI;
     [SerializeField] private Button _validateButton;
+    [SerializeField] private float unlinkCost, changeIDCost;
     [SerializeField] private List<RoomMap> _roomMaps = new List<RoomMap>();
+
+    [SerializeField] private bool _isIDChanged;
+    [SerializeField] private int numberOfChanges;
+    [SerializeField] private float totalHackingCost;
+
+    private float tempVar;
+    
+    public float UnlinkCost => unlinkCost;
+    public float ChangeIDCost => changeIDCost;
+    public int NumberOfChanges
+    {
+        get => numberOfChanges;
+        set => numberOfChanges = value;
+    }
+    
+    public bool IsIDChanged
+    {
+        get => _isIDChanged;
+        set => _isIDChanged = value;
+    }
+    
+    public float TotalHackingCost
+    {
+        get => totalHackingCost;
+        set => totalHackingCost = value;
+    }
     
     private void Awake()
     {
         Instance = this;
         _validateButton.onClick.AddListener(ValidateChanges);
+    }
+
+    private void Update()
+    {
+        if (_isIDChanged == false) return;
+
+        tempVar += Time.deltaTime;
+        
+        if (_isIDChanged)
+        {
+            if (tempVar >= 1f)
+            {
+                Hero.Instance.MultiToolObject.ConsumeBattery(totalHackingCost);
+                tempVar = 0f;
+            }
+        }
     }
 
     public void RevealRoom(RoomMap roomMap)
@@ -38,6 +82,13 @@ public class NetworkMapController : MonoBehaviour
 
     private void ValidateChanges()
     {
+        numberOfChanges = 0;
+        
+        if (numberOfChanges <= 0)
+        {
+            _isIDChanged = false;
+        }
+        
         for (int i = 0; i < _roomMaps.Count; i++)
         {
             for (int j = 0; j < _roomMaps[i].MapLink.Count; j++)

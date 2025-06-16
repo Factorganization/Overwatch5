@@ -1,5 +1,7 @@
+using FMOD.Studio;
 using GameContent.Actors;
 using GameContent.Actors.EnemySystems.Seekers;
+using GameContent.Management;
 using Systems;
 using Systems.Inventory;
 using UnityEngine;
@@ -17,7 +19,13 @@ public class MultiTool : MonoBehaviour
     
     [Header("Device Information")]
     [SerializeField] private Actor _currentDevice;
+    
     public bool isScanning;
+    
+    private EventInstance _scanEventInstance;
+    
+    public EventInstance ScanEventInstance => _scanEventInstance;
+    
     
     public Actor CurrentDevice
     {
@@ -40,6 +48,7 @@ public class MultiTool : MonoBehaviour
         _maxBattery = 100f;
         _currentBattery = _maxBattery;
         GameUIManager.Instance.UpdateText();
+        _scanEventInstance = AudioManager.Instance.CreateEventInstance(FMODEvents.Instance.Scan);
     }
 
     public void CheckDevice()
@@ -110,6 +119,9 @@ public class MultiTool : MonoBehaviour
 
     public void ScanDevice()
     {
+        if (Hero.Instance.CurrentEquipedItem is null)
+            return;
+        
         if (Hero.Instance.CurrentEquipedItem.type == Type.MultiTool)
         {
             if (_currentDevice != null && 
@@ -158,6 +170,10 @@ public class MultiTool : MonoBehaviour
                 enemyCamera.NetworkNode.hidden = false;
                 enemyCamera.IsScanned = true;
                 NetworkMapController.Instance.CheckAllHidden();
+                AudioManager.Instance.PlayOneShot(
+                    FMODEvents.Instance.ScanPeriphSuccess, 
+                    GameManager.Instance.playerTransform.position);
+                _scanEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                 CancelScan();
             }
         }

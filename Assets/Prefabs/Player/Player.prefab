@@ -216,7 +216,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &3045345003737909218
@@ -309,7 +309,7 @@ Transform:
   m_GameObject: {fileID: 6360646874439184269}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -114.21388, y: 3.4677992, z: -55.302643}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -419,7 +419,7 @@ MonoBehaviour:
   dataSo: {fileID: 11400000, guid: 4f09b09ab2160ea4ba71324b37263028, type: 2}
   camRef: {fileID: 1287501830638133065}
   handRef: {fileID: 464856947785740527}
-  animator: {fileID: 0}
+  animator: {fileID: 3610519240373655649}
 --- !u!114 &3157507215829849087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1489,6 +1489,11 @@ PrefabInstance:
       addedObject: {fileID: 4126535721255819583}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1727c352a2861ef49a0a344c3cb889f1, type: 3}
+--- !u!95 &3610519240373655649 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8191955779670317452, guid: 1727c352a2861ef49a0a344c3cb889f1, type: 3}
+  m_PrefabInstance: {fileID: 4878674372704485869}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4990059095156608788 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 501245569727860473, guid: 1727c352a2861ef49a0a344c3cb889f1, type: 3}

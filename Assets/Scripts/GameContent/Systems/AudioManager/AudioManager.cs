@@ -25,6 +25,7 @@ public class AudioManager : MonoBehaviour
     
     private EventInstance ambienceEventInstance;
     private EventInstance musicEventInstance;
+    private EventInstance mainMenuEventInstance;
     
     public static AudioManager Instance { get; private set; }
 
@@ -43,7 +44,7 @@ public class AudioManager : MonoBehaviour
         
         masterBus = RuntimeManager.GetBus("bus:/");
         musicBus = RuntimeManager.GetBus("bus:/Music");
-        ambienceBus = RuntimeManager.GetBus("bus:/Ambience");
+        ambienceBus = RuntimeManager.GetBus("bus:/Ambiance");
         SFXBus = RuntimeManager.GetBus("bus:/SFX");
         
         DontDestroyOnLoad(gameObject);
@@ -51,8 +52,9 @@ public class AudioManager : MonoBehaviour
     
     private void Start()
     {
-        InitializeAmbience(FMODEvents.Instance.ambienceMusic);
-        InitializeMusic(FMODEvents.Instance.ambienceMusic);
+        InitializeAmbience(FMODEvents.Instance.Ambient);
+        InitializeMusic(FMODEvents.Instance.IntroCinematic);
+        //InitializeMusic(FMODEvents.Instance.Menus);
     }
 
     private void Update()
@@ -129,5 +131,10 @@ public class AudioManager : MonoBehaviour
     private void OnDestroy()
     {
         CleanupInstances();
+    }
+
+    public EventInstance CreateEventInstance(EventReference eventReference)
+    {
+        return CreateInstance(eventReference);
     }
 }

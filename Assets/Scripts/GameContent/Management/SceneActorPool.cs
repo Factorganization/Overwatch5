@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using GameContent.Actors;
+﻿using GameContent.Actors;
 using UnityEngine;
 
 namespace GameContent.Management
@@ -8,14 +7,14 @@ namespace GameContent.Management
     {
         #region methodes
 
-        async void Start()
+        private void Start()
         {
-            await Task.Delay(3000);
+            //await Task.Delay(3000);
             if (playerTransform == null)
             {
                 playerTransform = GameManager.Instance.playerTransform;
             }
-            
+
             foreach (var a in managedActors)
                 a.Init(playerTransform);
 

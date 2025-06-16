@@ -33,7 +33,7 @@ public class MapLink : MonoBehaviour
 
      private void Start()
      {
-          _enemyCamera = _linkedNode.actor as EnemyCamera;
+          _enemyCamera = _linkedNode.actor;
           CheckHidden();
      }
 
@@ -42,7 +42,12 @@ public class MapLink : MonoBehaviour
      public void VerifyID(string playerInput)
      {
           if (_linkedNode.type != NodeType.Device) return;
-          if (_linkNameInputField.text == _linkedNode.nodeId) return;
+          
+          if (_linkNameInputField.text == _linkedNode.nodeId)
+          {
+               return;
+          }
+          
           if (_linkedNode.hidden) return;
           
           if (_linkNameInputField.text != _linkedNode.nodeId)
@@ -66,6 +71,14 @@ public class MapLink : MonoBehaviour
                     }
                     
                     SuspicionManager.Manager.StartTrackPlayer(Hero.Instance);
+               }
+               
+               NetworkMapController.Instance.NumberOfChanges++;
+               NetworkMapController.Instance.TotalHackingCost = NetworkMapController.Instance.ChangeIDCost * NetworkMapController.Instance.NumberOfChanges;
+
+               if (NetworkMapController.Instance.NumberOfChanges > 0)
+               {
+                    NetworkMapController.Instance.IsIDChanged = true;
                }
           }
      }
@@ -106,7 +119,7 @@ public class MapLink : MonoBehaviour
           _enemyCamera!.IsActive = !_enemyCamera.IsActive;
           _sabotageButton.interactable = false;
           SuspicionManager.Manager.StartTrack(_linkedNode.actor as EnemyCamera);
-          Hero.Instance.MultiToolObject.ConsumeBattery(5);
+          Hero.Instance.MultiToolObject.ConsumeBattery(NetworkMapController.Instance.UnlinkCost);
           yield return new WaitForSeconds(_sabotageTime);
           _sabotageButton.interactable = true;
           _enemyCamera!.IsActive = !_enemyCamera.IsActive;

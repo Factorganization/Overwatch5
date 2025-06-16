@@ -1,4 +1,4 @@
-using System;
+using GameContent.Management;
 using UnityEngine;
 
 public class HeroHealth : MonoBehaviour
@@ -22,11 +22,12 @@ public class HeroHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         _currentHealth -= damage;
+        Debug.Log("mdg");
         if (_currentHealth <= 0)
         {
             Die();
         }
-        GameUIManager.Instance.UpdateText();
+        GameUIManager.Instance.UpdateLifeText();
         GameUIManager.Instance.HealthVisual.HealthDamage();
     }
     
@@ -39,11 +40,14 @@ public class HeroHealth : MonoBehaviour
         }
         GameUIManager.Instance.UpdateText();
         GameUIManager.Instance.HealthVisual.HealthHeal();
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.MedkitUsed, transform.position);
     }
 
     private void Die()
     {
         GameUIManager.Instance.DeathScreen.DeathMessageText.text = "You have died!";
+        //AudioManager.Instance.PlayOneShot(FMODEvents.Instance.AvatarDeath, transform.position);
         GameUIManager.Instance.DeathScreen.Show();
+        SuspicionManager.Manager.ResetSuspicion();
     }
 }

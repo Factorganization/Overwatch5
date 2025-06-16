@@ -21,7 +21,7 @@ namespace GameContent.Actors.EnemySystems.Seekers
             set
             {
                 isActive = value;
-                coneRenderer.material.color = !isActive ? Color.clear : new Color(1, 1, 1, 0.2f);
+                //coneRenderer.material.color = !isActive ? Color.clear : new Color(1, 1, 1, 0.2f);
             }
         }
 
