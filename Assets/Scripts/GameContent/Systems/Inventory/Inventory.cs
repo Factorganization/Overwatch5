@@ -37,6 +37,8 @@ namespace Systems.Inventory {
         public void EquipItem(ItemDetails item)
         {
             Hero.Instance.CurrentEquipedItem = item;
+
+            GameUIManager.Instance.CrossHair.SetActive(Hero.Instance.CurrentEquipedItem.type == Type.MultiTool);
         }
     }
 }

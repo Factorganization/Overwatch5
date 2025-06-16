@@ -1,3 +1,4 @@
+using GameContent.Management;
 using Systems;
 using TMPro;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private GameObject _gameUI;
     [SerializeField] private GameObject _pauseMenu;
     [SerializeField] private GameObject _interactibleInfoUI;
+    [SerializeField] private GameObject _crossHair;
     [SerializeField] private Settings _settingsMenu;
     [SerializeField] private HealthVisual _healthVisual;
     [SerializeField] private DeathScreen _deathScreen;
@@ -19,7 +21,7 @@ public class GameUIManager : MonoBehaviour
     [Header("UI Elements")]
     [SerializeField] private TextMeshProUGUI _healthText;
     [SerializeField] private TextMeshProUGUI _batteryText;
-    [SerializeField] private TextMeshProUGUI _interactibleText;
+    [SerializeField] private TextMeshProUGUI _interactibleText, _interactibleInfoText;
     [SerializeField] private TextMeshProUGUI _notificationText;
     [SerializeField] private Image _hackProgressImage;
 
@@ -28,6 +30,7 @@ public class GameUIManager : MonoBehaviour
     public HealthVisual HealthVisual => _healthVisual;
     public DeathScreen DeathScreen => _deathScreen;
     public Settings SettingsMenu => _settingsMenu;
+    public GameObject CrossHair => _crossHair;
 
     private void Awake()
     {
@@ -56,13 +59,19 @@ public class GameUIManager : MonoBehaviour
         
         if (Hero.Instance.MultiToolObject)
         {
-            _batteryText.text = $"Battery: {Hero.Instance.MultiToolObject.CurrentBattery}/{Hero.Instance.MultiToolObject.MaxBattery}";
+            _batteryText.text = $"Battery: {(int)Hero.Instance.MultiToolObject.CurrentBattery}/{Hero.Instance.MultiToolObject.MaxBattery}";
         }
     }
 
-    public void UpdateInteractibleUI(string name, bool onoff)
+    public void UpdateLifeText()
+    {
+        _healthText.text = $"Health: {Hero.Instance.Health.CurrentHealth}/{Hero.Instance.Health.MaxHealth}";
+    }
+
+    public void UpdateInteractibleUI(string name, string howToInteract, bool onoff)
     {
         _interactibleText.text = name;
+        _interactibleInfoText.text = howToInteract;
         _interactibleInfoUI.SetActive(onoff);
     }
 
@@ -70,7 +79,11 @@ public class GameUIManager : MonoBehaviour
     {
         bool isActive = _pauseMenu.activeSelf;
         _pauseMenu.SetActive(!isActive);
-        
+
+        AudioManager.Instance.PlayOneShot(
+            isActive == false ? FMODEvents.Instance.MenuPauseOpen : FMODEvents.Instance.MenuPauseClose,
+            GameManager.Instance.playerTransform.position);
+            
         Time.timeScale = isActive ? 1 : 0;
     }
     

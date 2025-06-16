@@ -27,7 +27,7 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
             _closedList.Clear();
             
             var iterationCount = 0;
-
+            
             start.g = 0;
             start.h = Heuristic(start, end);
             start.f = start.g + start.h;
@@ -36,14 +36,13 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
 
             while (_openList.Count > 0)
             {
-                
                 if (++iterationCount > GameConstants.MaxPathFindIteration)
                 {
                     Debug.LogWarning("Pathfind iteration exceeded");
                     return new List<RunTimePathNode>();
                 }
                 
-                if (swRef.Elapsed.Seconds > 10)
+                if (swRef.Elapsed.Seconds > 5)
                 {
                     Debug.LogWarning("Cancelling Path Calculation");
                     return new List<RunTimePathNode>();

@@ -5,11 +5,13 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using UnityEngine.Video;
 
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private UIDocument mainMenu;
     [SerializeField] private GameObject settingsMenu, creditsMenu;
+    [SerializeField] private VideoPlayer backgroundVideo;
 #if UNITY_EDITOR
     [SerializeField] private SceneListSo sceneList;
 #endif
@@ -46,15 +48,13 @@ public class MainMenu : MonoBehaviour
     {
         ToggleMainMenu();
         creditsMenu.SetActive(!creditsMenu.activeSelf);
+        backgroundVideo.Pause();
     }
 
-    public void NewGame(ClickEvent evt)
+    private void NewGame(ClickEvent evt)
     {
         //SceneManager.LoadScene("Bootstrapper");
         //CustomSceneLoader.LoadSceneGroup("SecondPlayable", sceneList);
-        SceneManager.LoadSceneAsync("SC_CollidersLA", LoadSceneMode.Single);
-        SceneManager.LoadSceneAsync("SC_GA_01", LoadSceneMode.Additive);
-        SceneManager.LoadSceneAsync("SC_GA_VFX", LoadSceneMode.Additive);
         SceneManager.LoadSceneAsync("SC_GD", LoadSceneMode.Additive);
         SceneManager.UnloadSceneAsync("MainMenu");
     }
@@ -63,6 +63,7 @@ public class MainMenu : MonoBehaviour
     {
         ToggleMainMenu();
         settingsMenu.SetActive(!settingsMenu.activeSelf);
+        backgroundVideo.Pause();
     }
     
     private void QuitGame(ClickEvent evt)
@@ -73,6 +74,7 @@ public class MainMenu : MonoBehaviour
     public void ToggleMainMenu()
     {
         isMenuOpen = !isMenuOpen;
+        backgroundVideo.Play();
         mainMenu.rootVisualElement.style.display = isMenuOpen ? DisplayStyle.Flex : DisplayStyle.None;
     }
     

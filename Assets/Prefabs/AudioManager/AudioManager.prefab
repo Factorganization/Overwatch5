@@ -1,0 +1,469 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9155577575232031244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5879127469776035959}
+  - component: {fileID: 8043047843458018867}
+  - component: {fileID: 3702719178967008058}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5879127469776035959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9155577575232031244}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8043047843458018867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9155577575232031244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c99bdfc7f1416b5419549046838b4edb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterVolume: 1
+  musicVolume: 1
+  ambienceVolume: 1
+  SFXVolume: 1
+--- !u!114 &3702719178967008058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9155577575232031244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ddbf731e0cbea43a9b2f6c76f703d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Ambient>k__BackingField:
+    Guid:
+      Data1: -180345678
+      Data2: 1176032678
+      Data3: -688405064
+      Data4: -1773609292
+    Path: event:/Ambiance/Ambiant/SFX_Ambiant
+  <IntroCinematic>k__BackingField:
+    Guid:
+      Data1: 1459768956
+      Data2: 1174450810
+      Data3: 417752458
+      Data4: -84962277
+    Path: "event:/Ambiance/Cin\xE9matique/SFX_IntroCinematic"
+  <IntroCinematicWind>k__BackingField:
+    Guid:
+      Data1: -1076576056
+      Data2: 1208937195
+      Data3: -590484840
+      Data4: 757629875
+    Path: "event:/Ambiance/Cin\xE9matique/SFX_IntroCinematic_Wind"
+  <BubbleTubes>k__BackingField:
+    Guid:
+      Data1: 460752211
+      Data2: 1287912199
+      Data3: 807102108
+      Data4: -1517588506
+    Path: event:/Ambiance/Contextuel/SFX_BubbleTubes
+  <FlapDoor>k__BackingField:
+    Guid:
+      Data1: 209686403
+      Data2: 1341794046
+      Data3: 459995068
+      Data4: 1358885934
+    Path: event:/Ambiance/Contextuel/SFX_FlapDoor
+  <PhysicObject>k__BackingField:
+    Guid:
+      Data1: -1649515574
+      Data2: 1126797959
+      Data3: 1552014980
+      Data4: -1374530547
+    Path: event:/Ambiance/Contextuel/SFX_PhysicObject
+  <Rain>k__BackingField:
+    Guid:
+      Data1: -245933651
+      Data2: 1090061159
+      Data3: -316116856
+      Data4: 64245376
+    Path: event:/Ambiance/Contextuel/SFX_Rain
+  <Spark>k__BackingField:
+    Guid:
+      Data1: -236944933
+      Data2: 1128525081
+      Data3: 1242594747
+      Data4: -1240837218
+    Path: event:/Ambiance/Contextuel/SFX_Spark
+  <Steam>k__BackingField:
+    Guid:
+      Data1: 1376490597
+      Data2: 1308004072
+      Data3: 2096449704
+      Data4: -1040523214
+    Path: event:/Ambiance/Contextuel/SFX_Steam
+  <WaterFall>k__BackingField:
+    Guid:
+      Data1: 1309191259
+      Data2: 1245719526
+      Data3: -1528594293
+      Data4: -1254528904
+    Path: event:/Ambiance/Contextuel/SFX_Waterfall
+  <WaterFallSmall>k__BackingField:
+    Guid:
+      Data1: -740743014
+      Data2: 1168014481
+      Data3: 351703185
+      Data4: -18985597
+    Path: event:/Ambiance/Contextuel/SFX_WaterfallSmall
+  <CouloirFinal>k__BackingField:
+    Guid:
+      Data1: 353147085
+      Data2: 1191972956
+      Data3: -1296917573
+      Data4: -1031162646
+    Path: "event:/Music/MU_CouloirFinal+Cr\xE9dits"
+  <Detected>k__BackingField:
+    Guid:
+      Data1: -1922732996
+      Data2: 1100794863
+      Data3: -344142672
+      Data4: 1047290892
+    Path: event:/Music/MU_Detected
+  <Menus>k__BackingField:
+    Guid:
+      Data1: -368330581
+      Data2: 1192567755
+      Data3: 81480083
+      Data4: 121830061
+    Path: event:/Music/MU_Menus
+  <MusicArea>k__BackingField:
+    Guid:
+      Data1: 113965284
+      Data2: 1295024635
+      Data3: -566086247
+      Data4: -779338424
+    Path: event:/Music/MU_MusicArea
+  <ProcessorDestroyed>k__BackingField:
+    Guid:
+      Data1: -1437647655
+      Data2: 1147055792
+      Data3: 336743051
+      Data4: -1813715113
+    Path: event:/Music/MU_ProcessorDestroyed
+  <PlayerDetected>k__BackingField:
+    Guid:
+      Data1: -1974102952
+      Data2: 1254917014
+      Data3: 1126250890
+      Data4: -1599181883
+    Path: event:/SFX/Alerte/SFX_PlayerDetected
+  <PlayerDetectedByHound>k__BackingField:
+    Guid:
+      Data1: -1116300170
+      Data2: 1080791422
+      Data3: -1388291438
+      Data4: -744388937
+    Path: event:/SFX/Alerte/SFX_PlayerDetectedByHound
+  <PlayerSuspected>k__BackingField:
+    Guid:
+      Data1: 1857978682
+      Data2: 1266135837
+      Data3: 1976969652
+      Data4: 363090096
+    Path: event:/SFX/Alerte/SFX_PlayerSuspected
+  <SuspiciousAction>k__BackingField:
+    Guid:
+      Data1: -2054679998
+      Data2: 1311817424
+      Data3: -558125644
+      Data4: 2097556670
+    Path: event:/SFX/Alerte/SFX_SuspiciousAction
+  <AvatarDeath>k__BackingField:
+    Guid:
+      Data1: 759298393
+      Data2: 1161595088
+      Data3: 486602625
+      Data4: 951561108
+    Path: event:/SFX/Avatar/SFX_AvatarDeath
+  <AvatarFall>k__BackingField:
+    Guid:
+      Data1: 1927628064
+      Data2: 1105771001
+      Data3: -1638823025
+      Data4: 373497056
+    Path: event:/SFX/Avatar/SFX_AvatarFall
+  <AvatarPickUP>k__BackingField:
+    Guid:
+      Data1: 706511783
+      Data2: 1170100174
+      Data3: -175594832
+      Data4: -87853448
+    Path: event:/SFX/Avatar/SFX_AvatarPickUp
+  <AvatarRun>k__BackingField:
+    Guid:
+      Data1: 1486351221
+      Data2: 1145864661
+      Data3: -831595119
+      Data4: -583486516
+    Path: event:/SFX/Avatar/SFX_AvatarRun
+  <AvatarWalk>k__BackingField:
+    Guid:
+      Data1: -554769665
+      Data2: 1326098466
+      Data3: -887495529
+      Data4: -496807888
+    Path: event:/SFX/Avatar/SFX_AvatarWalk
+  <CircuitBreakerAmbient>k__BackingField:
+    Guid:
+      Data1: 1467461560
+      Data2: 1247456182
+      Data3: -161904465
+      Data4: -1353060973
+    Path: event:/SFX/Disjoncteur/SFX_CircuitBreakerAmbiant
+  <CircuitBreakerEndCD>k__BackingField:
+    Guid:
+      Data1: -275115038
+      Data2: 1205807560
+      Data3: 834797974
+      Data4: -1498564231
+    Path: event:/SFX/Disjoncteur/SFX_CircuitBreakerEndCooldown
+  <CircuitBreakerOnCD>k__BackingField:
+    Guid:
+      Data1: 1799021271
+      Data2: 1249939720
+      Data3: 1498648492
+      Data4: 888560566
+    Path: event:/SFX/Disjoncteur/SFX_CircuitBreakerOnCooldown
+  <CircuitBreakerTurnON>k__BackingField:
+    Guid:
+      Data1: 2057484591
+      Data2: 1305529608
+      Data3: 2016459181
+      Data4: 1563073504
+    Path: event:/SFX/Disjoncteur/SFX_CircuitBreakerTurnOn
+  <CircuitBreakerTurnOFF>k__BackingField:
+    Guid:
+      Data1: -1074474516
+      Data2: 1147501784
+      Data3: -193051254
+      Data4: -1391638955
+    Path: event:/SFX/Disjoncteur/SFX_CircuitBreakerTurnOff
+  <CameraRotate>k__BackingField:
+    Guid:
+      Data1: 556586503
+      Data2: 1098732261
+      Data3: 1029777824
+      Data4: -1628803136
+    Path: event:/SFX/IA/SFX_CameraRotate
+  <DroneAmbient>k__BackingField:
+    Guid:
+      Data1: -1844488237
+      Data2: 1125977984
+      Data3: 673566848
+      Data4: -1080126344
+    Path: event:/SFX/IA/SFX_DroneAmbiant
+  <HoundAmbient>k__BackingField:
+    Guid:
+      Data1: -632712964
+      Data2: 1282597093
+      Data3: -1883302724
+      Data4: -1225901562
+    Path: event:/SFX/IA/SFX_HoundAmbiant
+  <HoundAttack>k__BackingField:
+    Guid:
+      Data1: 1773356685
+      Data2: 1205669924
+      Data3: -1543764857
+      Data4: 310674750
+    Path: event:/SFX/IA/SFX_HoundAttack
+  <ProcessorAmbient>k__BackingField:
+    Guid:
+      Data1: -1472597022
+      Data2: 1267375668
+      Data3: 108975784
+      Data4: 763652377
+    Path: event:/SFX/IA/SFX_ProcessorAmbiant
+  <ProcessorDestroy>k__BackingField:
+    Guid:
+      Data1: 1990481264
+      Data2: 1125473106
+      Data3: -1168859506
+      Data4: 1132759908
+    Path: event:/SFX/IA/SFX_ProcessorDestroy
+  <BatteryUsed>k__BackingField:
+    Guid:
+      Data1: -1296941648
+      Data2: 1075112584
+      Data3: -1458919022
+      Data4: -1751233557
+    Path: event:/SFX/Items/SFX_BatteryUsed
+  <MedkitUsed>k__BackingField:
+    Guid:
+      Data1: -1421424444
+      Data2: 1171564478
+      Data3: -753562180
+      Data4: 1357346182
+    Path: event:/SFX/Items/SFX_MedkitUsed
+  <MapOpen>k__BackingField:
+    Guid:
+      Data1: 928489322
+      Data2: 1204734839
+      Data3: -1775650658
+      Data4: 1059626399
+    Path: event:/SFX/Map/SFX_MapOpen
+  <MapClose>k__BackingField:
+    Guid:
+      Data1: -1320684708
+      Data2: 1201787765
+      Data3: 527390626
+      Data4: -839194797
+    Path: event:/SFX/Map/SFX_MapClose
+  <MenuClick>k__BackingField:
+    Guid:
+      Data1: 967400149
+      Data2: 1264093906
+      Data3: 1823141007
+      Data4: -88002630
+    Path: event:/SFX/Menus/SFX_MenuClick
+  <MenuPauseOpen>k__BackingField:
+    Guid:
+      Data1: 160487758
+      Data2: 1261081634
+      Data3: 211244448
+      Data4: -657649657
+    Path: event:/SFX/Menus/SFX_MenuPauseOpen
+  <MenuPauseClose>k__BackingField:
+    Guid:
+      Data1: 848979238
+      Data2: 1308225036
+      Data3: -811399768
+      Data4: -1197114930
+    Path: event:/SFX/Menus/SFX_MenuPauseClose
+  <MenuStart>k__BackingField:
+    Guid:
+      Data1: 389228998
+      Data2: 1104723534
+      Data3: -1843115333
+      Data4: 670578207
+    Path: event:/SFX/Menus/SFX_MenuStart
+  <HackingBlocked>k__BackingField:
+    Guid:
+      Data1: 1053958907
+      Data2: 1123577991
+      Data3: 1038181005
+      Data4: 153437370
+    Path: event:/SFX/Sabotage/SFX_HackingBlock
+  <HackingClickBox>k__BackingField:
+    Guid:
+      Data1: 1630923359
+      Data2: 1122506832
+      Data3: -1387905352
+      Data4: 665727288
+    Path: event:/SFX/Sabotage/SFX_HackingClickBox
+  <HackingConfirmed>k__BackingField:
+    Guid:
+      Data1: -946724663
+      Data2: 1165256064
+      Data3: -2096608630
+      Data4: 2059162199
+    Path: event:/SFX/Sabotage/SFX_HackingConfirm
+  <HackingUnblocked>k__BackingField:
+    Guid:
+      Data1: 1733963987
+      Data2: 1317939820
+      Data3: -1229795653
+      Data4: 387998114
+    Path: event:/SFX/Sabotage/SFX_HackingUnblock
+  <Scan>k__BackingField:
+    Guid:
+      Data1: -928157282
+      Data2: 1091045931
+      Data3: 163182748
+      Data4: 305795370
+    Path: event:/SFX/Scan/SFX_Scan
+  <ScanJunctionSuccess>k__BackingField:
+    Guid:
+      Data1: 582990551
+      Data2: 1269697118
+      Data3: -2034885246
+      Data4: 948609568
+    Path: event:/SFX/Scan/SFX_ScanJunctionSuccess
+  <ScanPeriphSuccess>k__BackingField:
+    Guid:
+      Data1: 1527632152
+      Data2: 1107328563
+      Data3: 1732046236
+      Data4: -850051679
+    Path: event:/SFX/Scan/SFX_ScanPeriphSuccess
+  <SelectionWheelOpen>k__BackingField:
+    Guid:
+      Data1: 811217453
+      Data2: 1179984914
+      Data3: -698642251
+      Data4: 691036879
+    Path: event:/SFX/SelectionWheel/SFX_WheelOpen
+  <SelectionWheelClose>k__BackingField:
+    Guid:
+      Data1: 1034969746
+      Data2: 1295147505
+      Data3: 816427939
+      Data4: 502477184
+    Path: event:/SFX/SelectionWheel/SFX_WheelSelect
+  <ToolBootUP>k__BackingField:
+    Guid:
+      Data1: 418401573
+      Data2: 1295389494
+      Data3: -728431714
+      Data4: -15688195
+    Path: event:/SFX/Tool Batterie/SFX_ToolBootUp
+  <ToolOff>k__BackingField:
+    Guid:
+      Data1: -1229472115
+      Data2: 1090758001
+      Data3: -1152976509
+      Data4: 999583544
+    Path: event:/SFX/Tool Batterie/SFX_ToolOff
+  <ToolShutDown>k__BackingField:
+    Guid:
+      Data1: -1453294725
+      Data2: 1299323907
+      Data3: -1478362228
+      Data4: -744060268
+    Path: event:/SFX/Tool Batterie/SFX_ToolShutDown
+  <EffectGamePaused>k__BackingField:
+    Guid:
+      Data1: 243201944
+      Data2: 1252988146
+      Data3: -1635436877
+      Data4: -1884104794
+    Path: event:/Snapshots/EffectGamePaused
+  <EffectEcho>k__BackingField:
+    Guid:
+      Data1: 2002550789
+      Data2: 1306794745
+      Data3: -1343143259
+      Data4: 1956727543
+    Path: event:/Snapshots/EffetEcho

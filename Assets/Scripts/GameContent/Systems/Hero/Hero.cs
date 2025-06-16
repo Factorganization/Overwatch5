@@ -1,4 +1,5 @@
 using System;
+using FMOD.Studio;
 using Systems.Inventory;
 using Systems.Inventory.Interface;
 using Systems.Persistence;
@@ -30,12 +31,16 @@ namespace Systems
         private float _currentHackTimer;
         private bool _isHacking;
         
+        private EventInstance _hackEventInstance;
+        
         [Header("Public Getters/Setters")]
         public HeroHealth Health => _health;
         public MultiTool MultiToolObject => _multiToolObject;
         public Camera Camera => _camera;
         public bool IsHacking => _isHacking;
         public float CurrentHackingTime => _currentHackTimer;
+        
+        public EventInstance HackEventInstance => _hackEventInstance;
         
         public ItemDetails CurrentEquipedItem
         {
@@ -51,7 +56,12 @@ namespace Systems
         {
             Instance = this;
         }
-        
+
+        private void Start()
+        {
+            _hackEventInstance = AudioManager.Instance.CreateEventInstance(FMODEvents.Instance.Scan);
+        }
+
         public void Bind(PlayerData data)
         {
             _data = data;
@@ -83,7 +93,7 @@ namespace Systems
                         
                         _currentInteractible = interactible;
                         Debug.Log("Interactible: " + interactible.InteractibleName);
-                        GameUIManager.Instance.UpdateInteractibleUI(interactible.InteractibleName, true);
+                        GameUIManager.Instance.UpdateInteractibleUI(interactible.InteractibleName, "Right click to interact",true);
                     }
                 }
             }
@@ -93,7 +103,7 @@ namespace Systems
                 {
                     _currentInteractible = null;
                     _currentJunction = null;
-                    GameUIManager.Instance.UpdateInteractibleUI("", false);
+                    GameUIManager.Instance.UpdateInteractibleUI("", "E to pick up",false);
                 }
             }
         }
@@ -143,11 +153,15 @@ namespace Systems
             
             float progress = _currentHackTimer / _currentJunction.HackingTime;
             GameUIManager.Instance.HackProgressImage.fillAmount = Mathf.Clamp01(progress);
-
+            
             if (_currentHackTimer >= _currentJunction.HackingTime)
             {
                 _currentJunction.OnInteract();
                 _currentJunction._alrHacked = true;
+                AudioManager.Instance.PlayOneShot(
+                    FMODEvents.Instance.ScanJunctionSuccess, 
+                    gameObject.transform.position);
+                GameUIManager.Instance.ShowNotification($"Hacked {_currentJunction.InteractibleName} successfully!", 2f);
                 ResetHack();
             }
         }
@@ -164,6 +178,7 @@ namespace Systems
             _currentJunction = null;
             GameUIManager.Instance.HackProgressImage.fillAmount = 0;
             GameUIManager.Instance.HackProgressImage.gameObject.SetActive(false);
+            _hackEventInstance.stop(STOP_MODE.IMMEDIATE);
         }
 
         #endregion

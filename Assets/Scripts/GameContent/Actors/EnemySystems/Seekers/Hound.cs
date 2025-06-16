@@ -1,11 +1,20 @@
 using GameContent.Actors.EnemySystems.EnemyNavigation;
 using GameContent.Management;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace GameContent.Actors.EnemySystems.Seekers
 {
     public class Hound : Actor
     {
+        #region properties
+
+        public bool HasPlayerInZone => navSpaceAgent.SubRunTimeArea is not null && 
+                                       playerTransform is not null &&
+                                       navSpaceAgent.SubRunTimeArea.Bounds.Contains(playerTransform.position);
+
+        #endregion
+        
         #region methodes
 
         public override void Init(Transform player)
@@ -19,6 +28,12 @@ namespace GameContent.Actors.EnemySystems.Seekers
         {
             if (playerTransform is null)
                 return;
+
+            if (navSpaceAgent.SubRunTimeArea is not null)
+            {
+                if (!navSpaceAgent.SubRunTimeArea.Bounds.Contains(playerTransform.position))
+                    return;
+            }
             
             var distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
             
@@ -26,11 +41,18 @@ namespace GameContent.Actors.EnemySystems.Seekers
                 return;
             
             _atkTimer += Time.deltaTime;
-
-            if (SuspicionManager.Manager.IsTracking && navSpaceAgent.IsRoaming)
-                navSpaceAgent.IsRoaming = false;
             
-            if (!navSpaceAgent.IsRoaming && !SuspicionManager.Manager.IsTracking)
+            if (SuspicionManager.Manager.IsTracking)
+            {
+                if (navSpaceAgent.IsRoaming)
+                    navSpaceAgent.IsRoaming = false;
+                
+                navSpaceAgent.SetSpeed(trackSpeed);
+            }
+            else
+                navSpaceAgent.SetSpeed(speed);
+            
+            if (navSpaceAgent.IsRoaming == false && SuspicionManager.Manager.IsTracking == false)
             {
                 _timerPos += Time.deltaTime;
                 if (_timerPos > 5f)
@@ -39,30 +61,35 @@ namespace GameContent.Actors.EnemySystems.Seekers
                     _timerPos = 0;
                 }
             }
+            
+            var col = Physics.Raycast(transform.position, 
+                (playerTransform.position - transform.position).normalized, 
+                out var hit,
+                detectionRange,
+                collidableLayer);
 
-            if (distanceToPlayer < detectionRange)
+            if (distanceToPlayer < detectionRange && col && hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                
+                SuspicionManager.Manager.DetectionTime += 1;
+                _closeEnough = true;
             }
             
-            if (distanceToPlayer < atkRange)
-            {
-                _closeEnough = true;
-                SuspicionManager.Manager.DetectionTime += 1;
-            }
-            else if (distanceToPlayer > detectionRange && _closeEnough)
+            if (distanceToPlayer > detectionRange && _closeEnough)
             {
                 navSpaceAgent.SetTargetPosition(playerTransform.position);
                 SuspicionManager.Manager.DetectionTime -= 1;
                 _closeEnough = false;
             }
             
-            if (distanceToPlayer < 12.5f && _closeEnough)
+            if (distanceToPlayer < detectionRange && _closeEnough  && col && hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                if (_atkTimer > 2 && SuspicionManager.Manager.IsTracking)
+                if (_atkTimer > 1 && SuspicionManager.Manager.IsTracking)
                 {
                     _atkTimer = 0;
-                    SuspicionManager.Manager.PlayerHealth.TakeDamage(10);
+                    var dir = (playerTransform.position - transform.position).normalized;
+                    laserEmiter.transform.rotation = Quaternion.LookRotation(dir);
+                    laserEmiter.Emit(1);
+                    SuspicionManager.Manager.PlayerHealth.TakeDamage(atkDamage);
                 }
             }
         }
@@ -87,10 +114,16 @@ namespace GameContent.Actors.EnemySystems.Seekers
 
         [SerializeField] private float atkRange;
 
+        [SerializeField] private float atkDamage;
+
         [SerializeField] private float detectionRange;
+        
+        [SerializeField] private LayerMask collidableLayer;
         
         [SerializeField] private NavSpaceAgent navSpaceAgent;
 
+        [SerializeField] private ParticleSystem laserEmiter;
+        
         private Vector3 _currentTargetPosition;
 
         private float _atkTimer;
