@@ -238,7 +238,7 @@ MonoBehaviour:
   HasSourceProject: 0
   HasPlatforms: 0
   sourceProjectPath: 
-  sourceBankPath: C:/Users/c.li/Music/FPV_FMOD_Build1506
+  sourceBankPath: Assets/FPV_FMOD_Build1506
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1

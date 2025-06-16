@@ -57,7 +57,7 @@ public class GameUIManager : MonoBehaviour
         
         if (Hero.Instance.MultiToolObject)
         {
-            _batteryText.text = $"Battery: {Hero.Instance.MultiToolObject.CurrentBattery}/{Hero.Instance.MultiToolObject.MaxBattery}";
+            _batteryText.text = $"Battery: {(int)Hero.Instance.MultiToolObject.CurrentBattery}/{Hero.Instance.MultiToolObject.MaxBattery}";
         }
     }
 
