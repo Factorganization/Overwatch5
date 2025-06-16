@@ -383,7 +383,7 @@ MonoBehaviour:
       Data3: -1387905352
       Data4: 665727288
     Path: event:/SFX/Sabotage/SFX_HackingClickBox
-  <HackingComfirmed>k__BackingField:
+  <HackingConfirmed>k__BackingField:
     Guid:
       Data1: -946724663
       Data2: 1165256064

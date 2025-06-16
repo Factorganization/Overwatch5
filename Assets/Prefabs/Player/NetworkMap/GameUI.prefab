@@ -488,6 +488,81 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &342536299338778521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6035246654678472660}
+  - component: {fileID: 3804785971239630497}
+  - component: {fileID: 8734799537526555170}
+  m_Layer: 5
+  m_Name: Crosshair
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &6035246654678472660
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342536299338778521}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8899357746053057437}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3804785971239630497
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342536299338778521}
+  m_CullTransparentMesh: 1
+--- !u!114 &8734799537526555170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342536299338778521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 1047408779, guid: 6fed8a36b9f76e742ba95433d95b6327, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &358805739991818914
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,6 +1188,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6035246654678472660}
   - {fileID: 681317366672705143}
   - {fileID: 5413135869609748734}
   - {fileID: 5707758017570235883}
@@ -1144,12 +1220,14 @@ MonoBehaviour:
   _gameUI: {fileID: 1674227831111764419}
   _pauseMenu: {fileID: 5464608226409698229}
   _interactibleInfoUI: {fileID: 4565654102217335431}
+  _crossHair: {fileID: 342536299338778521}
   _settingsMenu: {fileID: 7509571098401438263}
   _healthVisual: {fileID: 7447103239959029393}
   _deathScreen: {fileID: 4692268912350933994}
   _healthText: {fileID: 5157878197338503947}
   _batteryText: {fileID: 7722684347906512889}
   _interactibleText: {fileID: 4888455578742952393}
+  _interactibleInfoText: {fileID: 1411475207772716911}
   _notificationText: {fileID: 6477594430205084743}
   _hackProgressImage: {fileID: 8142486296405568307}
 --- !u!114 &7447103239959029393
@@ -2348,7 +2426,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: E to interact
+  m_text: Right Click to interact
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 270fe131727138a469660fe942d26efd, type: 2}
   m_sharedMaterial: {fileID: 2678692778957622509, guid: 270fe131727138a469660fe942d26efd, type: 2}
@@ -2413,7 +2491,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -50.422363, y: 0, z: -50.28225, w: -33.93295}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

@@ -70,7 +70,7 @@ public class MultiTool : MonoBehaviour
                 {
                     device = enemyCamera;
                     _currentDevice = device;
-                    GameUIManager.Instance.UpdateInteractibleUI(enemyCamera.NetworkNode.nodeId, true);
+                    GameUIManager.Instance.UpdateInteractibleUI("", "Right click to interact",true);
                 }
             }
             else
@@ -78,7 +78,7 @@ public class MultiTool : MonoBehaviour
                 if (_currentDevice != null)
                 {
                     _currentDevice = null;
-                    GameUIManager.Instance.UpdateInteractibleUI("", false);
+                    GameUIManager.Instance.UpdateInteractibleUI("", "",false);
                 }
             }
         }
@@ -87,7 +87,7 @@ public class MultiTool : MonoBehaviour
             if (_currentDevice != null)
             {
                 _currentDevice = null;
-                GameUIManager.Instance.UpdateInteractibleUI("", false);
+                GameUIManager.Instance.UpdateInteractibleUI("", "",false);
             }
         }
     }
@@ -115,6 +115,8 @@ public class MultiTool : MonoBehaviour
         }
         
         GameUIManager.Instance.UpdateText();
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.BatteryUsed, 
+            gameObject.transform.position);
     }
 
     public void ScanDevice()
@@ -137,7 +139,7 @@ public class MultiTool : MonoBehaviour
                 }
                 else
                 {
-                    GameUIManager.Instance.UpdateInteractibleUI("", false);
+                    GameUIManager.Instance.UpdateInteractibleUI("", "", false);
                     _currentDevice = null;
                     isScanning = false;
                     GameUIManager.Instance.HackProgressImage.gameObject.SetActive(false);
@@ -174,6 +176,7 @@ public class MultiTool : MonoBehaviour
                     FMODEvents.Instance.ScanPeriphSuccess, 
                     GameManager.Instance.playerTransform.position);
                 _scanEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                GameUIManager.Instance.ShowNotification($"Scanned {enemyCamera.NetworkNode.nodeId} successfully!");
                 CancelScan();
             }
         }
@@ -186,7 +189,7 @@ public class MultiTool : MonoBehaviour
         _currentDevice = null;
         GameUIManager.Instance.HackProgressImage.fillAmount = 0;
         GameUIManager.Instance.HackProgressImage.gameObject.SetActive(false);
-        GameUIManager.Instance.UpdateInteractibleUI("", false);
+        GameUIManager.Instance.UpdateInteractibleUI("", "",false);
     }
 }
 

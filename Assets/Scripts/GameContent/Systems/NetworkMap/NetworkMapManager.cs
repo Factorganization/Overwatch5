@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GameContent.Management;
 using Systems;
 using UnityEngine;
 using UnityEngine.UI;
@@ -87,6 +88,8 @@ public class NetworkMapController : MonoBehaviour
     
     public void OpenNetworkMap()
     {
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.MapOpen, 
+            GameManager.Instance.playerTransform.position);
         _networkMapUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -115,6 +118,8 @@ public class NetworkMapController : MonoBehaviour
     
     public void CloseNetworkMap()
     {
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.MapClose, 
+            GameManager.Instance.playerTransform.position);
         _networkMapUI.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

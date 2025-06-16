@@ -73,7 +73,7 @@ public class FMODEvents : MonoBehaviour
     [field : Header("Sabotage")]
     [field : SerializeField] public EventReference HackingBlocked { get; private set; }
     [field : SerializeField] public EventReference HackingClickBox { get; private set; }
-    [field : SerializeField] public EventReference HackingComfirmed { get; private set; }
+    [field : SerializeField] public EventReference HackingConfirmed { get; private set; }
     [field : SerializeField] public EventReference HackingUnblocked { get; private set; }
     
     [field : Header("Scan")]
