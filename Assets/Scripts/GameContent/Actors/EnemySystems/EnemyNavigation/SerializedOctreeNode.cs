@@ -103,9 +103,4 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
         
         #endregion
     }
-
-    public class CalculationPathNode
-    {
-        
-    }
 }

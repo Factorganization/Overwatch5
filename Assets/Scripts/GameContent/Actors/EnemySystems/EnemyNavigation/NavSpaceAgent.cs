@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -146,42 +145,27 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
 
         private async void HandlePathStarted(Vector3 pos, Vector3 target)
         {
-            //try
-            //{
-                _isRoaming = true;
-                var closestNode = await Task.Run(() => GetClosestNode(pos), cancellationToken: _ct);
-                _startingNode = closestNode;
-                var dest = await Task.Run(() => GetClosestNode(target), cancellationToken: _ct);
-                _targetNode = dest;
-                //var closestNode = GetClosestNode(pos);
-                //var dest = GetClosestNode(target);
-                
-                if (closestNode is null || dest is null)
-                {
-                    _calculatingPath = false;
-                    _calculationTime = 0;
-                    return;
-                }
-                
-                //await UniTask.WaitUntil(() => !PathFinder.Calculating, cancellationToken: _ct);
-                _currentPath = await Task.Run(() => _pathFinder.FindPath(closestNode, dest), cancellationToken: _ct);
-                //_currentPath = _pathFinder.FindPath(closestNode, dest);
-                
-                if (_currentPath is not null)
-                    _isRoaming = true;
-                
-                _currentWayPointId = 0;
-                _calculatingPath = false;
-               
-            //}
+            _isRoaming = true;
             
-            /*catch (Exception e)
+            var closestNode = await UniTask.RunOnThreadPool(() => GetClosestNode(pos), cancellationToken: _ct);
+            _startingNode = closestNode;
+            var dest = await UniTask.RunOnThreadPool(() => GetClosestNode(target), cancellationToken: _ct);
+            _targetNode = dest;
+            
+            if (closestNode is null || dest is null)
             {
-                _currentWayPointId = 0;
                 _calculatingPath = false;
                 _calculationTime = 0;
-                throw new Exception(e.Message);
-            }*/
+                return;
+            }
+            
+            _currentPath = await UniTask.RunOnThreadPool(() => _pathFinder.FindPath(closestNode, dest), cancellationToken: _ct);
+            
+            if (_currentPath is not null)
+                _isRoaming = true;
+            
+            _currentWayPointId = 0;
+            _calculatingPath = false;
         }
         
         private RunTimePathNode GetClosestNode(Vector3 pos)

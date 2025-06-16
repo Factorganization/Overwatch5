@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class HeroHealth : MonoBehaviour
@@ -22,11 +21,12 @@ public class HeroHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         _currentHealth -= damage;
+        Debug.Log("mdg");
         if (_currentHealth <= 0)
         {
             Die();
         }
-        GameUIManager.Instance.UpdateText();
+        GameUIManager.Instance.UpdateLifeText();
         GameUIManager.Instance.HealthVisual.HealthDamage();
     }
     
