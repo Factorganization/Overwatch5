@@ -111,6 +111,9 @@ public class MultiTool : MonoBehaviour
 
     public void ScanDevice()
     {
+        if (Hero.Instance.CurrentEquipedItem is null)
+            return;
+        
         if (Hero.Instance.CurrentEquipedItem.type == Type.MultiTool)
         {
             if (_currentDevice != null && 
