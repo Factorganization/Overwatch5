@@ -52,7 +52,7 @@ namespace GameContent.Actors.EnemySystems.Seekers
             else
                 navSpaceAgent.SetSpeed(speed);
             
-            if (!navSpaceAgent.IsRoaming && !SuspicionManager.Manager.IsTracking)
+            if (navSpaceAgent.IsRoaming == false && SuspicionManager.Manager.IsTracking == false)
             {
                 _timerPos += Time.deltaTime;
                 if (_timerPos > 5f)
@@ -89,7 +89,7 @@ namespace GameContent.Actors.EnemySystems.Seekers
                     var dir = (playerTransform.position - transform.position).normalized;
                     laserEmiter.transform.rotation = Quaternion.LookRotation(dir);
                     laserEmiter.Emit(1);
-                    SuspicionManager.Manager.PlayerHealth.TakeDamage(10);
+                    SuspicionManager.Manager.PlayerHealth.TakeDamage(atkDamage);
                 }
             }
         }
@@ -113,6 +113,8 @@ namespace GameContent.Actors.EnemySystems.Seekers
         [SerializeField] private float trackSpeed;
 
         [SerializeField] private float atkRange;
+
+        [SerializeField] private float atkDamage;
 
         [SerializeField] private float detectionRange;
         

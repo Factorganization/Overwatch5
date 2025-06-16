@@ -6,7 +6,7 @@ using Toggle = UnityEngine.UI.Toggle;
 
 public class Settings : MonoBehaviour
 {
-    [SerializeField] private Slider _bgmSlider, _sfxSlider, _mouseSensitivitySlider;
+    [SerializeField] private Slider _mouseSensitivitySlider;
     [SerializeField] private Toggle _fullscreenToggle;
     [SerializeField] private TMP_Dropdown _resolutionDropdown;
     
@@ -54,19 +54,5 @@ public class Settings : MonoBehaviour
             _resolutionDropdown.value = currentResolutionIndex;
             _resolutionDropdown.RefreshShownValue();
         }
-    }
-    
-    public void SetMouseSensitivity(float sensitivity)
-    {
-        // Assuming you have a method to set mouse sensitivity in your game
-        // MouseSensitivityManager.SetSensitivity(sensitivity);
-        Debug.Log($"Mouse sensitivity set to: {sensitivity}");
-    }
-    
-    public void SetBGMVolume(float volume)
-    {
-        // Assuming you have a method to set BGM volume in your game
-        // AudioManager.SetBGMVolume(volume);
-        Debug.Log($"BGM volume set to: {volume}");
     }
 }
