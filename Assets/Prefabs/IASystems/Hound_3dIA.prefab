@@ -5030,7 +5030,7 @@ MonoBehaviour:
   trackSpeed: 3.5
   atkRange: 3
   atkDamage: 6
-  detectionRange: 10
+  detectionRange: 8
   collidableLayer:
     serializedVersion: 2
     m_Bits: 4261412872

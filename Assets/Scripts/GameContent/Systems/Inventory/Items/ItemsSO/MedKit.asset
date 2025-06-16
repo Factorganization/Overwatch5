@@ -23,6 +23,8 @@ MonoBehaviour:
     Part4: 2037812610
   icon: {fileID: 2013659928, guid: 31f01bce877cd3941b965b899165b682, type: 3}
   chosenIcon: {fileID: 1923474894, guid: 970a227944a971348ab10558ba0a1c1d, type: 3}
+  healAmount: 20
+  rechargeAmount: 0
   description: 'MedKit
 
 '
