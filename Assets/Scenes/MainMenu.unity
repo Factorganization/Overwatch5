@@ -395,7 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f872ef2b64610f64da66463fe45f2c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeType: 1
+  volumeType: 2
 --- !u!114 &158078885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3191,8 +3191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb7b6fb07c635148ae13d3411970934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bgmSlider: {fileID: 0}
-  _sfxSlider: {fileID: 0}
   _mouseSensitivitySlider: {fileID: 879914268}
   _fullscreenToggle: {fileID: 1867090678}
   _resolutionDropdown: {fileID: 1148655654}

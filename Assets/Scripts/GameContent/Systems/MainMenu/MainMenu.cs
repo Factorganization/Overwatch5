@@ -48,13 +48,10 @@ public class MainMenu : MonoBehaviour
         creditsMenu.SetActive(!creditsMenu.activeSelf);
     }
 
-    public void NewGame(ClickEvent evt)
+    private void NewGame(ClickEvent evt)
     {
         //SceneManager.LoadScene("Bootstrapper");
         //CustomSceneLoader.LoadSceneGroup("SecondPlayable", sceneList);
-        SceneManager.LoadSceneAsync("SC_CollidersLA", LoadSceneMode.Single);
-        SceneManager.LoadSceneAsync("SC_GA_01", LoadSceneMode.Additive);
-        SceneManager.LoadSceneAsync("SC_GA_VFX", LoadSceneMode.Additive);
         SceneManager.LoadSceneAsync("SC_GD", LoadSceneMode.Additive);
         SceneManager.UnloadSceneAsync("MainMenu");
     }

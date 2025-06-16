@@ -186,7 +186,6 @@ namespace GameContent.Management
 
             foreach (Hound hound in listOfHounds)
             {
-                Debug.Log(hound.HasPlayerInZone);
                 if (!hound || !hound.gameObject.activeInHierarchy || !hound.HasPlayerInZone)
                     continue;
 
