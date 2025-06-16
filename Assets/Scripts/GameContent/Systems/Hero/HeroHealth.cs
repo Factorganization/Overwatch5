@@ -1,3 +1,4 @@
+using GameContent.Management;
 using UnityEngine;
 
 public class HeroHealth : MonoBehaviour
@@ -47,5 +48,6 @@ public class HeroHealth : MonoBehaviour
         GameUIManager.Instance.DeathScreen.DeathMessageText.text = "You have died!";
         //AudioManager.Instance.PlayOneShot(FMODEvents.Instance.AvatarDeath, transform.position);
         GameUIManager.Instance.DeathScreen.Show();
+        SuspicionManager.Manager.ResetSuspicion();
     }
 }

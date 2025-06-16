@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,16 +10,35 @@ public class NetworkMapController : MonoBehaviour
     
     [SerializeField] private GameObject _networkMapUI;
     [SerializeField] private Button _validateButton;
-    [SerializeField] private int unlinkCost, changeIDCost;
+    [SerializeField] private float unlinkCost, changeIDCost;
     [SerializeField] private List<RoomMap> _roomMaps = new List<RoomMap>();
+
+    private bool _isIDChanged;
+    private int numberOfChanges;
+    private float totalHackingCost;
     
-    public int UnlinkCost => unlinkCost;
-    public int ChangeIDCost => changeIDCost;
+    public float UnlinkCost => unlinkCost;
+    public float ChangeIDCost => changeIDCost;
+    public int NumberOfChanges
+    {
+        get => numberOfChanges;
+        set => numberOfChanges = value;
+    }
     
     private void Awake()
     {
         Instance = this;
         _validateButton.onClick.AddListener(ValidateChanges);
+    }
+
+    private void Update()
+    {
+        if (_isIDChanged == false) return;
+
+        if (_isIDChanged)
+        {
+            
+        }
     }
 
     public void RevealRoom(RoomMap roomMap)
@@ -53,6 +73,9 @@ public class NetworkMapController : MonoBehaviour
                 _roomMaps[i].MapLink[j].VerifyID(_roomMaps[i].MapLink[j].LinkNameInputField.text);
             }
         }
+
+        _isIDChanged = true;
+        totalHackingCost = ChangeIDCost * NumberOfChanges;
     }
     
     public void CheckAllHidden()

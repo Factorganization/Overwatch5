@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9153177922624928427}
   - component: {fileID: 3920892586031968081}
   - component: {fileID: 5466817548029998762}
-  m_Layer: 6
+  m_Layer: 31
   m_Name: 'Medkit '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,9 +26,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4082312654286900248}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.3240661, z: -0, w: 0.9460345}
+  m_LocalRotation: {x: 0, y: -0.32406592, z: 0, w: 0.9460345}
   m_LocalPosition: {x: 355.15, y: -0.311, z: -13.542}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4387849967902395714}
@@ -129,7 +129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8b9900f5a3bc10948ad7c2cf2448a9fe, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -199,7 +199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 50e801142cfb75e4283e07a0c12fa5e9, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -269,7 +269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9401fcb72910c68439ae6c356b286c7f, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

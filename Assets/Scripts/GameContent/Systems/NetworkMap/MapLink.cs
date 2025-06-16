@@ -53,7 +53,7 @@ public class MapLink : MonoBehaviour
                     {
                          // Will change the information that the camera will send to the processor
                          _linkedNode.actor = nodeID._linkedNode.OriginalActor;
-                         Hero.Instance.MultiToolObject.ConsumeBattery(NetworkMapController.Instance.ChangeIDCost);
+                         NetworkMapController.Instance.NumberOfChanges++;
                          SuspicionManager.Manager.AddSuspicion(_suspicionValue);
                          return;
                     }
