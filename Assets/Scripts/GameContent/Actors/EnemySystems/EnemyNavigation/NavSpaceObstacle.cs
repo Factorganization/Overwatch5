@@ -33,27 +33,6 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
             
             _lastPos = pos;
         }
-
-        /*private List<Vector3> LockNodes(Bounds bounds)
-        {
-            var lockedPositions = new List<Vector3>();
-            
-            foreach (var n in NavSpaceRunTimeManager.Manager.RunTimePathNodes)
-            {
-                var b = bounds.Contains(n.position);
-                if (b)
-                {
-                    n.isAvailable = false;
-                    lockedPositions.Add(n.position);
-                }
-
-                if (_lockedPositions.Contains(n.position) && !b)
-                {
-                    n.isAvailable = true;
-                }
-            }
-            return lockedPositions;
-        }*/
         
         private async UniTask<List<Vector3>> LockNodesAsync(Bounds bounds)
         {
@@ -74,7 +53,7 @@ namespace GameContent.Actors.EnemySystems.EnemyNavigation
                 }
             }
             
-            await UniTask.Yield(); // certes mais bon
+            await UniTask.Yield(); // tout ne pouvait pas être propre...
             return lockedPositions;
         }
 
