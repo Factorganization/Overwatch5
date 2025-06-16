@@ -125,12 +125,6 @@ namespace GameContent.Management
             {
                 IsTracking = true;
             }
-
-            /*if (Input.GetKeyDown(KeyCode.Q))
-            {
-                Debug.Log("Starting track on player");
-                StartTrackPlayer(Hero.Instance);
-            }*/
         }
 
         public void AddSuspicion(float value) => _suspicionLevel += value;

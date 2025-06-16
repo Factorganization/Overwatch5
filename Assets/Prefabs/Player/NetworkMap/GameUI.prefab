@@ -1113,14 +1113,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 681317366672705143}
+  - {fileID: 5413135869609748734}
   - {fileID: 5707758017570235883}
   - {fileID: 918655217011374687}
   - {fileID: 8323168665344224136}
   - {fileID: 5734405578818045479}
   - {fileID: 7285610758730751024}
-  - {fileID: 5413135869609748734}
   - {fileID: 4586825855128233406}
-  - {fileID: 681317366672705143}
   - {fileID: 6079656010503477469}
   m_Father: {fileID: 8349091553480452217}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2612,10 +2612,10 @@ RectTransform:
   - {fileID: 2297467696436926081}
   m_Father: {fileID: 1546802460117338559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -150}
-  m_SizeDelta: {x: 300, y: 300}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -66.666664}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9168902274424756229
 CanvasRenderer:
@@ -2866,10 +2866,10 @@ RectTransform:
   - {fileID: 6738105608639432560}
   m_Father: {fileID: 1546802460117338559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -550}
-  m_SizeDelta: {x: 300, y: 300}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -333.3333}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3916570317370547533
 CanvasRenderer:
@@ -4367,10 +4367,10 @@ RectTransform:
   - {fileID: 8518351989108254159}
   m_Father: {fileID: 1546802460117338559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -350}
-  m_SizeDelta: {x: 300, y: 300}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -200}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7459062720119328677
 CanvasRenderer:
@@ -4459,7 +4459,7 @@ MonoBehaviour:
         m_MethodName: OpenPage
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 3050052997470188868}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -7394,11 +7394,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7619223793737630729}
         m_TargetAssemblyTypeName: GameUIManager, Assembly-CSharp
-        m_MethodName: TogglePauseMenu
-        m_Mode: 1
+        m_MethodName: ClosePage
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 3050052997470188868}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7688,6 +7688,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8349091553480452217}
     m_Modifications:
+    - target: {fileID: 3599002100565742563, guid: f743ab4414a40144596fe884be5cffd2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4270508967877888146, guid: f743ab4414a40144596fe884be5cffd2, type: 3}
       propertyPath: m_IsActive
       value: 0

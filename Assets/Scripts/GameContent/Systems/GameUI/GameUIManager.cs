@@ -77,10 +77,10 @@ public class GameUIManager : MonoBehaviour
         bool isActive = _pauseMenu.activeSelf;
         _pauseMenu.SetActive(!isActive);
 
-        /*AudioManager.Instance.PlayOneShot(
+        AudioManager.Instance.PlayOneShot(
             isActive == false ? FMODEvents.Instance.MenuPauseOpen : FMODEvents.Instance.MenuPauseClose,
             GameManager.Instance.playerTransform.position);
-            */
+            
         Time.timeScale = isActive ? 1 : 0;
     }
     

@@ -40,6 +40,8 @@ namespace Systems
         public bool IsHacking => _isHacking;
         public float CurrentHackingTime => _currentHackTimer;
         
+        public EventInstance HackEventInstance => _hackEventInstance;
+        
         public ItemDetails CurrentEquipedItem
         {
             get => _currentEquippedItem;
@@ -57,7 +59,7 @@ namespace Systems
 
         private void Start()
         {
-            //_hackEventInstance = AudioManager.Instance.CreateEventInstance(FMODEvents.Instance.Scan);
+            _hackEventInstance = AudioManager.Instance.CreateEventInstance(FMODEvents.Instance.Scan);
         }
 
         public void Bind(PlayerData data)
@@ -155,9 +157,11 @@ namespace Systems
             
             if (_currentHackTimer >= _currentJunction.HackingTime)
             {
-                _hackEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 _currentJunction.OnInteract();
                 _currentJunction._alrHacked = true;
+                AudioManager.Instance.PlayOneShot(
+                    FMODEvents.Instance.ScanJunctionSuccess, 
+                    gameObject.transform.position);
                 ResetHack();
             }
         }

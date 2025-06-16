@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using FMOD.Studio;
 using Systems;
 using GameContent.Controller.BaseMachine;
 using Systems.Inventory;
@@ -73,7 +74,13 @@ namespace GameContent.Controller.Player
             }
             else if (dataSo.inputData.actionInput.action.WasReleasedThisFrame() && Hero.Instance.MultiToolObject.isScanning)
             {
+                Hero.Instance.MultiToolObject.ScanEventInstance.stop(STOP_MODE.IMMEDIATE);
                 Hero.Instance.MultiToolObject.CancelScan();
+            }
+            
+            if (dataSo.inputData.actionInput.action.WasPressedThisFrame() && Hero.Instance.MultiToolObject.isScanning)
+            {
+                Hero.Instance.MultiToolObject.ScanEventInstance.start();
             }
             
             // Hacking Action
@@ -88,7 +95,13 @@ namespace GameContent.Controller.Player
             }
             else if (dataSo.inputData.actionInput.action.WasReleasedThisFrame() && Hero.Instance.IsHacking)
             {
+                Hero.Instance.HackEventInstance.stop(STOP_MODE.IMMEDIATE);
                 Hero.Instance.CancelHack();
+            }
+            
+            if (dataSo.inputData.actionInput.action.WasPressedThisFrame() && Hero.Instance.IsHacking)
+            {
+                Hero.Instance.HackEventInstance.start();
             }
             
             if (dataSo.inputData.crouchInput.action.IsPressed() && playerMachine.PlayerModel.currentHeightTarget > dataSo.moveData.crouchHeight - 1)
