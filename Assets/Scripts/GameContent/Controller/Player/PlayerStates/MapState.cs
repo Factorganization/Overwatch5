@@ -18,7 +18,7 @@ namespace GameContent.Controller.Player.PlayerStates
          {
              Cursor.visible = true;
              Cursor.lockState = CursorLockMode.None;
-             playerMachine.PlayerModel.currentMoveMultiplier -= 0.3f;
+             rb.linearVelocity = Vector3.zero;
              
              NetworkMapController.Instance.OpenNetworkMap();
          }

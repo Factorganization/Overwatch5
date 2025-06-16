@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class MapLink : MonoBehaviour
 {
      [SerializeField] private TMP_InputField _linkNameInputField;
-     [SerializeField] private Button _sabotageButton;
+     [SerializeField] private Toggle _sabotageToggle;
      [SerializeField] private NetworkNode _linkedNode;
      [SerializeField] private float _suspicionValue;
      [SerializeField] private float _sabotageTime = 10f;
@@ -26,14 +26,10 @@ public class MapLink : MonoBehaviour
      }
      public EnemyCamera EnemyCamera { get { return _enemyCamera; } }
 
-     private void Awake()
-     {
-          _sabotageButton.onClick.AddListener(UnlinkButton);
-     }
-
      private void Start()
      {
           _enemyCamera = _linkedNode.actor;
+          _sabotageToggle.isOn = false;
           CheckHidden();
      }
 
@@ -43,17 +39,31 @@ public class MapLink : MonoBehaviour
      {
           if (_linkedNode.type != NodeType.Device) return;
           
-          if (_linkNameInputField.text == _linkedNode.nodeId)
+          if (_linkedNode.hidden) return;
+          
+          if (_sabotageToggle.isOn)
           {
-               return;
+               UnlinkButton();
+               
+               NetworkMapController.Instance.NumberOfUnlinks++;
+               
+               if (NetworkMapController.Instance.NumberOfUnlinks > 0) 
+               { NetworkMapController.Instance.IsUnlinked = true; }
+               
+               NetworkMapController.Instance.TotalHackingCost = NetworkMapController.Instance.UnlinkCost * NetworkMapController.Instance.NumberOfUnlinks;
+          }
+          else
+          {
+               _linkedNode.actor.IsActive = true;
           }
           
-          if (_linkedNode.hidden) return;
+          if (_linkNameInputField.text == _linkedNode.nodeId) return;
           
           if (_linkNameInputField.text != _linkedNode.nodeId)
           {
                foreach (var nodeID in _roomMap.MapLink)
                {
+                    
                     if (nodeID._linkedNode.nodeId == _linkNameInputField.text)
                     {
                          // Will change the information that the camera will send to the processor
@@ -74,13 +84,16 @@ public class MapLink : MonoBehaviour
                }
                
                NetworkMapController.Instance.NumberOfChanges++;
-               NetworkMapController.Instance.TotalHackingCost = NetworkMapController.Instance.ChangeIDCost * NetworkMapController.Instance.NumberOfChanges;
 
                if (NetworkMapController.Instance.NumberOfChanges > 0)
                {
                     NetworkMapController.Instance.IsIDChanged = true;
                }
           }
+          
+          NetworkMapController.Instance.TotalHackingCost = 
+               NetworkMapController.Instance.ChangeIDCost * NetworkMapController.Instance.NumberOfChanges + 
+               NetworkMapController.Instance.UnlinkCost * NetworkMapController.Instance.NumberOfUnlinks;
      }
      
      public void UnlinkDevice()
@@ -89,7 +102,7 @@ public class MapLink : MonoBehaviour
           
           _enemyCamera = _linkedNode.actor as EnemyCamera;
           _enemyCamera!.IsActive = !_enemyCamera.IsActive;
-          _sabotageButton.interactable = false;
+          _sabotageToggle.interactable = false;
      }
 
      public void CheckHidden()
@@ -97,31 +110,28 @@ public class MapLink : MonoBehaviour
           if (_linkedNode.hidden)
           {
                _linkNameInputField.text = "...";
-               _sabotageButton.interactable = false;
+               _sabotageToggle.interactable = false;
                _linkNameInputField.interactable = false;
           }
           else
           {
                _linkNameInputField.text = _linkedNode.nodeId;
-               _sabotageButton.interactable = true;
+               _sabotageToggle.interactable = true;
                _linkNameInputField.interactable = true;
           }
      }
 
      private void UnlinkButton()
      {
-          StartCoroutine(UnlinkDeviceCoroutine());
+          _linkedNode.actor.IsActive = false;
      }
 
-     IEnumerator UnlinkDeviceCoroutine()
+     public void ResetLink()
      {
-          _enemyCamera = _linkedNode.actor as EnemyCamera;
-          _enemyCamera!.IsActive = !_enemyCamera.IsActive;
-          _sabotageButton.interactable = false;
-          SuspicionManager.Manager.StartTrack(_linkedNode.actor as EnemyCamera);
-          Hero.Instance.MultiToolObject.ConsumeBattery(NetworkMapController.Instance.UnlinkCost);
-          yield return new WaitForSeconds(_sabotageTime);
-          _sabotageButton.interactable = true;
-          _enemyCamera!.IsActive = !_enemyCamera.IsActive;
+          if (_linkedNode.hidden) return;
+          
+          _linkNameInputField.text = _linkedNode.nodeId;
+          _linkedNode.actor = _linkedNode.OriginalActor;
+          _sabotageToggle.isOn = false;
      }
 }
