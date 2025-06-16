@@ -41,8 +41,15 @@ namespace GameContent.Actors.EnemySystems.Seekers
             
             _atkTimer += Time.deltaTime;
 
-            if (SuspicionManager.Manager.IsTracking && navSpaceAgent.IsRoaming)
-                navSpaceAgent.IsRoaming = false;
+            if (SuspicionManager.Manager.IsTracking)
+            {
+                if (navSpaceAgent.IsRoaming)
+                    navSpaceAgent.IsRoaming = false;
+                
+                navSpaceAgent.SetSpeed(trackSpeed);
+            }
+            else
+                navSpaceAgent.SetSpeed(speed);
             
             if (!navSpaceAgent.IsRoaming && !SuspicionManager.Manager.IsTracking)
             {
@@ -56,7 +63,8 @@ namespace GameContent.Actors.EnemySystems.Seekers
 
             if (distanceToPlayer < detectionRange)
             {
-                
+                SuspicionManager.Manager.DetectionTime += 1;
+                _closeEnough = true;
             }
             
             if (distanceToPlayer < atkRange)
@@ -71,7 +79,7 @@ namespace GameContent.Actors.EnemySystems.Seekers
                 _closeEnough = false;
             }
             
-            if (distanceToPlayer < 12.5f && _closeEnough)
+            if (distanceToPlayer < atkRange && _closeEnough)
             {
                 if (_atkTimer > 2 && SuspicionManager.Manager.IsTracking)
                 {
