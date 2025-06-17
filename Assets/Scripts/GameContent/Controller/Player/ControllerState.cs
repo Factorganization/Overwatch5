@@ -8,6 +8,7 @@
         Fall,
         Wheel,
         Map,
-        Menu
+        Menu,
+        Cinematic
     }
 }

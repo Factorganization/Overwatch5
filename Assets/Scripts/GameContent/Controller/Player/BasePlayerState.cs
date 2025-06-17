@@ -56,6 +56,11 @@ namespace GameContent.Controller.Player
             }*/
             
             //TODO passer en interactState, no cam rota et move ralentit
+
+            if (playerMachine.IsCinematic)
+            {
+                
+            }
             
             if (dataSo.inputData.useInput.action.WasPressedThisFrame() && !Inventory.Instance.RadialMenu.isOpen)
             {
@@ -157,9 +162,12 @@ namespace GameContent.Controller.Player
             camRef.localRotation = Quaternion.Euler(playerMachine.PlayerModel.camPitch, 0, 0);
             rb.rotation = Quaternion.Euler(0, playerMachine.PlayerModel.camYaw, 0);
             //rb.angularVelocity = new Vector3(0, lookDir.x * dataSo.cameraData.camSensitivity, 0);
-            
-            Hero.Instance.CheckInteractible();
-            Hero.Instance.MultiToolObject.CheckDevice();
+
+            if (playerMachine.IsCinematic == false)
+            {
+                Hero.Instance.CheckInteractible();
+                Hero.Instance.MultiToolObject.CheckDevice();
+            }
         }
         
         protected void HandleGravity()

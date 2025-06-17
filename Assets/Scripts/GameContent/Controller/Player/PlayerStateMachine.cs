@@ -21,6 +21,12 @@ namespace GameContent.Controller.Player
 
         public PlayerModel PlayerModel => _playerModel;
         
+        public bool IsCinematic
+        {
+            get => isCinematic;
+            set => isCinematic = value;
+        }
+        
         #endregion
         
         #region methodes
@@ -39,7 +45,8 @@ namespace GameContent.Controller.Player
                 {"fall", new FallState(go, ControllerState.Fall, this)},
                 {"wheel", new WheelState(go, ControllerState.Wheel,  this)},
                 {"map", new MapState(go, ControllerState.Map, this)},
-                {"menu", new MenuState(go, ControllerState.Menu, this)}
+                {"menu", new MenuState(go, ControllerState.Menu, this)},
+                {"cinematic", new CinematicState(go, ControllerState.Cinematic, this)}
             };
             
             _stateMachine.SetCallBacks((byte)ControllerState.Idle, "idle", pSD["idle"].OnInit, pSD["idle"].OnEnterState, 
@@ -63,7 +70,15 @@ namespace GameContent.Controller.Player
             _stateMachine.SetCallBacks((byte)ControllerState.Menu, "menu", pSD["menu"].OnInit, pSD["menu"].OnEnterState,
                 pSD["menu"].OnUpdate, pSD["menu"].OnFixedUpdate, pSD["menu"].OnExitState, null);
             
+            _stateMachine.SetCallBacks((byte)ControllerState.Cinematic, "cinematic", pSD["cinematic"].OnInit, pSD["cinematic"].OnEnterState,
+                pSD["cinematic"].OnUpdate, pSD["cinematic"].OnFixedUpdate, pSD["cinematic"].OnExitState, null);
+            
             _stateMachine.InitMachine();
+            
+            if (isCinematic)
+            {
+                _stateMachine.SwitchState((byte)ControllerState.Cinematic);
+            }
             
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -94,6 +109,8 @@ namespace GameContent.Controller.Player
         [SerializeField] private Transform handRef;
         
         [SerializeField] private Animator animator;
+        
+        [SerializeField] private bool isCinematic;
         
         private GenericStateMachine _stateMachine;
 

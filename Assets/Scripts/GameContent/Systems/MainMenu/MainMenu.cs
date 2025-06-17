@@ -53,10 +53,7 @@ public class MainMenu : MonoBehaviour
 
     private void NewGame(ClickEvent evt)
     {
-        //SceneManager.LoadScene("Bootstrapper");
-        //CustomSceneLoader.LoadSceneGroup("SecondPlayable", sceneList);
-        SceneManager.LoadSceneAsync("SC_GD", LoadSceneMode.Additive);
-        SceneManager.UnloadSceneAsync("MainMenu");
+        SceneManager.LoadScene("SC_INTRO_TEST");
     }
     
     private void OpenSettings(ClickEvent evt)
