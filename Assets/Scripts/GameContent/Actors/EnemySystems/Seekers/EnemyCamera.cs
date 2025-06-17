@@ -1,4 +1,5 @@
 ﻿using System;
+using FMOD.Studio;
 using GameContent.ActorViews.Player;
 using GameContent.Management;
 using UnityEngine;
@@ -36,6 +37,11 @@ namespace GameContent.Actors.EnemySystems.Seekers
         
         #region methodes
 
+        private void Start()
+        {
+            _cameraRotateEventInstance = AudioManager.Instance.CreateEventInstance(FMODEvents.Instance.CameraRotate);
+        }
+
         public override void Init(Transform player)
         {
             playerTransform = player;
@@ -67,11 +73,13 @@ namespace GameContent.Actors.EnemySystems.Seekers
                     _inSight = true;
                     coneRenderer.material.color = new Color(1, 0, 0, 0.2f);
                     _playerView.SightCount++;
+                    _cameraRotateEventInstance.start();
                     break;
                 case false when _inSight:
                     _inSight = false;
                     coneRenderer.material.color = new Color(1, 1, 1, 0.2f);
                     _playerView.SightCount--;
+                    _cameraRotateEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                     break;
             }
 
@@ -260,6 +268,8 @@ namespace GameContent.Actors.EnemySystems.Seekers
         private bool _inSight;
         
         private static readonly int SpeedFlash = Shader.PropertyToID("_Speed_Flash");
+        
+        private EventInstance _cameraRotateEventInstance;
         
         public NetworkNode NetworkNode
         {

@@ -1,4 +1,5 @@
 using System;
+using FMOD.Studio;
 using GameContent.Management;
 using UnityEngine;
 
@@ -8,13 +9,18 @@ enum ProcessorType
     TheOne
 }
 
+
 public class Processor : HackableJunction
 {
     [SerializeField] private ProcessorType _processorType;
     
+    private EventInstance _processorEventInstance;
+    
     private void Start()
     {
         _alrHacked = false;
+        _processorEventInstance = AudioManager.Instance.CreateEventInstance(FMODEvents.Instance.ProcessorDestroy);
+        _processorEventInstance.start();
     }
     
     public override void OnInteract() 
@@ -28,6 +34,7 @@ public class Processor : HackableJunction
 
         if (_processorType == ProcessorType.Normal)
         {
+            AudioManager.Instance.PlayOneShot(FMODEvents.Instance.ProcessorDestroy, gameObject.transform.position);
             GameManager.Instance.TerminateProcessor();
         }
         
@@ -39,5 +46,7 @@ public class Processor : HackableJunction
             GameManager.Instance.TerminateProcessor();
             GameManager.Instance.WinGame();
         }
+        
+        _processorEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 }

@@ -1,4 +1,6 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
+using FMOD.Studio;
 using GameContent.Actors.ActorData;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,6 +10,12 @@ namespace GameContent.Actors.EnemySystems.Seekers
     public class Drone : Actor
     {
         #region methodes
+
+        private void Start()
+        {
+            _houndAmbientInstance = AudioManager.Instance.CreateEventInstance(FMODEvents.Instance.DroneAmbient);
+            _houndAmbientInstance.start();
+        }
 
         public override void Init(Transform player)
         {
@@ -61,6 +69,8 @@ namespace GameContent.Actors.EnemySystems.Seekers
         private NavMeshAgent _navMeshAgent;
         
         private Vector3 _currentTargetPosition;
+        
+        private EventInstance _houndAmbientInstance;
         
         #endregion
     }

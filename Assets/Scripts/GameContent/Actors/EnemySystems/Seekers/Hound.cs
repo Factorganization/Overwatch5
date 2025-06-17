@@ -1,6 +1,7 @@
+using System;
+using FMOD.Studio;
 using GameContent.Actors.EnemySystems.EnemyNavigation;
 using GameContent.Management;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace GameContent.Actors.EnemySystems.Seekers
@@ -16,6 +17,12 @@ namespace GameContent.Actors.EnemySystems.Seekers
         #endregion
         
         #region methodes
+
+        private void Start()
+        {
+            _houndAmbientInstance = AudioManager.Instance.CreateEventInstance(FMODEvents.Instance.HoundAmbient);
+            _houndAmbientInstance.start();
+        }
 
         public override void Init(Transform player)
         {
@@ -89,6 +96,7 @@ namespace GameContent.Actors.EnemySystems.Seekers
                     var dir = (playerTransform.position - transform.position).normalized;
                     laserEmiter.transform.rotation = Quaternion.LookRotation(dir);
                     laserEmiter.Emit(1);
+                    AudioManager.Instance.PlayOneShot(FMODEvents.Instance.HoundAttack, transform.position);
                     SuspicionManager.Manager.PlayerHealth.TakeDamage(atkDamage);
                 }
             }
@@ -131,6 +139,8 @@ namespace GameContent.Actors.EnemySystems.Seekers
         private float _timerPos;
 
         private bool _closeEnough;
+        
+        private EventInstance _houndAmbientInstance;
 
         #endregion
     }

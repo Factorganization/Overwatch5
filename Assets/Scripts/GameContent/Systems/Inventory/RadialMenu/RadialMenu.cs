@@ -67,9 +67,9 @@ public class RadialMenu : MonoBehaviour
         targetIcon.gameObject.SetActive(true);
         isOpen = true;
         
-        /*AudioManager.Instance.PlayOneShot(
+        AudioManager.Instance.PlayOneShot(
             FMODEvents.Instance.SelectionWheelOpen, GameManager.Instance.playerTransform.position);
-        */
+        
         for (int i = 0; i < entries.Count; i++)
         {
             RectTransform rect = entries[i].Rect;
@@ -89,9 +89,9 @@ public class RadialMenu : MonoBehaviour
         targetIcon.gameObject.SetActive(false);
         isOpen = false;
         
-        /*AudioManager.Instance.PlayOneShot(
+        AudioManager.Instance.PlayOneShot(
             FMODEvents.Instance.SelectionWheelClose, GameManager.Instance.playerTransform.position);
-        */
+        
         for (int i = 0; i < entries.Count; i++)
         {
             RectTransform rect = entries[i].Rect;
