@@ -50,7 +50,9 @@ public class MapLink : MonoBehaviour
                if (NetworkMapController.Instance.NumberOfUnlinks > 0) 
                { NetworkMapController.Instance.IsUnlinked = true; }
                
-               NetworkMapController.Instance.TotalHackingCost = NetworkMapController.Instance.UnlinkCost * NetworkMapController.Instance.NumberOfUnlinks;
+               NetworkMapController.Instance.TotalHackingCost = 
+                    NetworkMapController.Instance.ChangeIDCost * NetworkMapController.Instance.NumberOfChanges + 
+                    NetworkMapController.Instance.UnlinkCost * NetworkMapController.Instance.NumberOfUnlinks;
           }
           else
           {
@@ -70,10 +72,15 @@ public class MapLink : MonoBehaviour
                          _linkedNode.actor = nodeID._linkedNode.OriginalActor;
                          SuspicionManager.Manager.AddSuspicion(_suspicionValue);
                          NetworkMapController.Instance.NumberOfChanges++;
+                         
                          if (NetworkMapController.Instance.NumberOfChanges > 0)
                          {
                               NetworkMapController.Instance.IsIDChanged = true;
                          }
+                         
+                         NetworkMapController.Instance.TotalHackingCost = 
+                              NetworkMapController.Instance.ChangeIDCost * NetworkMapController.Instance.NumberOfChanges + 
+                              NetworkMapController.Instance.UnlinkCost * NetworkMapController.Instance.NumberOfUnlinks;
                          return;
                     }
                }
