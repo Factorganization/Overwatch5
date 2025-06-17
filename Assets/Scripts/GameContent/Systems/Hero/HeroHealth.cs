@@ -49,7 +49,7 @@ public class HeroHealth : MonoBehaviour
 
     public void Die()
     {
-        GameUIManager.Instance.DeathScreen.DeathMessageText.text = "You have died!";
+        GameUIManager.Instance.DeathScreen.DeathMessageText.text = "You died!";
         AudioManager.Instance.PlayOneShot(FMODEvents.Instance.AvatarDeath, transform.position);
         GameUIManager.Instance.DeathScreen.Show();
         SuspicionManager.Manager.ResetSuspicion();
