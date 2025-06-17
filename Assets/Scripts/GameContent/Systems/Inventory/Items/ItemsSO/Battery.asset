@@ -23,6 +23,8 @@ MonoBehaviour:
     Part4: 1312083889
   icon: {fileID: -1737642861, guid: 31f01bce877cd3941b965b899165b682, type: 3}
   chosenIcon: {fileID: -651057953, guid: 970a227944a971348ab10558ba0a1c1d, type: 3}
+  healAmount: 30
+  rechargeAmount: 0
   description: 'Battery
 
 '

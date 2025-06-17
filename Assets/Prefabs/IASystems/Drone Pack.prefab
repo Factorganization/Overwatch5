@@ -553,7 +553,7 @@ MonoBehaviour:
   baitTarget: {fileID: 6486036646297187007}
   coneRenderer: {fileID: 7824857806055600008}
   networkNode: {fileID: 0}
-  range: 15
+  range: 30
   angle: 0.92
   collisionLayer:
     serializedVersion: 2
