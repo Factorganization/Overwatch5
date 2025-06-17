@@ -7,7 +7,7 @@ public class FallTrigger : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            Hero.Instance.Health.TakeDamage(100);
+            Hero.Instance.Health.Die();
         }
     }
 }

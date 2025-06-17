@@ -41,8 +41,12 @@ public class MultiTool : MonoBehaviour
     
     public float ToolRange => _toolRange;
     
-    public float MaxBattery => _maxBattery;
-    
+    public float MaxBattery
+    {
+        get => _maxBattery;
+        set => _maxBattery = value;
+    }
+
     private void Start()
     {
         _maxBattery = 100f;

@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using Systems;
 using UnityEngine;
 
@@ -22,10 +23,25 @@ namespace GameContent.Management
                 Destroy(gameObject);
             }
         }
-
+        
         private async void Start()
         {
             await WaitForObjectOfTypeAsync<Hero>();
+        }
+        
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                GodModeEnabled = !GodModeEnabled;
+            }
+
+            if (Input.GetKeyDown(KeyCode.F2))
+            {
+                DestroyAllProcessors();
+            }
+            
+            GodMode();
         }
         
         private async UniTask WaitForObjectOfTypeAsync<T>() where T : MonoBehaviour
@@ -69,8 +85,31 @@ namespace GameContent.Management
         
         public void WinGame()
         {
-            GameUIManager.Instance.DeathScreen.DeathMessageText.text = "You heve successfully desactivated the heart";
+            GameUIManager.Instance.DeathScreen.DeathMessageText.text = "You have successfully desactivated the heart";
             GameUIManager.Instance.DeathScreen.Show();
+        }
+
+        private void GodMode()
+        {
+            if (GodModeEnabled)
+            {
+                Hero.Instance.Health.MaxHealth = 99999f;
+                Hero.Instance.Health.CurrentHealth = 99999f;
+                Hero.Instance.MultiToolObject.MaxBattery = 99999f;
+                Hero.Instance.MultiToolObject.CurrentBattery = 99999f;
+            }
+            else
+            {
+                Hero.Instance.Health.MaxHealth = 100f;
+                Hero.Instance.Health.CurrentHealth = 100f;
+                Hero.Instance.MultiToolObject.MaxBattery = 100f;
+                Hero.Instance.MultiToolObject.CurrentBattery = 100f;
+            }
+        }
+        
+        public void DestroyAllProcessors()
+        {
+            numberOfProcessorsTerminated = 4;
         }
         
         #endregion
@@ -82,6 +121,8 @@ namespace GameContent.Management
         public Transform respawnPoint;
         
         [SerializeField] private int numberOfProcessorsTerminated;
+        
+        public bool GodModeEnabled;
 
         #endregion
     }
