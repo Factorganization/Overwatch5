@@ -92,8 +92,7 @@ namespace Systems
                         }
                         
                         _currentInteractible = interactible;
-                        Debug.Log("Interactible: " + interactible.InteractibleName);
-                        GameUIManager.Instance.UpdateInteractibleUI(interactible.InteractibleName, "Right click to interact",true);
+                        GameUIManager.Instance.UpdateInteractibleUI("", "Right click to interact",true);
                     }
                 }
             }

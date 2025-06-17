@@ -24,8 +24,11 @@ public class AudioManager : MonoBehaviour
     private List<StudioEventEmitter> eventEmitters;
     
     private EventInstance ambienceEventInstance;
-    private EventInstance musicEventInstance;
     private EventInstance mainMenuEventInstance;
+    private EventInstance musicEventInstance;
+    private EventInstance sfxEventInstance;
+    private EventInstance introCinematicEventInstance;
+    private EventInstance introCinematicWindEventInstance;
     
     public static AudioManager Instance { get; private set; }
 
@@ -54,6 +57,7 @@ public class AudioManager : MonoBehaviour
     {
         InitializeMainMenu(FMODEvents.Instance.Menus);
         InitializeAmbience(FMODEvents.Instance.Ambient);
+        InitializeIntroCinematic();
     }
 
     private void Update()
@@ -63,15 +67,16 @@ public class AudioManager : MonoBehaviour
         ambienceBus.setVolume(ambienceVolume);
         SFXBus.setVolume(SFXVolume);
     }
+
+    private void InitializeIntroCinematic()
+    {
+        introCinematicEventInstance = CreateInstance(FMODEvents.Instance.IntroCinematic);
+        introCinematicWindEventInstance = CreateInstance(FMODEvents.Instance.IntroCinematicWind);
+    }
     
     private void InitializeAmbience(EventReference eventPath)
     {
         ambienceEventInstance = CreateInstance(eventPath);
-    }
-
-    private void InitializeMusic(EventReference eventPath)
-    {
-        musicEventInstance = CreateInstance(eventPath);
     }
     
     public void InitializeMainMenu(EventReference eventPath)
